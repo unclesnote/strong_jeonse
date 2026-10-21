@@ -1,0 +1,652 @@
+{
+  "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차": {
+    "lat": 37.2487399205681,
+    "lng": 126.97813141694,
+    "query": "경기도 수원시 권선구 고색로 9",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%EA%B3%A0%EC%83%89%EB%A1%9C%209",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 고색로 9",
+    "buildingName": "ANO예담채 고색2차"
+  },
+  "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동": {
+    "lat": 37.2558767280507,
+    "lng": 126.970995862448,
+    "query": "경기도 수원시 권선구 호매실로 21-4",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%ED%98%B8%EB%A7%A4%EC%8B%A4%EB%A1%9C%2021-4",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 호매실로 21-4",
+    "buildingName": ""
+  },
+  "경기도 수원시 권선구 호매실로 29-9(고색동) 라움A동": {
+    "lat": 37.2553183751039,
+    "lng": 126.970725879879,
+    "query": "경기도 수원시 권선구 호매실로 29-9",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%ED%98%B8%EB%A7%A4%EC%8B%A4%EB%A1%9C%2029-9",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 호매실로 29-9",
+    "buildingName": ""
+  },
+  "경기도 수원시 권선구 호매실로 29-9(고색동) 라움B동": {
+    "lat": 37.2553183751039,
+    "lng": 126.970725879879,
+    "query": "경기도 수원시 권선구 호매실로 29-9",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%ED%98%B8%EB%A7%A4%EC%8B%A4%EB%A1%9C%2029-9",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 호매실로 29-9",
+    "buildingName": ""
+  },
+  "경기도 수원시 권선구 곡선로49번길 5-16(곡반정동) 하우스토리": {
+    "lat": 37.2395536323405,
+    "lng": 127.029173467692,
+    "query": "경기도 수원시 권선구 곡선로49번길 5-16",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%EA%B3%A1%EC%84%A0%EB%A1%9C49%EB%B2%88%EA%B8%B8%205-16",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 곡선로49번길 5-16",
+    "buildingName": "하우스토리"
+  },
+  "경기도 수원시 영통구 매여울로40번길 69(매탄동) 창룡오피스텔": {
+    "lat": 37.2728745360995,
+    "lng": 127.048952572231,
+    "query": "경기도 수원시 영통구 매여울로40번길 69",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%98%81%ED%86%B5%EA%B5%AC%20%EB%A7%A4%EC%97%AC%EC%9A%B8%EB%A1%9C40%EB%B2%88%EA%B8%B8%2069",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 영통구 매여울로40번길 69",
+    "buildingName": "창룡오피스텔"
+  },
+  "경기도 수원시 권선구 정조로398번길 18(세류동) 모던힐타운": {
+    "lat": 37.2450052919431,
+    "lng": 127.015438669692,
+    "query": "경기도 수원시 권선구 정조로398번길 18",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%EC%A0%95%EC%A1%B0%EB%A1%9C398%EB%B2%88%EA%B8%B8%2018",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 권선구 정조로398번길 18",
+    "buildingName": ""
+  },
+  "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1": {
+    "lat": 37.2961852682961,
+    "lng": 127.004301460874,
+    "query": "경기도 수원시 장안구 송원로1번길 5",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%86%A1%EC%9B%90%EB%A1%9C1%EB%B2%88%EA%B8%B8%205",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 송원로1번길 5",
+    "buildingName": "행복주택1"
+  },
+  "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1": {
+    "lat": 37.2961376980401,
+    "lng": 127.004175478754,
+    "query": "경기도 수원시 장안구 송정로 63",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%86%A1%EC%A0%95%EB%A1%9C%2063",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 송정로 63",
+    "buildingName": "행복주택1"
+  },
+  "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워": {
+    "lat": 37.2978942542542,
+    "lng": 127.006517245819,
+    "query": "경기도 수원시 장안구 송원로 28",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%86%A1%EC%9B%90%EB%A1%9C%2028",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 송원로 28",
+    "buildingName": "플러스타워"
+  },
+  "경기도 수원시 영통구 삼성로320번길 17(원천동) 원천동 295-1,295-5": {
+    "lat": 37.2674455863932,
+    "lng": 127.068710056102,
+    "query": "경기도 수원시 영통구 삼성로320번길 17",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%98%81%ED%86%B5%EA%B5%AC%20%EC%82%BC%EC%84%B1%EB%A1%9C320%EB%B2%88%EA%B8%B8%2017",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 영통구 삼성로320번길 17",
+    "buildingName": ""
+  },
+  "경기도 수원시 영통구 원천동 영통구 원천동 295-1,295-5": {
+    "lat": 37.2672032352036,
+    "lng": 127.068970153779,
+    "query": "경기도 수원시 영통구 원천동 295-1",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%98%81%ED%86%B5%EA%B5%AC%20%EC%9B%90%EC%B2%9C%EB%8F%99%20295-1",
+    "precision": "lot-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 영통구 원천동 295-1",
+    "buildingName": ""
+  },
+  "경기도 수원시 장안구 서부로2207번길 7(율전동) ": {
+    "lat": 37.305255701656,
+    "lng": 126.972207865509,
+    "query": "경기도 수원시 장안구 서부로2207번길 7",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%84%9C%EB%B6%80%EB%A1%9C2207%EB%B2%88%EA%B8%B8%207",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 서부로2207번길 7",
+    "buildingName": ""
+  },
+  "경기도 수원시 장안구 율전로 112(율전동) 율전 리치하우스": {
+    "lat": 37.2992181815691,
+    "lng": 126.969499671183,
+    "query": "경기도 수원시 장안구 율전로 112",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%9C%A8%EC%A0%84%EB%A1%9C%20112",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 율전로 112",
+    "buildingName": "율전 리치하우스"
+  },
+  "경기도 수원시 팔달구 경수대로565번길 62(인계동) 인계동 개성로니엘 오피스텔": {
+    "lat": 37.2760256601621,
+    "lng": 127.026641670596,
+    "query": "경기도 수원시 팔달구 경수대로565번길 62",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%ED%8C%94%EB%8B%AC%EA%B5%AC%20%EA%B2%BD%EC%88%98%EB%8C%80%EB%A1%9C565%EB%B2%88%EA%B8%B8%2062",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 팔달구 경수대로565번길 62",
+    "buildingName": ""
+  },
+  "경기도 수원시 장안구 송정로118번길 7(조원동) 뜨레모아아파트": {
+    "lat": 37.2955175841297,
+    "lng": 127.010367896374,
+    "query": "경기도 수원시 장안구 송정로118번길 7",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%86%A1%EC%A0%95%EB%A1%9C118%EB%B2%88%EA%B8%B8%207",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 송정로118번길 7",
+    "buildingName": "뜨레모아아파트"
+  },
+  "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차": {
+    "lat": 37.2975390092985,
+    "lng": 127.020453819089,
+    "query": "경기도 수원시 장안구 조원로24번길 19",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%9E%A5%EC%95%88%EA%B5%AC%20%EC%A1%B0%EC%9B%90%EB%A1%9C24%EB%B2%88%EA%B8%B8%2019",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 장안구 조원로24번길 19",
+    "buildingName": "핸즈빌 3차"
+  },
+  "경기도 시흥시 은계중앙로306번길 71(대야동) 제이엘타워": {
+    "lat": 37.4517775341601,
+    "lng": 126.795464579771,
+    "query": "경기도 시흥시 은계중앙로306번길 71",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EC%9D%80%EA%B3%84%EC%A4%91%EC%95%99%EB%A1%9C306%EB%B2%88%EA%B8%B8%2071",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 시흥시 은계중앙로306번길 71",
+    "buildingName": "제이엘 타워"
+  },
+  "경기도 시흥시 신천2길 27(신천동) 헬시온": {
+    "lat": 37.4390201271939,
+    "lng": 126.779401782311,
+    "query": "경기도 시흥시 신천2길 27",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EC%8B%A0%EC%B2%9C2%EA%B8%B8%2027",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 시흥시 신천2길 27",
+    "buildingName": "헬시온"
+  },
+  "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)": {
+    "lat": 37.4319099375207,
+    "lng": 126.804203503308,
+    "query": "경기도 시흥시 은계로 114",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EC%9D%80%EA%B3%84%EB%A1%9C%20114",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 시흥시 은계로 114",
+    "buildingName": "해피에버I"
+  },
+  "경기도 시흥시 은계로 110(은행동) 해피에버 2동 (은행동 669-2)": {
+    "lat": 37.4314769680778,
+    "lng": 126.803749748279,
+    "query": "경기도 시흥시 은계로 110",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%8B%9C%ED%9D%A5%EC%8B%9C%20%EC%9D%80%EA%B3%84%EB%A1%9C%20110",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 시흥시 은계로 110",
+    "buildingName": "해피에버Ⅱ"
+  },
+  "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) ": {
+    "lat": 37.2907750847027,
+    "lng": 126.868168156821,
+    "query": "경기도 안산시 상록구 본오로7길 40",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%83%81%EB%A1%9D%EA%B5%AC%20%EB%B3%B8%EC%98%A4%EB%A1%9C7%EA%B8%B8%2040",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 상록구 본오로7길 40",
+    "buildingName": "Forest 休"
+  },
+  "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22": {
+    "lat": 37.3072211219887,
+    "lng": 126.850262878174,
+    "query": "경기도 안산시 상록구 광덕1로 364",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%83%81%EB%A1%9D%EA%B5%AC%20%EA%B4%91%EB%8D%951%EB%A1%9C%20364",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 상록구 광덕1로 364",
+    "buildingName": "와이에스22"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 A(1) 동": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 B(2) 동": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 C(3) 동": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 D(4) 동": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안양시 만안구 현충로 12(안양동) 미래타운": {
+    "lat": 37.3928956422281,
+    "lng": 126.929479192462,
+    "query": "경기도 안양시 만안구 현충로 12",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%ED%98%84%EC%B6%A9%EB%A1%9C%2012",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 현충로 12",
+    "buildingName": "미래타운"
+  },
+  "경기도 안양시 만안구 만안로55번길 20-11(안양동,부성파인스위트) ": {
+    "lat": 37.3880641180614,
+    "lng": 126.932305394368,
+    "query": "경기도 안양시 만안구 만안로55번길 20-11",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EB%A7%8C%EC%95%88%EB%A1%9C55%EB%B2%88%EA%B8%B8%2020-11",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 만안로55번길 20-11",
+    "buildingName": "부성파인스위트"
+  },
+  "경기도 안양시 만안구 안양로369번길 57(안양동,우석펠리스6차) ": {
+    "lat": 37.4037262758529,
+    "lng": 126.913586414682,
+    "query": "경기도 안양시 만안구 안양로369번길 57",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EC%95%88%EC%96%91%EB%A1%9C369%EB%B2%88%EA%B8%B8%2057",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 안양로369번길 57",
+    "buildingName": "우석펠리스6차"
+  },
+  "경기도 안양시 만안구 만안로123번길 18(안양동) 한일코지세상": {
+    "lat": 37.3934010081548,
+    "lng": 126.929299048579,
+    "query": "경기도 안양시 만안구 만안로123번길 18",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EB%A7%8C%EC%95%88%EB%A1%9C123%EB%B2%88%EA%B8%B8%2018",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 만안로123번길 18",
+    "buildingName": "한일코지세상"
+  },
+  "경기도 안양시 만안구 만안로 111(안양동) 휴누림": {
+    "lat": 37.392758523352,
+    "lng": 126.930726952696,
+    "query": "경기도 안양시 만안구 만안로 111",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EB%A7%8C%EC%95%88%EB%A1%9C%20111",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 만안로 111",
+    "buildingName": "휴누림"
+  },
+  "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰": {
+    "lat": 37.36965259717,
+    "lng": 126.956481296525,
+    "query": "경기도 안양시 동안구 흥안대로 104",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%ED%9D%A5%EC%95%88%EB%8C%80%EB%A1%9C%20104",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 동안구 흥안대로 104",
+    "buildingName": ""
+  },
+  "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰": {
+    "lat": 37.3670372895995,
+    "lng": 126.956266848998,
+    "query": "경기도 안양시 동안구 엘에스로 30",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%EC%97%98%EC%97%90%EC%8A%A4%EB%A1%9C%2030",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 동안구 엘에스로 30",
+    "buildingName": "노블레스 뷰"
+  },
+  "경기도 여주시 우암로 45(창동) 현대 홈타운 2차": {
+    "lat": 37.2948784482559,
+    "lng": 127.631719435782,
+    "query": "경기도 여주시 우암로 45",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%97%AC%EC%A3%BC%EC%8B%9C%20%EC%9A%B0%EC%95%94%EB%A1%9C%2045",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 여주시 우암로 45",
+    "buildingName": ""
+  },
+  "경기도 여주시 현암2길 58-8(현암동) 청아한": {
+    "lat": 37.3109130107086,
+    "lng": 127.637970481739,
+    "query": "경기도 여주시 현암2길 58-8",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%97%AC%EC%A3%BC%EC%8B%9C%20%ED%98%84%EC%95%942%EA%B8%B8%2058-8",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 여주시 현암2길 58-8",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 88(금암동) 로렌하우스": {
+    "lat": 37.1718327293907,
+    "lng": 127.050543866752,
+    "query": "경기도 오산시 금암로 88",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2088",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 88",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 62(금암동) 로렌하우스": {
+    "lat": 37.1713559568676,
+    "lng": 127.048222341765,
+    "query": "경기도 오산시 금암로 62",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2062",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 62",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로16번길 6(금암동) 로렌하우스": {
+    "lat": 37.171577886805,
+    "lng": 127.050599883571,
+    "query": "경기도 오산시 금암로16번길 6",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C16%EB%B2%88%EA%B8%B8%206",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로16번길 6",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로16번길 24(금암동) 로렌하우스": {
+    "lat": 37.1713923746478,
+    "lng": 127.048626366668,
+    "query": "경기도 오산시 금암로16번길 24",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C16%EB%B2%88%EA%B8%B8%2024",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로16번길 24",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 54(금암동) 로렌하우스": {
+    "lat": 37.1712430714115,
+    "lng": 127.047511327416,
+    "query": "경기도 오산시 금암로 54",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2054",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 54",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 94(금암동) 로렌하우스": {
+    "lat": 37.1714297218164,
+    "lng": 127.050883531969,
+    "query": "경기도 오산시 금암로 94",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2094",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 94",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 70(금암동) 로렌하우스": {
+    "lat": 37.1716323161335,
+    "lng": 127.048869169958,
+    "query": "경기도 오산시 금암로 70",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2070",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 70",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로16번길 32(금암동) 로렌하우스": {
+    "lat": 37.171110283176,
+    "lng": 127.047890810856,
+    "query": "경기도 오산시 금암로16번길 32",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C16%EB%B2%88%EA%B8%B8%2032",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로16번길 32",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로11번길 2(금암동) 로렌하우스": {
+    "lat": 37.1710486310411,
+    "lng": 127.050962882891,
+    "query": "경기도 오산시 금암로11번길 2",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C11%EB%B2%88%EA%B8%B8%202",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로11번길 2",
+    "buildingName": ""
+  },
+  "경기도 오산시 세마역로 69(세교동) 리강 THE HIGHVILL": {
+    "lat": 37.1852556203097,
+    "lng": 127.043606381344,
+    "query": "경기도 오산시 세마역로 69",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EC%84%B8%EB%A7%88%EC%97%AD%EB%A1%9C%2069",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 세마역로 69",
+    "buildingName": ""
+  },
+  "경기도 오산시 세마역로 65(세교동) 602-4": {
+    "lat": 37.1850780667272,
+    "lng": 127.043974428663,
+    "query": "경기도 오산시 세마역로 65",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EC%84%B8%EB%A7%88%EC%97%AD%EB%A1%9C%2065",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 세마역로 65",
+    "buildingName": ""
+  },
+  "경기도 오산시 내삼미로79번길 23(수청동) 라온누리 빌딩": {
+    "lat": 37.1697206447449,
+    "lng": 127.064319877126,
+    "query": "경기도 오산시 내삼미로79번길 23",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EB%82%B4%EC%82%BC%EB%AF%B8%EB%A1%9C79%EB%B2%88%EA%B8%B8%2023",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 내삼미로79번길 23",
+    "buildingName": ""
+  },
+  "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) ": {
+    "lat": 37.2401235307834,
+    "lng": 127.217318762151,
+    "query": "경기도 용인시 처인구 고진로27번길 23",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%B2%98%EC%9D%B8%EA%B5%AC%20%EA%B3%A0%EC%A7%84%EB%A1%9C27%EB%B2%88%EA%B8%B8%2023",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 처인구 고진로27번길 23",
+    "buildingName": "드림캐슬"
+  },
+  "경기도 용인시 처인구 고진로27번길 25(고림동,아이린캐슬) ": {
+    "lat": 37.2401563942052,
+    "lng": 127.217479454048,
+    "query": "경기도 용인시 처인구 고진로27번길 25",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%B2%98%EC%9D%B8%EA%B5%AC%20%EA%B3%A0%EC%A7%84%EB%A1%9C27%EB%B2%88%EA%B8%B8%2025",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 처인구 고진로27번길 25",
+    "buildingName": "아이린캐슬"
+  },
+  "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임": {
+    "lat": 37.2425047039124,
+    "lng": 127.168360064727,
+    "query": "경기도 용인시 처인구 중부대로 1091-2",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%B2%98%EC%9D%B8%EA%B5%AC%20%EC%A4%91%EB%B6%80%EB%8C%80%EB%A1%9C%201091-2",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 처인구 중부대로 1091-2",
+    "buildingName": ""
+  },
+  "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임": {
+    "lat": 37.2428046055709,
+    "lng": 127.168082352774,
+    "query": "경기도 용인시 처인구 중부대로 1091",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%B2%98%EC%9D%B8%EA%B5%AC%20%EC%A4%91%EB%B6%80%EB%8C%80%EB%A1%9C%201091",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 처인구 중부대로 1091",
+    "buildingName": ""
+  },
+  "경기도 용인시 처인구 중부대로 1091-1(삼가동) 산들하임": {
+    "lat": 37.2427357404538,
+    "lng": 127.168417268727,
+    "query": "경기도 용인시 처인구 중부대로 1091-1",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%B2%98%EC%9D%B8%EA%B5%AC%20%EC%A4%91%EB%B6%80%EB%8C%80%EB%A1%9C%201091-1",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 처인구 중부대로 1091-1",
+    "buildingName": ""
+  },
+  "경기도 용인시 기흥구 신갈로 2-1(상갈동) 골드캐슬": {
+    "lat": 37.2671139639536,
+    "lng": 127.105604044234,
+    "query": "경기도 용인시 기흥구 신갈로 2-1",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EA%B8%B0%ED%9D%A5%EA%B5%AC%20%EC%8B%A0%EA%B0%88%EB%A1%9C%202-1",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 기흥구 신갈로 2-1",
+    "buildingName": ""
+  },
+  "경기도 용인시 기흥구 상갈로11번길 15(상갈동) 나인브릿지": {
+    "lat": 37.2673885530073,
+    "lng": 127.105658205039,
+    "query": "경기도 용인시 기흥구 상갈로11번길 15",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EA%B8%B0%ED%9D%A5%EA%B5%AC%20%EC%83%81%EA%B0%88%EB%A1%9C11%EB%B2%88%EA%B8%B8%2015",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 용인시 기흥구 상갈로11번길 15",
+    "buildingName": ""
+  },
+  "경기도 화성시 병점구 병점노을4로 7(병점동) 병점동 884-5,884-6": {
+    "lat": 37.2050971289639,
+    "lng": 127.02973064974,
+    "query": "경기도 화성시 병점노을4로 7",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%B3%91%EC%A0%90%EB%85%B8%EC%9D%844%EB%A1%9C%207",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 화성시 병점구 병점노을4로 7",
+    "buildingName": ""
+  },
+  "경기도 수원시 영통구 삼성로320번길 17(원천동) 영통구 원천동 295-1,295-5": {
+    "lat": 37.2674455863932,
+    "lng": 127.068710056102,
+    "query": "경기도 수원시 영통구 삼성로320번길 17",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EC%98%81%ED%86%B5%EA%B5%AC%20%EC%82%BC%EC%84%B1%EB%A1%9C320%EB%B2%88%EA%B8%B8%2017",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 수원시 영통구 삼성로320번길 17",
+    "buildingName": ""
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)": {
+    "lat": 37.3007692350903,
+    "lng": 126.813060218511,
+    "query": "경기도 안산시 단원구 원포공원1로 22",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%8B%A8%EC%9B%90%EA%B5%AC%20%EC%9B%90%ED%8F%AC%EA%B3%B5%EC%9B%901%EB%A1%9C%2022",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안산시 단원구 원포공원1로 22",
+    "buildingName": "The High"
+  },
+  "경기도 안양시 만안구 만안로123번길 18(안양동) 한일코지세상2": {
+    "lat": 37.3934010081548,
+    "lng": 126.929299048579,
+    "query": "경기도 안양시 만안구 만안로123번길 18",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%A7%8C%EC%95%88%EA%B5%AC%20%EB%A7%8C%EC%95%88%EB%A1%9C123%EB%B2%88%EA%B8%B8%2018",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 안양시 만안구 만안로123번길 18",
+    "buildingName": "한일코지세상"
+  },
+  "경기도 오산시 금암로 15-1(금암동) 로렌하우스": {
+    "lat": 37.171050061559,
+    "lng": 127.050779012087,
+    "query": "경기도 오산시 금암로 15-1",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2015-1",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 15-1",
+    "buildingName": ""
+  },
+  "경기도 오산시 금암로 15-11(금암동) 로렌하우스": {
+    "lat": 37.1704840891486,
+    "lng": 127.050823221667,
+    "query": "경기도 오산시 금암로 15-11",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%98%A4%EC%82%B0%EC%8B%9C%20%EA%B8%88%EC%95%94%EB%A1%9C%2015-11",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 오산시 금암로 15-11",
+    "buildingName": ""
+  },
+  "경기도 화성시 병점구 병점노을4로 7(병점동) 병점역서해스카이팰리스 2단지 제1동": {
+    "lat": 37.2050971289639,
+    "lng": 127.02973064974,
+    "query": "경기도 화성시 병점노을4로 7",
+    "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%B3%91%EC%A0%90%EB%85%B8%EC%9D%844%EB%A1%9C%207",
+    "precision": "street-address",
+    "status": "validated",
+    "matchedAddress": "경기 화성시 병점구 병점노을4로 7",
+    "buildingName": ""
+  }
+}

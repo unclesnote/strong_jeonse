@@ -1,0 +1,1289 @@
+{
+  "authoritativeSource": "source-data.json units derived from LH source XLSX",
+  "sourceSHA256": "62a5b5c33ef8dacfbf6216c5b09a739169b21a547e7309638a6404f6b5f16957",
+  "validation": {
+    "allOriginalUnitFieldsPreserved": true,
+    "sourceMissingAreaIds": [
+      10,
+      109,
+      229,
+      230
+    ],
+    "uniqueUnitIds": 344,
+    "unitCount": 344,
+    "exactSourceAddresses": 56,
+    "groups": 38,
+    "allCoordinatesValidated": true,
+    "allAttachmentIdsValid": true,
+    "allBrochureFilesReachable": true,
+    "allPreviewAndOriginalPathsExist": true
+  },
+  "mediaSync": {
+    "attachmentCount": 62,
+    "brochureCount": 59,
+    "bindingsByMatch": {
+      "address": 50,
+      "location": 21,
+      "group": 40
+    },
+    "buildingsWithoutAnyMedia": [
+      "b006"
+    ],
+    "buildingsWithoutExactOrLocationMedia": [
+      "b006",
+      "b037",
+      "b038",
+      "b039",
+      "b040",
+      "b041",
+      "b042",
+      "b043",
+      "b044",
+      "b045",
+      "b053"
+    ],
+    "matchExplanation": {
+      "address": "Whitespace-normalized source address matches exactly",
+      "location": "Same group; validated road or lot address resolves to same position",
+      "group": "Same source housing group; may depict another building, so not claimed as exact building media"
+    }
+  },
+  "buildings": [
+    {
+      "id": "b001",
+      "group": "수원고색(ANO예담채2차)",
+      "address": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차",
+      "units": 2,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59453327",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차"
+        }
+      ]
+    },
+    {
+      "id": "b002",
+      "group": "수원고색(디케이타워)",
+      "address": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동",
+      "units": 3,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59256039",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동"
+        }
+      ]
+    },
+    {
+      "id": "b003",
+      "group": "수원고색(라움AB)",
+      "address": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움A동",
+      "units": 3,
+      "mediaCount": 2,
+      "matches": {
+        "address": 1,
+        "location": 1
+      },
+      "media": [
+        {
+          "id": "57858947",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움A동"
+        },
+        {
+          "id": "57858957",
+          "match": "location",
+          "sourceAddress": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움B동"
+        }
+      ]
+    },
+    {
+      "id": "b004",
+      "group": "수원고색(라움AB)",
+      "address": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움B동",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "address": 1,
+        "location": 1
+      },
+      "media": [
+        {
+          "id": "57858957",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움B동"
+        },
+        {
+          "id": "57858947",
+          "match": "location",
+          "sourceAddress": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움A동"
+        }
+      ]
+    },
+    {
+      "id": "b005",
+      "group": "수원곡반정",
+      "address": "경기도 수원시 권선구 곡선로49번길 5-16(곡반정동) 하우스토리",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "61812849",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 곡선로49번길 5-16(곡반정동) 하우스토리"
+        }
+      ]
+    },
+    {
+      "id": "b006",
+      "group": "수원매탄",
+      "address": "경기도 수원시 영통구 매여울로40번길 69(매탄동) 창룡오피스텔",
+      "units": 2,
+      "mediaCount": 0,
+      "matches": {},
+      "media": []
+    },
+    {
+      "id": "b007",
+      "group": "수원세류(모던힐타운)",
+      "address": "경기도 수원시 권선구 정조로398번길 18(세류동) 모던힐타운",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "57859438",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 권선구 정조로398번길 18(세류동) 모던힐타운"
+        }
+      ]
+    },
+    {
+      "id": "b008",
+      "group": "수원송죽",
+      "address": "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1",
+      "units": 1,
+      "mediaCount": 5,
+      "matches": {
+        "address": 1,
+        "group": 4
+      },
+      "media": [
+        {
+          "id": "62246544",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1"
+        },
+        {
+          "id": "57859049",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909660",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909661",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "61812787",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1"
+        }
+      ]
+    },
+    {
+      "id": "b009",
+      "group": "수원송죽",
+      "address": "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1",
+      "units": 3,
+      "mediaCount": 5,
+      "matches": {
+        "address": 1,
+        "group": 4
+      },
+      "media": [
+        {
+          "id": "61812787",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1"
+        },
+        {
+          "id": "57859049",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909660",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909661",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "62246544",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1"
+        }
+      ]
+    },
+    {
+      "id": "b010",
+      "group": "수원송죽",
+      "address": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워",
+      "units": 5,
+      "mediaCount": 5,
+      "matches": {
+        "address": 3,
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "57859049",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909660",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "59909661",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+        },
+        {
+          "id": "61812787",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1"
+        },
+        {
+          "id": "62246544",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1"
+        }
+      ]
+    },
+    {
+      "id": "b011",
+      "group": "수원원천(광교웰스하임)",
+      "address": "경기도 수원시 영통구 삼성로320번길 17(원천동) 원천동 295-1,295-5",
+      "units": 31,
+      "mediaCount": 3,
+      "matches": {
+        "address": 1,
+        "location": 1,
+        "group": 1
+      },
+      "media": [
+        {
+          "id": "66943708",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 영통구 삼성로320번길 17(원천동) 원천동 295-1,295-5"
+        },
+        {
+          "id": "66943724",
+          "match": "location",
+          "sourceAddress": "경기도 수원시 영통구 삼성로320번길 17(원천동) 영통구 원천동 295-1,295-5"
+        },
+        {
+          "id": "66943714",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 영통구 원천동 영통구 원천동 295-1,295-5"
+        }
+      ]
+    },
+    {
+      "id": "b012",
+      "group": "수원원천(광교웰스하임)",
+      "address": "경기도 수원시 영통구 원천동 영통구 원천동 295-1,295-5",
+      "units": 49,
+      "mediaCount": 3,
+      "matches": {
+        "address": 1,
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "66943714",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 영통구 원천동 영통구 원천동 295-1,295-5"
+        },
+        {
+          "id": "66943708",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 영통구 삼성로320번길 17(원천동) 원천동 295-1,295-5"
+        },
+        {
+          "id": "66943724",
+          "match": "group",
+          "sourceAddress": "경기도 수원시 영통구 삼성로320번길 17(원천동) 영통구 원천동 295-1,295-5"
+        }
+      ]
+    },
+    {
+      "id": "b013",
+      "group": "수원율전",
+      "address": "경기도 수원시 장안구 서부로2207번길 7(율전동) ",
+      "units": 2,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59453382",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 서부로2207번길 7(율전동) "
+        }
+      ]
+    },
+    {
+      "id": "b014",
+      "group": "수원율전(리치하우스)",
+      "address": "경기도 수원시 장안구 율전로 112(율전동) 율전 리치하우스",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59469504",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 율전로 112(율전동) 율전 리치하우스"
+        }
+      ]
+    },
+    {
+      "id": "b015",
+      "group": "수원인계(개성로니엘)",
+      "address": "경기도 수원시 팔달구 경수대로565번길 62(인계동) 인계동 개성로니엘 오피스텔",
+      "units": 4,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "62238841",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 팔달구 경수대로565번길 62(인계동) 인계동 개성로니엘 오피스텔"
+        }
+      ]
+    },
+    {
+      "id": "b016",
+      "group": "수원조원(뜨레모아아파트)",
+      "address": "경기도 수원시 장안구 송정로118번길 7(조원동) 뜨레모아아파트",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "57859491",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 송정로118번길 7(조원동) 뜨레모아아파트"
+        }
+      ]
+    },
+    {
+      "id": "b017",
+      "group": "수원조원(핸즈빌3차)",
+      "address": "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차",
+      "units": 4,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "57859462",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차"
+        },
+        {
+          "id": "57859475",
+          "match": "address",
+          "sourceAddress": "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차"
+        }
+      ]
+    },
+    {
+      "id": "b018",
+      "group": "시흥대야(제이엘타워)",
+      "address": "경기도 시흥시 은계중앙로306번길 71(대야동) 제이엘타워",
+      "units": 4,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "68351622",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계중앙로306번길 71(대야동) 제이엘타워"
+        }
+      ]
+    },
+    {
+      "id": "b019",
+      "group": "시흥신천(헬시온)",
+      "address": "경기도 시흥시 신천2길 27(신천동) 헬시온",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "49636371",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 신천2길 27(신천동) 헬시온"
+        }
+      ]
+    },
+    {
+      "id": "b020",
+      "group": "시흥은행(해피에버)",
+      "address": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)",
+      "units": 6,
+      "mediaCount": 5,
+      "matches": {
+        "address": 4,
+        "group": 1
+      },
+      "media": [
+        {
+          "id": "59469528",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909827",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909828",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909829",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59469541",
+          "match": "group",
+          "sourceAddress": "경기도 시흥시 은계로 110(은행동) 해피에버 2동 (은행동 669-2)"
+        }
+      ]
+    },
+    {
+      "id": "b021",
+      "group": "시흥은행(해피에버)",
+      "address": "경기도 시흥시 은계로 110(은행동) 해피에버 2동 (은행동 669-2)",
+      "units": 8,
+      "mediaCount": 5,
+      "matches": {
+        "address": 1,
+        "group": 4
+      },
+      "media": [
+        {
+          "id": "59469541",
+          "match": "address",
+          "sourceAddress": "경기도 시흥시 은계로 110(은행동) 해피에버 2동 (은행동 669-2)"
+        },
+        {
+          "id": "59469528",
+          "match": "group",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909827",
+          "match": "group",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909828",
+          "match": "group",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        },
+        {
+          "id": "59909829",
+          "match": "group",
+          "sourceAddress": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+        }
+      ]
+    },
+    {
+      "id": "b022",
+      "group": "안산본오(포레스트휴)",
+      "address": "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) ",
+      "units": 3,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "57842159",
+          "match": "address",
+          "sourceAddress": "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) "
+        },
+        {
+          "id": "57842322",
+          "match": "address",
+          "sourceAddress": "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) "
+        }
+      ]
+    },
+    {
+      "id": "b023",
+      "group": "안산이동",
+      "address": "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22",
+      "units": 4,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "57842179",
+          "match": "address",
+          "sourceAddress": "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22"
+        },
+        {
+          "id": "57842431",
+          "match": "address",
+          "sourceAddress": "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22"
+        }
+      ]
+    },
+    {
+      "id": "b024",
+      "group": "안산초지(더하이)",
+      "address": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 A(1) 동",
+      "units": 11,
+      "mediaCount": 4,
+      "matches": {
+        "location": 4
+      },
+      "media": [
+        {
+          "id": "62244864",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)"
+        },
+        {
+          "id": "62244868",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)"
+        },
+        {
+          "id": "62244871",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)"
+        },
+        {
+          "id": "62244875",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)"
+        }
+      ]
+    },
+    {
+      "id": "b025",
+      "group": "안산초지(더하이)",
+      "address": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 B(2) 동",
+      "units": 14,
+      "mediaCount": 4,
+      "matches": {
+        "location": 4
+      },
+      "media": [
+        {
+          "id": "62244864",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)"
+        },
+        {
+          "id": "62244868",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)"
+        },
+        {
+          "id": "62244871",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)"
+        },
+        {
+          "id": "62244875",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)"
+        }
+      ]
+    },
+    {
+      "id": "b026",
+      "group": "안산초지(더하이)",
+      "address": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 C(3) 동",
+      "units": 5,
+      "mediaCount": 4,
+      "matches": {
+        "location": 4
+      },
+      "media": [
+        {
+          "id": "62244864",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)"
+        },
+        {
+          "id": "62244868",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)"
+        },
+        {
+          "id": "62244871",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)"
+        },
+        {
+          "id": "62244875",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)"
+        }
+      ]
+    },
+    {
+      "id": "b027",
+      "group": "안산초지(더하이)",
+      "address": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이 D(4) 동",
+      "units": 8,
+      "mediaCount": 4,
+      "matches": {
+        "location": 4
+      },
+      "media": [
+        {
+          "id": "62244864",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)"
+        },
+        {
+          "id": "62244868",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)"
+        },
+        {
+          "id": "62244871",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)"
+        },
+        {
+          "id": "62244875",
+          "match": "location",
+          "sourceAddress": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)"
+        }
+      ]
+    },
+    {
+      "id": "b028",
+      "group": "안양안양(미래타운)",
+      "address": "경기도 안양시 만안구 현충로 12(안양동) 미래타운",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59453486",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 만안구 현충로 12(안양동) 미래타운"
+        }
+      ]
+    },
+    {
+      "id": "b029",
+      "group": "안양안양(부성파인스위트)",
+      "address": "경기도 안양시 만안구 만안로55번길 20-11(안양동,부성파인스위트) ",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59256216",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 만안구 만안로55번길 20-11(안양동,부성파인스위트) "
+        }
+      ]
+    },
+    {
+      "id": "b030",
+      "group": "안양안양(우석팰리스6차)",
+      "address": "경기도 안양시 만안구 안양로369번길 57(안양동,우석펠리스6차) ",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "61812895",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 만안구 안양로369번길 57(안양동,우석펠리스6차) "
+        }
+      ]
+    },
+    {
+      "id": "b031",
+      "group": "안양안양(한일코지세상)",
+      "address": "경기도 안양시 만안구 만안로123번길 18(안양동) 한일코지세상",
+      "units": 2,
+      "mediaCount": 1,
+      "matches": {
+        "location": 1
+      },
+      "media": [
+        {
+          "id": "48413951",
+          "match": "location",
+          "sourceAddress": "경기도 안양시 만안구 만안로123번길 18(안양동) 한일코지세상2"
+        }
+      ]
+    },
+    {
+      "id": "b032",
+      "group": "안양안양(휴누림)",
+      "address": "경기도 안양시 만안구 만안로 111(안양동) 휴누림",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59452612",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 만안구 만안로 111(안양동) 휴누림"
+        }
+      ]
+    },
+    {
+      "id": "b033",
+      "group": "안양호계(개성하이뷰)",
+      "address": "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰",
+      "units": 2,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "54912465",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰"
+        },
+        {
+          "id": "62265606",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰"
+        }
+      ]
+    },
+    {
+      "id": "b034",
+      "group": "안양호계(노블레스뷰)",
+      "address": "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰",
+      "units": 4,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "57859228",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰"
+        },
+        {
+          "id": "62540310",
+          "match": "address",
+          "sourceAddress": "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰"
+        }
+      ]
+    },
+    {
+      "id": "b035",
+      "group": "여주창동(현대홈타운)",
+      "address": "경기도 여주시 우암로 45(창동) 현대 홈타운 2차",
+      "units": 7,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "57859289",
+          "match": "address",
+          "sourceAddress": "경기도 여주시 우암로 45(창동) 현대 홈타운 2차"
+        }
+      ]
+    },
+    {
+      "id": "b036",
+      "group": "여주현암(청아한)",
+      "address": "경기도 여주시 현암2길 58-8(현암동) 청아한",
+      "units": 4,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59256092",
+          "match": "address",
+          "sourceAddress": "경기도 여주시 현암2길 58-8(현암동) 청아한"
+        }
+      ]
+    },
+    {
+      "id": "b037",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로 88(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b038",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로 62(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b039",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로16번길 6(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b040",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로16번길 24(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b041",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로 54(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b042",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로 94(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b043",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로 70(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b044",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로16번길 32(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b045",
+      "group": "오산 로렌하우스",
+      "address": "경기도 오산시 금암로11번길 2(금암동) 로렌하우스",
+      "units": 1,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "64417729",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+        },
+        {
+          "id": "64635967",
+          "match": "group",
+          "sourceAddress": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+        }
+      ]
+    },
+    {
+      "id": "b046",
+      "group": "오산세교(리강더하이빌)",
+      "address": "경기도 오산시 세마역로 69(세교동) 리강 THE HIGHVILL",
+      "units": 2,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "62254878",
+          "match": "address",
+          "sourceAddress": "경기도 오산시 세마역로 69(세교동) 리강 THE HIGHVILL"
+        }
+      ]
+    },
+    {
+      "id": "b047",
+      "group": "오산세교(디아스트라)",
+      "address": "경기도 오산시 세마역로 65(세교동) 602-4",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "62240296",
+          "match": "address",
+          "sourceAddress": "경기도 오산시 세마역로 65(세교동) 602-4"
+        }
+      ]
+    },
+    {
+      "id": "b048",
+      "group": "오산수청(라온누리)",
+      "address": "경기도 오산시 내삼미로79번길 23(수청동) 라온누리 빌딩",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "61799003",
+          "match": "address",
+          "sourceAddress": "경기도 오산시 내삼미로79번길 23(수청동) 라온누리 빌딩"
+        }
+      ]
+    },
+    {
+      "id": "b049",
+      "group": "용인고림(드림캐슬)",
+      "address": "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) ",
+      "units": 2,
+      "mediaCount": 2,
+      "matches": {
+        "address": 2
+      },
+      "media": [
+        {
+          "id": "59453092",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) "
+        },
+        {
+          "id": "68797002",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) "
+        }
+      ]
+    },
+    {
+      "id": "b050",
+      "group": "용인고림(아이린캐슬)",
+      "address": "경기도 용인시 처인구 고진로27번길 25(고림동,아이린캐슬) ",
+      "units": 1,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "59453709",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 처인구 고진로27번길 25(고림동,아이린캐슬) "
+        }
+      ]
+    },
+    {
+      "id": "b051",
+      "group": "용인삼가(산들하임)",
+      "address": "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임",
+      "units": 3,
+      "mediaCount": 2,
+      "matches": {
+        "address": 1,
+        "group": 1
+      },
+      "media": [
+        {
+          "id": "61812580",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임"
+        },
+        {
+          "id": "61812591",
+          "match": "group",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임"
+        }
+      ]
+    },
+    {
+      "id": "b052",
+      "group": "용인삼가(산들하임)",
+      "address": "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임",
+      "units": 5,
+      "mediaCount": 2,
+      "matches": {
+        "address": 1,
+        "group": 1
+      },
+      "media": [
+        {
+          "id": "61812591",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임"
+        },
+        {
+          "id": "61812580",
+          "match": "group",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임"
+        }
+      ]
+    },
+    {
+      "id": "b053",
+      "group": "용인삼가(산들하임)",
+      "address": "경기도 용인시 처인구 중부대로 1091-1(삼가동) 산들하임",
+      "units": 3,
+      "mediaCount": 2,
+      "matches": {
+        "group": 2
+      },
+      "media": [
+        {
+          "id": "61812580",
+          "match": "group",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임"
+        },
+        {
+          "id": "61812591",
+          "match": "group",
+          "sourceAddress": "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임"
+        }
+      ]
+    },
+    {
+      "id": "b054",
+      "group": "용인상갈(골드캐슬)",
+      "address": "경기도 용인시 기흥구 신갈로 2-1(상갈동) 골드캐슬",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "57859360",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 기흥구 신갈로 2-1(상갈동) 골드캐슬"
+        }
+      ]
+    },
+    {
+      "id": "b055",
+      "group": "용인상갈(나인브릿지)",
+      "address": "경기도 용인시 기흥구 상갈로11번길 15(상갈동) 나인브릿지",
+      "units": 5,
+      "mediaCount": 1,
+      "matches": {
+        "address": 1
+      },
+      "media": [
+        {
+          "id": "57859368",
+          "match": "address",
+          "sourceAddress": "경기도 용인시 기흥구 상갈로11번길 15(상갈동) 나인브릿지"
+        }
+      ]
+    },
+    {
+      "id": "b056",
+      "group": "화성병점(서해스카이2단지)",
+      "address": "경기도 화성시 병점구 병점노을4로 7(병점동) 병점동 884-5,884-6",
+      "units": 90,
+      "mediaCount": 1,
+      "matches": {
+        "location": 1
+      },
+      "media": [
+        {
+          "id": "66943739",
+          "match": "location",
+          "sourceAddress": "경기도 화성시 병점구 병점노을4로 7(병점동) 병점역서해스카이팰리스 2단지 제1동"
+        }
+      ]
+    }
+  ]
+}
