@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "noticeId": "2015122300020927",
+  "units": 344,
+  "buildings": 56,
+  "groups": 38,
+  "media": 62,
+  "previewPages": 252,
+  "relations": 114,
+  "files": 375,
+  "pdfCompletenessChecks": 50,
+  "mediaMatches": {
+    "explicit": 3,
+    "address": 50,
+    "location": 21,
+    "group": 40
+  },
+  "sourceMissingAreaIds": [
+    10,
+    109,
+    229,
+    230
+  ],
+  "sourceFieldsPreserved": true,
+  "contentHash": "34afc44e3ffb6fec960d0d2a08cbd55f7ac7602a20c3f54b05a9eb1c2f94855c",
+  "assetPrefix": "datasets/2015122300020927/34afc44e3ffb6fec960d/"
+}

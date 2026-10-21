@@ -1,0 +1,309 @@
+{
+  "schemaVersion": "1.0.0",
+  "notice": {
+    "title": "교체 검증용 소규모 데이터",
+    "sourceUrl": "https://example.com/notice",
+    "noticeDate": "2026-09-30",
+    "collectedDate": "2026-10-21",
+    "id": "fixture-mini",
+    "regionLabel": "테스트 지역",
+    "kind": "매입임대",
+    "badge": "검증용",
+    "appTitle": "교체 테스트 지도",
+    "providerShort": "LH",
+    "providerName": "한국토지주택공사",
+    "description": "경기남부 든든전세 주택목록과 홍보물을 지도에서 비교합니다.",
+    "spreadsheet": {
+      "id": "fixture-sheet",
+      "columns": {
+        "A": "순번"
+      }
+    },
+    "coordinateAttribution": "주소 위치: 카카오맵 공개 주소 검색 · 원본 주소: LH 주택목록"
+  },
+  "groups": [
+    {
+      "id": "fixture-mini:group:a734c0f9b99a3bf0c745",
+      "name": "테스트 주택군"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "fixture-mini:building:7c611d787b1fe0628591",
+      "groupId": "fixture-mini:group:a734c0f9b99a3bf0c745",
+      "address": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차",
+      "city": "수원시",
+      "location": {
+        "lat": 37.2487399205681,
+        "lng": 126.97813141694,
+        "status": "validated",
+        "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%EA%B3%A0%EC%83%89%EB%A1%9C%209",
+        "matchedAddress": "경기 수원시 권선구 고색로 9"
+      }
+    },
+    {
+      "id": "fixture-mini:building:328edef649ed3a2faf59",
+      "groupId": "fixture-mini:group:a734c0f9b99a3bf0c745",
+      "address": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동",
+      "city": "수원시",
+      "location": {
+        "lat": 37.2558767280507,
+        "lng": 126.970995862448,
+        "status": "validated",
+        "source": "https://search.map.kakao.com/mapsearch/map.daum?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%EA%B6%8C%EC%84%A0%EA%B5%AC%20%ED%98%B8%EB%A7%A4%EC%8B%A4%EB%A1%9C%2021-4",
+        "matchedAddress": "경기 수원시 권선구 호매실로 21-4"
+      }
+    }
+  ],
+  "units": [
+    {
+      "province": "경기도",
+      "supplyRegion": "매입다가구(경기수원시)",
+      "group": "테스트 주택군",
+      "address": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차",
+      "building": "A",
+      "unit": "402",
+      "areaBand": "70~80㎡",
+      "area": 79.2,
+      "expandedArea": 7.61,
+      "exclusiveArea": 71.59,
+      "rooms": 3.0,
+      "floor": "4층",
+      "elevator": true,
+      "type": "다세대주택",
+      "deposit": 236144000.0,
+      "notes": "",
+      "sourceRow": 7,
+      "rawFields": {
+        "A": "1001",
+        "B": "경기도",
+        "C": "매입다가구(경기수원시)",
+        "D": "테스트 주택군",
+        "E": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차",
+        "F": "A",
+        "G": "402",
+        "H": "70~80㎡",
+        "I": "79.2",
+        "J": "7.61",
+        "K": "71.59",
+        "L": "3",
+        "M": "4층",
+        "N": "Y",
+        "O": "다세대주택",
+        "P": "236144000",
+        "Q": ""
+      },
+      "id": "fixture-mini:unit:4556f2da43c0b814e57f",
+      "buildingId": "fixture-mini:building:7c611d787b1fe0628591",
+      "originalId": 1001
+    },
+    {
+      "province": "경기도",
+      "supplyRegion": "매입다가구(경기수원시)",
+      "group": "테스트 주택군",
+      "address": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동",
+      "building": "",
+      "unit": "301",
+      "areaBand": "70~80㎡",
+      "area": null,
+      "expandedArea": 0.0,
+      "exclusiveArea": 74.47,
+      "rooms": 3.0,
+      "floor": "3층",
+      "elevator": null,
+      "type": "오피스텔",
+      "deposit": 183251000.0,
+      "notes": "",
+      "sourceRow": 9,
+      "rawFields": {
+        "A": "1002",
+        "B": "경기도",
+        "C": "매입다가구(경기수원시)",
+        "D": "테스트 주택군",
+        "E": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동",
+        "F": "",
+        "G": "301",
+        "H": "70~80㎡",
+        "I": "",
+        "J": "0",
+        "K": "74.47",
+        "L": "3",
+        "M": "3층",
+        "N": "",
+        "O": "오피스텔",
+        "P": "183251000",
+        "Q": ""
+      },
+      "id": "fixture-mini:unit:ecaf6e3ff4c76da398c1",
+      "buildingId": "fixture-mini:building:328edef649ed3a2faf59",
+      "originalId": 1002
+    }
+  ],
+  "media": [
+    {
+      "id": "fixture-mini:media:fixture-pdf",
+      "name": "document.pdf",
+      "type": "pdf",
+      "original": {
+        "url": "assets/files/document.pdf",
+        "sourceUrl": "https://example.com/document.pdf",
+        "sha256": "10f5c448380fef9f2a322e2aa66fe9515b0ad215b87abd79d804a37a15eaa857",
+        "size": 527
+      },
+      "preview": {
+        "status": "ready",
+        "pageCount": 2,
+        "pages": [
+          {
+            "pageNumber": 1,
+            "url": "assets/previews/document-1.png",
+            "derivedFromMediaId": "fixture-mini:media:fixture-pdf",
+            "width": 8,
+            "height": 6
+          },
+          {
+            "pageNumber": 2,
+            "url": "assets/previews/document-2.png",
+            "derivedFromMediaId": "fixture-mini:media:fixture-pdf",
+            "width": 8,
+            "height": 6
+          }
+        ],
+        "thumbnail": {
+          "url": "assets/previews/thumb.png",
+          "derivedFromMediaId": "fixture-mini:media:fixture-pdf",
+          "pageNumber": 1
+        }
+      },
+      "provenance": {
+        "sourceId": "fixture-pdf",
+        "kind": "fixture",
+        "groupName": "테스트 주택군",
+        "sourceAddress": "",
+        "sourceEndpoint": "https://example.com/notice"
+      }
+    },
+    {
+      "id": "fixture-mini:media:fixture-jpg",
+      "name": "photo.jpg",
+      "type": "jpg",
+      "original": {
+        "url": "assets/files/photo.jpg",
+        "sourceUrl": "https://example.com/photo.jpg",
+        "sha256": "8f6b8cf23e0e1e68c1b4e7f96d0680ea2f1cffa217adb8b653db5f36f45c28bd",
+        "size": 633
+      },
+      "preview": {
+        "status": "ready",
+        "pageCount": 1,
+        "pages": [
+          {
+            "pageNumber": 1,
+            "url": "assets/previews/photo.png",
+            "derivedFromMediaId": "fixture-mini:media:fixture-jpg",
+            "width": 8,
+            "height": 6
+          }
+        ],
+        "thumbnail": {
+          "url": "assets/previews/thumb.png",
+          "derivedFromMediaId": "fixture-mini:media:fixture-jpg",
+          "pageNumber": 1
+        }
+      },
+      "provenance": {
+        "sourceId": "fixture-jpg",
+        "kind": "fixture",
+        "groupName": "테스트 주택군",
+        "sourceAddress": "",
+        "sourceEndpoint": "https://example.com/notice"
+      }
+    },
+    {
+      "id": "fixture-mini:media:fixture-png",
+      "name": "plan.png",
+      "type": "png",
+      "original": {
+        "url": "assets/files/plan.png",
+        "sourceUrl": "https://example.com/plan.png",
+        "sha256": "1ef950aaeb96545808ae4d146bb987b152620a0649e6b6e3ae08cc26d06f943f",
+        "size": 80
+      },
+      "preview": {
+        "status": "ready",
+        "pageCount": 1,
+        "pages": [
+          {
+            "pageNumber": 1,
+            "url": "assets/previews/plan.png",
+            "derivedFromMediaId": "fixture-mini:media:fixture-png",
+            "width": 8,
+            "height": 6
+          }
+        ],
+        "thumbnail": {
+          "url": "assets/previews/thumb.png",
+          "derivedFromMediaId": "fixture-mini:media:fixture-png",
+          "pageNumber": 1
+        }
+      },
+      "provenance": {
+        "sourceId": "fixture-png",
+        "kind": "fixture",
+        "groupName": "테스트 주택군",
+        "sourceAddress": "",
+        "sourceEndpoint": "https://example.com/notice"
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "fixture-mini:relation:9f58e221d48341e605b9",
+      "mediaId": "fixture-mini:media:fixture-pdf",
+      "targetType": "group",
+      "targetId": "fixture-mini:group:a734c0f9b99a3bf0c745",
+      "role": "brochure",
+      "match": "group",
+      "sourceAddress": ""
+    },
+    {
+      "id": "fixture-mini:relation:e5fe22792a0007b4dc9f",
+      "mediaId": "fixture-mini:media:fixture-pdf",
+      "targetType": "notice",
+      "targetId": "fixture-mini",
+      "role": "announcement",
+      "match": "explicit",
+      "sourceAddress": ""
+    },
+    {
+      "id": "fixture-mini:relation:4ce3f2430ee497f37617",
+      "mediaId": "fixture-mini:media:fixture-jpg",
+      "targetType": "unit",
+      "targetId": "fixture-mini:unit:4556f2da43c0b814e57f",
+      "role": "photo",
+      "match": "explicit",
+      "sourceAddress": ""
+    },
+    {
+      "id": "fixture-mini:relation:14960a3ee4a4887f3f56",
+      "mediaId": "fixture-mini:media:fixture-png",
+      "targetType": "unit",
+      "targetId": "fixture-mini:unit:ecaf6e3ff4c76da398c1",
+      "role": "floorplan",
+      "match": "explicit",
+      "sourceAddress": ""
+    },
+    {
+      "id": "fixture-mini:relation:9d58658cef37a3226438",
+      "mediaId": "fixture-mini:media:fixture-jpg",
+      "targetType": "group",
+      "targetId": "fixture-mini:group:a734c0f9b99a3bf0c745",
+      "role": "photo",
+      "match": "group",
+      "sourceAddress": ""
+    }
+  ],
+  "extensions": {
+    "fixtureOnly": true
+  }
+}

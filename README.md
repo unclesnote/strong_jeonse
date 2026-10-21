@@ -16,9 +16,18 @@
 - 미디어 연결은 주소 일치, 같은 위치, 같은 주택군의 세 단계로 표시합니다. 공통 홍보물을 다른 건물의 전용 자료로 표시하지 않습니다.
 - PDF와 PPTX의 모든 페이지를 WebP 이미지로 변환했습니다. XLSX는 원본 다운로드를 제공합니다.
 
-## 재생성
+## 새 공고 교체
 
-상위 작업공간의 `collect_lh.py`로 첨부파일을 수집한 뒤, `extract_data.py`, `prepare_site_assets.py`, `geocode_addresses.py`, `build_data.py` 순으로 실행합니다. `prepare_site_assets.py`에는 Pillow, Poppler, LibreOffice가 필요합니다. `geocode_addresses.py`는 한 번 수집한 주소 검색 응답을 `tmp/`에 저장해 재사용하며, 페이지 이용 중에는 주소 검색 API를 호출하지 않습니다.
+표준 패키지를 준비하면 화면 코드를 수정하지 않고 교체할 수 있습니다. [데이터 교체 가이드](DATA_GUIDE.md), [PDF·이미지 관계 표준](DATA_STANDARD.md), [JSON 스키마](schema/notice-dataset.schema.json)를 참고하세요.
+
+```bash
+python tools/dataset.py validate --dataset datasets/공고ID/dataset.json --asset-root datasets/공고ID
+python tools/dataset.py activate --dataset datasets/공고ID/dataset.json --asset-root datasets/공고ID
+```
+
+활성화 후 브라우저를 새로고침합니다. 실제 호스팅 사이트는 새 `dist/`를 다시 게시해야 합니다. `dist/data.js`는 생성물이므로 직접 수정하지 않습니다. 새 XLSX는 `tools/import_xlsx.py`와 `config/lh-current.json`의 시트·열 매핑으로 표준 패키지에 넣습니다.
+
+기존 수집·변환 도구도 남겨 두었습니다. 상위 `collect_lh.py`는 `LH_PAN_ID`와 `LH_NOTICE_HTML`을 받아 첨부를 수집합니다. `prepare_site_assets.py`에는 Pillow, Poppler, LibreOffice가 필요합니다. `geocode_addresses.py`는 한 번 수집한 주소 검색 응답을 `tmp/`에 저장해 재사용하며 페이지 이용 중에는 주소 검색 API를 호출하지 않습니다. 중간 산출물은 `tools/dataset.py import-current`로 변환합니다. `build_data.py`는 표준 활성화 명령의 호환 진입점입니다.
 
 `media-sync-audit.json`은 원본 세대 정보 보존, 좌표와 미디어 연결, 파일 경로 검증 결과입니다. `source-data.json`에는 원본 엑셀의 각 셀 값과 행 번호가 있습니다.
 

@@ -1,0 +1,99 @@
+{
+  "notice": {
+    "id": "2015122300020927",
+    "title": "[정정공고][경기남부] 든든전세 매입임대주택 예비입주자 모집공고(비분양전환)",
+    "noticeDate": "2026-09-30",
+    "collectedDate": "2026-10-21",
+    "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?aisTpCd=26&ccrCnntSysDsCd=03&mi=1026&panId=2015122300020927&uppAisTpCd=13",
+    "regionLabel": "경기남부",
+    "kind": "매입임대",
+    "badge": "정정공고",
+    "appTitle": "든든전세 지도",
+    "providerShort": "LH",
+    "providerName": "LH청약플러스",
+    "description": "정정 주택목록을 지도에서 비교하고 세대별 조건과 홍보물을 함께 확인합니다.",
+    "filterConfig": {
+      "depositBands": [
+        {
+          "value": "0-150000000",
+          "label": "1.5억 미만"
+        },
+        {
+          "value": "150000000-200000000",
+          "label": "1.5~2억"
+        },
+        {
+          "value": "200000000-250000000",
+          "label": "2~2.5억"
+        },
+        {
+          "value": "250000000-300000000",
+          "label": "2.5~3억"
+        },
+        {
+          "value": "300000000-Infinity",
+          "label": "3억 이상"
+        }
+      ],
+      "areaBands": [
+        {
+          "value": "0-70",
+          "label": "70㎡ 미만"
+        },
+        {
+          "value": "70-80",
+          "label": "70~80㎡"
+        },
+        {
+          "value": "80-Infinity",
+          "label": "80㎡ 이상"
+        },
+        {
+          "value": "missing",
+          "label": "원본 미기재"
+        }
+      ]
+    }
+  },
+  "paths": {
+    "xlsx": "../../../outputs/lh_2015122300020927/공고첨부/69044664_(정정공고)(게시용)2026년경기남부든든전세매입임대주택주택목록(2026.09.30).xlsx",
+    "manifest": "../../../outputs/lh_2015122300020927/manifest.json",
+    "geocodes": "../geocodes.json",
+    "attachments": "../datasets/2015122300020927/assets/attachments.json",
+    "assetRoot": "../datasets/2015122300020927"
+  },
+  "spreadsheet": {
+    "fileId": "69044664",
+    "sheetName": "든든전세(게시용)",
+    "headerRow": 6,
+    "dataStartRow": 7,
+    "columns": {
+      "id": "A",
+      "province": "B",
+      "supplyRegion": "C",
+      "group": "D",
+      "address": "E",
+      "building": "F",
+      "unit": "G",
+      "areaBand": "H",
+      "area": "I",
+      "expandedArea": "J",
+      "exclusiveArea": "K",
+      "rooms": "L",
+      "floor": "M",
+      "elevator": "N",
+      "type": "O",
+      "deposit": "P",
+      "notes": "Q"
+    },
+    "elevatorYesValues": [
+      "Y",
+      "있음"
+    ],
+    "elevatorNoValues": [
+      "N",
+      "없음"
+    ]
+  },
+  "groupAliases": {}
+}

@@ -1,0 +1,633 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jeonse-map:notice-dataset:1.0.0",
+  "title": "Notice housing dataset 1.0.0",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "notice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "noticeDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "collectedDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "regionLabel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "badge": {
+          "type": "string"
+        },
+        "appTitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "providerShort": {
+          "type": "string",
+          "minLength": 1
+        },
+        "providerName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "spreadsheet": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "filterConfig": {
+          "type": "object",
+          "properties": {
+            "depositBands": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "value",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "areaBands": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "value",
+                  "label"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "depositBands",
+            "areaBands"
+          ],
+          "additionalProperties": false
+        },
+        "coordinateAttribution": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "noticeDate",
+        "collectedDate",
+        "sourceUrl",
+        "regionLabel",
+        "kind",
+        "badge",
+        "appTitle",
+        "spreadsheet"
+      ],
+      "additionalProperties": false
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "buildings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "groupId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "city": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "lng": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              },
+              "status": {
+                "const": "validated"
+              },
+              "source": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "matchedAddress": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "lat",
+              "lng",
+              "status",
+              "source",
+              "matchedAddress"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "groupId",
+          "address",
+          "city",
+          "location"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "buildingId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "originalId": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "province": {
+            "type": "string"
+          },
+          "supplyRegion": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "building": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "areaBand": {
+            "type": "string"
+          },
+          "area": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "expandedArea": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "exclusiveArea": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "rooms": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "floor": {
+            "type": "string"
+          },
+          "elevator": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "deposit": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "notes": {
+            "type": "string"
+          },
+          "sourceRow": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "rawFields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "buildingId",
+          "originalId",
+          "group",
+          "address",
+          "area",
+          "rooms",
+          "deposit",
+          "elevator",
+          "rawFields"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "pdf",
+              "png",
+              "jpg",
+              "jpeg",
+              "webp",
+              "pptx",
+              "xlsx",
+              "xls",
+              "csv",
+              "tsv",
+              "other"
+            ]
+          },
+          "original": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "pattern": "^assets/[^\\\\?#]+$"
+              },
+              "sourceUrl": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "size": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "url",
+              "sourceUrl",
+              "sha256",
+              "size"
+            ],
+            "additionalProperties": false
+          },
+          "preview": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "enum": [
+                  "ready",
+                  "download-only",
+                  "unavailable"
+                ]
+              },
+              "pageCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "pageNumber": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^assets/[^\\\\?#]+$"
+                    },
+                    "derivedFromMediaId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "width": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "height": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "pageNumber",
+                    "url",
+                    "derivedFromMediaId",
+                    "width",
+                    "height"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "thumbnail": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "pattern": "^assets/[^\\\\?#]+$"
+                      },
+                      "derivedFromMediaId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pageNumber": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "required": [
+                      "url",
+                      "derivedFromMediaId",
+                      "pageNumber"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "pageCount",
+              "pages",
+              "thumbnail"
+            ],
+            "additionalProperties": false
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "sourceId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string"
+              },
+              "groupName": {
+                "type": "string"
+              },
+              "sourceAddress": {
+                "type": "string"
+              },
+              "sourceEndpoint": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                  },
+                  "lng": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180
+                  },
+                  "status": {
+                    "const": "validated"
+                  }
+                },
+                "required": [
+                  "lat",
+                  "lng",
+                  "status"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "required": [
+              "sourceId",
+              "kind",
+              "groupName",
+              "sourceAddress",
+              "sourceEndpoint"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type",
+          "original",
+          "preview",
+          "provenance"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mediaId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "targetType": {
+            "enum": [
+              "notice",
+              "group",
+              "building",
+              "unit"
+            ]
+          },
+          "targetId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "announcement",
+              "qna",
+              "inventory",
+              "brochure",
+              "floorplan",
+              "photo",
+              "other"
+            ]
+          },
+          "match": {
+            "enum": [
+              "explicit",
+              "address",
+              "location",
+              "group"
+            ]
+          },
+          "sourceAddress": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "mediaId",
+          "targetType",
+          "targetId",
+          "role",
+          "match",
+          "sourceAddress"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "notice",
+    "groups",
+    "buildings",
+    "units",
+    "media",
+    "relations"
+  ],
+  "additionalProperties": false
+}

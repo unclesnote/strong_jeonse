@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LH 경기남부 든든전세 주택목록을 지도에서 비교하고, 세대별 임대조건과 홍보물을 함께 확인하세요.">
+  <meta name="description" content="공고의 주택목록을 지도에서 비교하고 세대별 조건과 홍보물을 확인하세요.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>든든전세 지도 — 경기남부</title>
+  <title>주택 지도</title>
   <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="vendor/MarkerCluster.css"><link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
   </nav>
   <aside class="sidebar" aria-label="주택 검색과 목록">
     <header class="search-header">
-      <div class="eyebrow">경기남부 · 매입임대</div><h1>든든전세 지도<span class="live-dot"></span></h1>
+      <div class="eyebrow">주택 공고</div><h1><span id="app-title">주택 지도</span><span class="live-dot"></span></h1>
       <div class="search-box"><i data-icon="search"></i><input id="search" type="search" placeholder="주택명, 주소, 동·호수 검색" aria-label="주택 검색"><button id="clear-search" aria-label="검색어 지우기" hidden>×</button></div>
       <div class="notice-line"><span class="notice-badge">정정공고</span><span id="notice-date"></span><button data-action="documents">공고 보기 <span>↗</span></button></div>
     </header>
@@ -50,7 +50,7 @@
   <div class="viewer-tools"><span id="viewer-pages"></span><span>이미지 미리보기</span><button id="viewer-zoom-out" aria-label="미리보기 축소">−</button><span id="viewer-zoom">100%</span><button id="viewer-zoom-in" aria-label="미리보기 확대">＋</button></div>
   <div id="viewer-body" class="viewer-body"></div>
 </dialog>
-<dialog id="documents" class="documents"><header><div><span class="eyebrow">LH 공식 자료</span><h2>공고와 주택목록</h2></div><button id="documents-close" class="icon-button" aria-label="자료 닫기">×</button></header><p id="documents-title"></p><div id="common-files"></div><a id="source-link" class="source-link" target="_blank" rel="noopener">LH청약플러스 공고 원문 열기 ↗</a><p class="source-note">보증금·면적·동호수는 정정공고 주택목록을 기준으로 표시합니다. 주택군 공통 홍보물은 선택한 건물과 다를 수 있어 구분해 표시합니다. HWP/HWPX는 제외했습니다.</p></dialog>
+<dialog id="documents" class="documents"><header><div><span class="eyebrow">공고 자료</span><h2>공고와 주택목록</h2></div><button id="documents-close" class="icon-button" aria-label="자료 닫기">×</button></header><p id="documents-title"></p><div id="common-files"></div><a id="source-link" class="source-link" target="_blank" rel="noopener">공고 원문 열기 ↗</a><p class="source-note">보증금·면적·동호수는 해당 공고의 주택목록을 기준으로 표시합니다. 주택군 공통 홍보물은 선택한 건물과 다를 수 있어 구분해 표시합니다. HWP/HWPX는 제외했습니다.</p></dialog>
 <div id="toast" class="toast" role="status" hidden></div>
 <section id="filter-popover" class="filter-popover" role="dialog" aria-label="복수 선택 필터" hidden></section>
 <script src="vendor/leaflet.js"></script><script src="vendor/leaflet.markercluster.js"></script><script src="data.js"></script><script src="app.js"></script>
