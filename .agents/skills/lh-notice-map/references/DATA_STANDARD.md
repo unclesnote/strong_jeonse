@@ -163,10 +163,10 @@ PDF·이미지·PPTX·XLSX를 모두 `media` 레코드로 관리한다. 확장�
 
 세대 전용 미디어는 해당 세대가 필터 결과에 남았을 때만 보여야 한다. 주택군·건물 공통 자료와 세대 전용 자료를 합쳐서 건물 전체 자료인 것처럼 표시하지 않는다. 동일 파일이 여러 경로로 연결되면 화면은 하나의 파일로 모으되 모든 연결 근거를 유지한다.
 
-## 7. 검증과 활성화 계약
+## 7. 검증과 사이트 생성 계약
 
-`validate`는 스키마와 ID·참조·단위·좌표·원본 해시·파일 존재·페이지 관계를 확인한다. `build`는 검토할 별도 결과만 만든다. `activate`는 검증과 파일 복사가 모두 성공한 뒤 화면의 데이터 포인터를 교체한다.
+`validate`는 스키마와 ID·참조·단위·좌표·원본 해시·파일 존재·페이지 관계를 확인한다. `build`는 검토할 별도 결과만 만든다. `activate`는 스킬이 새 사이트 폴더(`site/dist/`)에 데이터를 **한 번** 쓰는 빌드 단계다. 검증과 파일 복사가 모두 성공한 뒤 `data.js`를 마지막에 쓴다. 이미 `data.js`가 있는 사이트에는 쓰지 않는다. 사이트는 바꾸지 않고 항상 새로 추가한다.
 
-`activate`와 `build`는 같은 사이트 폴더에 `competition-config.json`도 만든다. 공고 ID, `notice.sourceUrl`, 총 세대수, 주택군 이름 목록을 담으며, 경쟁률 백엔드가 이 파일을 소스로 쓴다. 소스 URL을 바꾸려면 `notice.sourceUrl`을 고친 뒤 다시 활성화한다.
+`activate`와 `build`는 같은 사이트 폴더에 `competition-config.json`도 만든다. 공고 ID, `notice.sourceUrl`, 총 세대수, 주택군 이름 목록을 담으며, 경쟁률 백엔드가 이 파일을 소스로 쓴다. 소스 URL이 틀렸으면 `notice.sourceUrl`을 고친 입력으로 새 사이트를 추가한다.
 
-화면은 원본 표준 파일을 임의 수정하지 않는다. 사이트 폴더(작업공간 `public/`, 실행 폴더 `site/dist/`)의 `data.js`와 `competition-config.json`은 생성물이며 직접 편집하지 않는다. 데이터 교체 순서와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.
+화면은 원본 표준 파일을 임의 수정하지 않는다. 사이트 폴더(작업공간 `public/`, 실행 폴더 `site/dist/`)의 `data.js`와 `competition-config.json`은 생성물이며 직접 편집하지 않는다. 입력 준비와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.

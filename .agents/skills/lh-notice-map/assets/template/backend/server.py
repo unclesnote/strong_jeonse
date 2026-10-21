@@ -71,7 +71,7 @@ def create_server(directory, state_dir, port=8765, bind='127.0.0.1', fetcher=Non
         store = SqliteStore(Path(state_dir) / 'competition.sqlite')
         service = CompetitionService(meta, store, **({'fetcher': fetcher} if fetcher else {}))
     else:
-        error = 'competition-config.json이 없어 경쟁률을 조회하지 않습니다. 데이터셋을 다시 activate하세요.'
+        error = 'competition-config.json이 없어 경쟁률을 조회하지 않습니다(경쟁률 기능 이전에 만든 사이트). 경쟁률이 필요하면 스킬로 새 사이트를 추가하세요.'
     server = ThreadingHTTPServer((bind, port), partial(Handler, directory=str(directory), service=service, service_error=error))
     server.daemon_threads = True
     return server, service, error

@@ -7,7 +7,8 @@
 - 앱 원본·활성 데이터: `public/`. 13절까지의 `dist/`는 14절에서 `public/`으로 옮겼다. 지금 `dist/`는 호스팅 빌드 출력(무시됨)이다.
 - 서버: `backend/server.py`(Python 표준 라이브러리). 정적 파일과 청약 경쟁률 API를 제공한다(14·16절). 호스팅 Worker는 `backend/site` + `backend/competition.mjs`다.
 - 환경·실행: `./setup_env.sh`, `./start_site.sh`(16~17·20절).
-- 공고별 빌드: 스킬이 `lh-runs/<실행>/`에 쌓고 git에 커밋한다(11·17·19절).
+- 사이트는 **추가만** 한다: 스킬이 공고마다 `lh-runs/<실행>/`에 새 사이트를 만들고 git에 커밋한다(11·17·19절). 기존 사이트를 다른 데이터로 바꾸는 기능은 없다(22절). 필요 없는 사이트는 `./delete_site.sh`로 지운다(23절).
+- 10절의 "교체"·"활성화"는 초기 설계 용어다. 지금 `activate`는 새 사이트 폴더에 데이터를 한 번 쓰는 빌드 단계다.
 - 데이터 표준과 교체 가이드: `.agents/skills/lh-notice-map/references/`(단일 원본).
 - 스킬: Codex `.agents/skills/lh-notice-map/`, Claude Code `.claude/skills/lh-notice-map/`(15절).
 
@@ -331,3 +332,34 @@ git에 올라갈 파일만(`git ls-files -co --exclude-standard`) 새 폴더에 
 - `docs/DATA_GUIDE.md`·`docs/DATA_STANDARD.md`는 스킬 `references/`와 경로 몇 줄만 다른 중복본이라 삭제했다. 단일 원본은 `.agents/skills/lh-notice-map/references/`다. 이 원본은 빌드 때 실행 폴더 `docs/`로 복사되므로, 작업공간(`public/`)과 실행 폴더(`site/dist/`, `activate --dist site/dist --state-dir config`) 양쪽 경로를 표로 안내한다. 어디서 열어도 깨지지 않도록 상대 링크는 경로 표기로 바꿨다. 경쟁률 설정 생성과 `start_site.sh` 확인 절차도 추가했다.
 - Codex SKILL.md는 환경·빌드·여러 공고 운용·경쟁률·확인 절을 다시 구성했다. 버튼 이름, 기준 시각, git 보관 내용도 현재 상태로 맞췄다. Claude Code SKILL.md는 공통 규칙을 Codex SKILL.md에서 읽고, Claude Code 전용 절차(비대화형 `--bg` 실행, headless 확인, sudo 제약, 게시 제한)만 담도록 줄였다.
 - README, ENV_SETUP, SKILL_GUIDE의 `dist/`·정적 서버·옛 버튼 이름·`--runs-dir lh-runs` 표기를 현재 구조에 맞게 고쳤다. 이 문서 앞부분에 현재 구조 요약을 두었다.
+
+## 22. 사이트는 추가만 한다
+
+구현을 점검한 결과, 스킬(`build_notice.py`)은 공고마다 `lh-runs/`에 새 사이트를 **추가**한다. 반면 `scripts/dataset.py activate`에는 기본 대상 `public/`을 다른 공고로 덮어쓰는 교체 동작이 남아 있었다. 이 프로젝트에는 사이트 교체 개념을 두지 않기로 했으므로 코드와 문서에서 교체를 없앴다.
+
+- `activate`는 새 사이트 폴더에 데이터를 한 번 쓰는 빌드 단계로만 남긴다. 대상 폴더에 `data.js`가 있으면 `Site already has data`로 거부한다.
+  - `--dist`·`--asset-root`를 필수로 바꿔 기본값으로 `public/`을 건드리는 경로를 없앴다.
+  - 쓰기 도중 실패하면 이번에 쓴 파일을 모두 지워, 반쯤 만든 사이트가 완성된 것처럼 보이지 않게 한다.
+  - 작업공간과 템플릿의 `dataset.py`는 이제 같은 파일이다.
+- 교체 호환 진입점 `scripts/build_data.py`를 삭제했다. `build()`의 `public/` 전용 가드와 "replace live" 문구도 지웠다.
+- 테스트: 교체를 검증하던 4개를 추가 기준으로 바꿨다. 이미 데이터가 있는 사이트에 쓰기 거부, 잘못된 입력·복사 실패·마지막 쓰기 실패 시 사이트 흔적 없음을 확인한다.
+- 경쟁률 파서와 서버의 오류 문구 "데이터 교체를 확인", "다시 activate"를 "새 사이트를 추가"로 바꿨다.
+- 문서:
+  - 데이터 가이드를 "공고 데이터 준비 가이드"로 다시 썼다. `--config`, `--from-bundle`, 예전 형식 변환, 미디어 연결, 점검, 오류를 다룬다.
+  - README의 교체 절을 "사이트 삭제"·"입력 준비"로 바꿨다.
+  - SKILL.md의 "추가와 교체" 절을 "사이트는 추가만 한다"로 바꿨다.
+  - DATA_STANDARD 7절을 "검증과 사이트 생성 계약"으로 바꿨다.
+
+## 23. 사이트 삭제(`delete_site.sh`)
+
+- 루트 `delete_site.sh`는 `start_site.sh`와 같은 번호 목록에서 사이트를 고른다(여러 개 가능). 삭제 단위는 실행 폴더 전체다. 작업공간 `public/`은 삭제할 수 없다.
+- 안전장치:
+  - `<runs-dir>/<실행>/site/dist` 형식이고 `<runs-dir>`가 지정한 runs 폴더인 경우에만 지운다.
+  - 삭제 전에 크기와 git 복구 가능 여부(커밋 안 된 파일 수)를 보여 준다.
+  - `[y/N]`로 확인받는다. 비대화형에서는 `--yes`가 있어야 지운다.
+- 실행 중인 사이트는 "중지하고 삭제할까요? [Y/n]"를 묻는다. 승인하면 중지한 뒤 삭제하고, 거절하면 그 사이트만 건너뛴다. `--yes`이면 자동으로 중지한 뒤 삭제한다.
+- git에 커밋된 실행을 지웠을 때만 반영(`git add -A lh-runs && git commit`)과 복구(`git checkout --`) 방법을 안내한다.
+- 사이트 목록·실행 중 판별·서버 중지 로직은 `start_site.sh`에서 `scripts/site_procs.py --sites`와 `scripts/project_env.sh`로 옮겨 두 스크립트가 공유한다.
+
+- [x] public 삭제 거부, 비대화형 `--yes` 없이 거부, 실행 중 중지 거절 시 건너뜀, 승인 시 중지 후 삭제, `--yes` 자동 중지·삭제 확인(scratch 실행 폴더)
+- [x] 저장소 밖 `--runs-dir`에서도 git 확인이 실패하지 않음

@@ -40,49 +40,6 @@ if ! venv_ok; then
   make_venv
 fi
 
-url_of() { local host="$1"; case "$host" in 127.0.0.1|0.0.0.0|'') host=localhost ;; esac; printf 'http://%s:%s/' "$host" "$2"; }
-
-# 후보: 작업공간 public/ + 실행 폴더들의 site/dist(최신순).
-# 출력: 절대경로<TAB>설명<TAB>경쟁률 소스 URL<TAB>실행 상태
-# 소스 URL은 사이트 폴더마다 있는 competition-config.json의 sourceUrl이다(데이터셋 notice.sourceUrl에서 생성).
-load_sites() {
-  mapfile -t SITES < <("$PY" - "${RUNS_DIRS[@]}" <<'EOF'
-import json, sys
-from pathlib import Path
-sys.path.insert(0, 'scripts')
-from site_procs import servers
-running = {}
-host = lambda b: 'localhost' if b in ('127.0.0.1', '0.0.0.0', '') else b
-for pid, directory, bind, port in servers(): running.setdefault(directory, []).append(f'http://{host(bind)}:{port}/ (PID {pid})')
-def title(d):
-    try: c = json.loads((d / 'competition-config.json').read_text(encoding='utf-8')); return f"{c['title']}\t{c['sourceUrl']}"
-    except Exception: return '(제목 없음)\t(경쟁률 설정 없음 — 소스 URL 미등록)'
-def ok(d): return (d / 'index.html').is_file() and (d / 'data.js').is_file()
-def row(d, label): d = d.resolve(); return f"{d}\t{label} {title(d)}\t{', '.join(running.get(d, []))}"
-rows = [row(Path('public'), '[현재 작업공간]')] if ok(Path('public')) else []
-runs = []
-for base in sys.argv[1:]:
-    for d in Path(base).glob('*/site/dist'):
-        if not ok(d): continue
-        try: status = json.loads((d.parents[1] / 'reports/run.json').read_text(encoding='utf-8')).get('status', '?')
-        except Exception: status = '?'
-        runs.append((d.stat().st_mtime, row(d, f'[{d.parents[1].name} · {status}]')))
-rows += [r for _, r in sorted(runs, reverse=True)]
-print('\n'.join(rows))
-EOF
-)
-  [ "${#SITES[@]}" -gt 0 ] && [ -n "${SITES[0]}" ] || die "실행할 사이트가 없습니다. public/ 또는 lh-runs/*/site/dist가 필요합니다."
-}
-show() {
-  local i=1 path label url state
-  for s in "${SITES[@]}"; do
-    IFS=$'\t' read -r path label url state <<<"$s"
-    printf '  %d) %s\n     폴더: %s\n     경쟁률 소스: %s\n' "$i" "$label" "${path#"$ROOT"/}" "$url"
-    [ -z "$state" ] || printf '     \033[1;32m● 실행 중\033[0m: %s\n' "$state"
-    i=$((i+1))
-  done
-}
-
 # 사이트별 서버·캐시 위치. 실행 폴더 사이트는 그 실행의 backend/와 tmp/competition/을 쓰고,
 # 작업공간 사이트는 data/runtime/을 쓴다. 사이트마다 캐시가 분리되어 서로 덮지 않는다.
 site_paths() {
@@ -104,19 +61,6 @@ for p in range(port, port + 50):
         except OSError: pass
 else: sys.exit('빈 포트를 찾지 못했습니다.')
 EOF
-}
-running_of() { mapfile -t RUNNING < <("$PY" scripts/site_procs.py "$1"); [ "${#RUNNING[@]}" -gt 0 ] && [ -n "${RUNNING[0]}" ]; }
-stop_servers() {
-  local pids=("$@") pid i alive
-  say "서버 중지: PID ${pids[*]}"
-  kill -TERM "${pids[@]}" 2>/dev/null || true
-  for i in $(seq 50); do
-    alive=0
-    for pid in "${pids[@]}"; do kill -0 "$pid" 2>/dev/null && alive=1; done
-    [ "$alive" = 0 ] && return 0
-    sleep 0.1
-  done
-  warn "정상 종료되지 않아 강제 종료합니다."; kill -KILL "${pids[@]}" 2>/dev/null || true
 }
 # 백그라운드 실행: 포트가 실제로 열릴 때까지 기다린 뒤 주소를 출력한다.
 start_bg() {
@@ -169,14 +113,7 @@ if [ -z "$CHOICE" ]; then
     echo "사이트가 여러 개입니다. 번호나 경로를 인자로 주거나 --all을 쓰세요:" >&2; show >&2; exit 2
   fi
 fi
-if [[ "$CHOICE" =~ ^[0-9]+$ ]]; then
-  [ "$CHOICE" -ge 1 ] && [ "$CHOICE" -le "${#SITES[@]}" ] || die "1~${#SITES[@]} 중에서 선택하세요."
-  SITE="${SITES[$((CHOICE-1))]%%$'\t'*}"
-else
-  SITE="${CHOICE%/}"
-fi
-[ -f "$SITE/index.html" ] || die "사이트 폴더가 아닙니다: $SITE"
-SITE="$(cd "$SITE" && pwd)"
+SITE="$(site_of "$CHOICE")"
 
 # 같은 사이트를 띄운 서버가 이미 있는지 확인한다(다른 사이트 서버는 건드리지 않는다).
 if running_of "$SITE"; then

@@ -1,6 +1,6 @@
 ---
 name: lh-notice-map
-description: LH 공고 URL(apply.lh.or.kr, panId)로 첨부자료·홍보물·주택목록 XLSX를 수집해 lh-runs/에 독립 지도 사이트를 새로 만들고, 30분 주기 청약 경쟁률 백엔드(경쟁률 새로고침·기준 시각·정렬·구간 필터)와 함께 실행한다. LH 공고 URL로 지도를 만들거나, 같은 형식의 공고로 데이터를 교체하거나, 여러 공고 사이트를 실행·중지·점검하거나, 경쟁률 백엔드를 확인할 때 사용한다. 이전 실행과 현재 사이트는 절대 덮어쓰지 않는다.
+description: LH 공고 URL(apply.lh.or.kr, panId)로 첨부자료·홍보물·주택목록 XLSX를 수집해 lh-runs/에 독립 지도 사이트를 새로 만들고, 30분 주기 청약 경쟁률 백엔드(경쟁률 새로고침·기준 시각·정렬·구간 필터)와 함께 실행한다. LH 공고 URL로 공고 사이트를 추가하거나, 표준 패키지로 사이트를 다시 만들거나, 여러 공고 사이트를 실행·중지·점검하거나, 경쟁률 백엔드를 확인할 때 사용한다. 이전 실행과 현재 사이트는 절대 덮어쓰지 않는다.
 ---
 
 # LH 공고 지도 빌더 (Claude Code)
@@ -12,7 +12,7 @@ description: LH 공고 URL(apply.lh.or.kr, panId)로 첨부자료·홍보물·�
 - 실행기: `.agents/skills/lh-notice-map/scripts/build_notice.py`
 - 템플릿: `.agents/skills/lh-notice-map/assets/template/` (`scripts/`, `site/dist/`, `backend/`, `data/schema/`)
 - 참조: `.agents/skills/lh-notice-map/references/DATA_GUIDE.md`, `DATA_STANDARD.md` (필요한 부분만 읽는다)
-- 환경·실행: 작업공간의 `./setup_env.sh`, `./start_site.sh`, `scripts/project_env.sh`, `scripts/site_procs.py`
+- 환경·실행·삭제: 작업공간의 `./setup_env.sh`, `./start_site.sh`, `./delete_site.sh`, `scripts/project_env.sh`, `scripts/site_procs.py`
 
 동작을 바꾸면 위 원본 파일과 공통 SKILL.md를 함께 갱신한다. Claude Code 전용 절차가 바뀌면 이 파일도 갱신한다. 기능 변경은 `docs/design.md`에 기록하고 `.venv/bin/python -m unittest discover -s tests -v`를 실행한다.
 
@@ -47,6 +47,7 @@ Claude Code는 대화형 입력을 할 수 없다. 그래서 `start_site.sh`에 
 - 사용자에게는 출력의 `http://…/` 줄에 있는 전체 URL을 그대로 알린다. 포트는 8765부터 빈 포트가 자동으로 배정되므로 고정 포트를 가정하지 않는다.
 - 같은 사이트가 이미 실행 중이면 묻지 않고 기존 주소만 출력한 뒤 종료 코드 0으로 끝난다. 이 서버는 사용자가 띄웠을 수 있으므로 그대로 쓰는 것이 기본이다. 새 코드나 데이터를 반영해야 하면 사용자에게 확인한 뒤 `--restart`로 재시작한다(포트 유지).
 - `--stop-all`은 사용자가 띄운 서버까지 끈다. 사용자가 요청한 경우에만 쓴다.
+- 사이트 삭제(`./delete_site.sh N --yes`)는 사용자가 그 사이트를 지정해 요청한 경우에만 한다. 비대화형에서는 `--yes`가 필요하고, 실행 중이면 자동으로 중지한 뒤 삭제한다. 실행하기 전에 `--list`로 번호가 맞는지 확인한다.
 - 정적 서버(`python -m http.server`)는 쓰지 않는다. 경쟁률이 "백엔드에 연결하지 못했습니다"로 표시된다.
 
 ## URL·접근 제약 처리 (Claude Code)

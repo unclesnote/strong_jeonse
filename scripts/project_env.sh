@@ -33,3 +33,47 @@ make_venv() {
   fi
 }
 venv_has_pip() { "$PY" -m pip --version >/dev/null 2>&1; }
+
+# ---- 사이트 공통(start_site.sh·delete_site.sh). ROOT에서 실행하고 RUNS_DIRS를 먼저 정한다. ----
+url_of() { local host="$1"; case "$host" in 127.0.0.1|0.0.0.0|'') host=localhost ;; esac; printf 'http://%s:%s/' "$host" "$2"; }
+
+# SITES: 절대경로<TAB>설명<TAB>경쟁률 소스 URL<TAB>실행 상태. 작업공간 public/이 먼저, 실행 폴더는 최신순.
+# 소스 URL은 사이트 폴더마다 있는 competition-config.json의 sourceUrl이다(데이터셋 notice.sourceUrl에서 생성).
+load_sites() {
+  mapfile -t SITES < <("$PY" "$ROOT/scripts/site_procs.py" --sites "${RUNS_DIRS[@]}")
+  [ "${#SITES[@]}" -gt 0 ] && [ -n "${SITES[0]}" ] || die "사이트가 없습니다. public/ 또는 lh-runs/*/site/dist가 필요합니다."
+}
+show() {
+  local i=1 path label url state
+  for s in "${SITES[@]}"; do
+    IFS=$'\t' read -r path label url state <<<"$s"
+    printf '  %d) %s\n     폴더: %s\n     경쟁률 소스: %s\n' "$i" "$label" "${path#"$ROOT"/}" "$url"
+    [ -z "$state" ] || printf '     \033[1;32m● 실행 중\033[0m: %s\n' "$state"
+    i=$((i+1))
+  done
+}
+# 번호 또는 경로를 사이트 절대경로로 바꾼다.
+site_of() {
+  local choice="$1" site
+  if [[ "$choice" =~ ^[0-9]+$ ]]; then
+    [ "$choice" -ge 1 ] && [ "$choice" -le "${#SITES[@]}" ] || die "1~${#SITES[@]} 중에서 선택하세요: $choice"
+    site="${SITES[$((choice-1))]%%$'\t'*}"
+  else
+    site="${choice%/}"
+  fi
+  [ -f "$site/index.html" ] || die "사이트 폴더가 아닙니다: $site"
+  (cd "$site" && pwd)
+}
+running_of() { mapfile -t RUNNING < <("$PY" "$ROOT/scripts/site_procs.py" "$1"); [ "${#RUNNING[@]}" -gt 0 ] && [ -n "${RUNNING[0]}" ]; }
+stop_servers() {
+  local pids=("$@") pid i alive
+  say "서버 중지: PID ${pids[*]}"
+  kill -TERM "${pids[@]}" 2>/dev/null || true
+  for i in $(seq 50); do
+    alive=0
+    for pid in "${pids[@]}"; do kill -0 "$pid" 2>/dev/null && alive=1; done
+    [ "$alive" = 0 ] && return 0
+    sleep 0.1
+  done
+  warn "정상 종료되지 않아 강제 종료합니다."; kill -KILL "${pids[@]}" 2>/dev/null || true
+}

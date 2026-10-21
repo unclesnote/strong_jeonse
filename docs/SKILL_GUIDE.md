@@ -55,7 +55,10 @@ lh-runs/<UTC시각>-<공고ID>-<고유값>/
 ./start_site.sh <번호>     # 한 사이트(이미 실행 중이면 재시작·중지·유지 질문)
 ./start_site.sh --all      # 모든 사이트를 동시에 백그라운드 실행, 사이트별 URL 출력
 ./start_site.sh --stop-all # 모두 중지
+./delete_site.sh <번호>    # 필요 없어진 사이트 삭제(실행 중이면 중지할지 묻고 중지 후 삭제)
 ```
+
+사이트는 바꾸지 않고 항상 추가합니다. 잘못 만든 사이트는 고친 입력으로 새로 추가한 뒤 `./delete_site.sh`로 지웁니다.
 
 각 사이트는 자기 폴더의 `competition-config.json`에 있는 LH 원문 URL로 경쟁률을 30분마다 조회하고, 캐시는 그 실행 폴더의 `tmp/competition/`에 따로 둡니다.
 

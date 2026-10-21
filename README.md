@@ -29,18 +29,32 @@ Windows·Ubuntu의 설치, 가상환경, Poppler·LibreOffice·한글 폰트, �
 - 미디어 연결은 주소 일치, 같은 위치, 같은 주택군의 세 단계로 표시합니다. 공통 홍보물을 다른 건물의 전용 자료로 표시하지 않습니다.
 - PDF와 PPTX의 모든 페이지를 WebP 이미지로 변환했습니다. XLSX는 원본 다운로드를 제공합니다.
 
-## 새 공고 교체
+## 새 공고 추가
 
-표준 패키지를 준비하면 화면 코드를 수정하지 않고 교체할 수 있습니다. [데이터 교체 가이드](.agents/skills/lh-notice-map/references/DATA_GUIDE.md), [PDF·이미지 관계 표준](.agents/skills/lh-notice-map/references/DATA_STANDARD.md), [JSON 스키마](data/schema/notice-dataset.schema.json)를 참고하세요.
+새 공고는 기존 사이트를 바꾸지 않고 **사이트를 하나 더 추가**합니다. 스킬이 `lh-runs/<시각>-<panId>-<고유값>/`에 독립 사이트를 만들고, 기존 사이트와 `public/`은 그대로 둡니다. 같은 공고를 다시 빌드해도 새 폴더로 추가됩니다.
 
 ```bash
-python scripts/dataset.py validate --dataset data/datasets/공고ID/dataset.json --asset-root data/datasets/공고ID
-python scripts/dataset.py activate --dataset data/datasets/공고ID/dataset.json --asset-root data/datasets/공고ID
+.venv/bin/python scripts/build_notice.py 'LH_공고_URL'                                   # 공고 수집부터 사이트까지 추가
+.venv/bin/python scripts/build_notice.py 'LH_공고_URL' --from-bundle data/datasets/공고ID   # 이미 있는 표준 패키지로 추가
+./start_site.sh --all                                                                   # 추가된 사이트까지 모두 실행
 ```
 
-활성화 후 브라우저를 새로고침합니다. 실제 호스팅 사이트는 `scripts/build_hosted.mjs`로 `dist/`를 다시 만들어 게시해야 합니다. `public/data.js`는 생성물이므로 직접 수정하지 않습니다. 새 XLSX는 `scripts/import_xlsx.py`와 `config/lh-current.json`의 시트·열 매핑으로 표준 패키지에 넣습니다.
+자세한 절차는 아래 [프로젝트 전용 스킬](#프로젝트-전용-스킬)과 [스킬 실행 가이드](docs/SKILL_GUIDE.md)를 참고하세요.
 
-기존 수집·변환 도구도 남겨 두었습니다. `scripts/collect_lh.py`는 `LH_PAN_ID`와 `LH_NOTICE_HTML`을 받아 첨부를 수집합니다. `scripts/prepare_site_assets.py`에는 Pillow, Poppler, LibreOffice가 필요합니다. `scripts/geocode_addresses.py`는 한 번 수집한 주소 검색 응답을 `tmp/`에 저장해 재사용하며 페이지 이용 중에는 주소 검색 API를 호출하지 않습니다. 중간 산출물은 `scripts/dataset.py import-current`로 변환합니다. `scripts/build_data.py`는 표준 활성화 명령의 호환 진입점입니다.
+### 사이트 삭제
+
+```bash
+./delete_site.sh            # 목록에서 번호 선택(여러 개 가능), 확인 후 삭제
+./delete_site.sh 3 --yes    # 묻지 않고 삭제
+```
+
+삭제 단위는 실행 폴더 전체입니다. 작업공간 사이트(`public/`)는 삭제할 수 없습니다. 실행 중인 사이트는 중지할지 먼저 묻고, 중지한 뒤 삭제합니다. git에 커밋된 실행은 삭제 후에도 git으로 복구할 수 있습니다.
+
+### 입력 준비
+
+주택목록 XLSX를 자동으로 감지하지 못하거나 표준 패키지·예전 자료로 추가할 때는 [공고 데이터 준비 가이드](.agents/skills/lh-notice-map/references/DATA_GUIDE.md), [PDF·이미지 관계 표준](.agents/skills/lh-notice-map/references/DATA_STANDARD.md), [JSON 스키마](data/schema/notice-dataset.schema.json)를 참고하세요. 각 사이트의 `data.js`와 `competition-config.json`은 생성물이므로 직접 수정하지 않습니다. 열 매핑 예시는 `config/lh-current.json`입니다.
+
+기존 수집·변환 도구도 남겨 두었습니다. `scripts/collect_lh.py`는 `LH_PAN_ID`와 `LH_NOTICE_HTML`을 받아 첨부를 수집합니다. `scripts/prepare_site_assets.py`에는 Pillow, Poppler, LibreOffice가 필요합니다. `scripts/geocode_addresses.py`는 한 번 수집한 주소 검색 응답을 `tmp/`에 저장해 재사용하며 페이지 이용 중에는 주소 검색 API를 호출하지 않습니다. 중간 산출물은 `scripts/dataset.py import-current`로 변환합니다.
 
 `media-sync-audit.json`은 원본 세대 정보 보존, 좌표와 미디어 연결, 파일 경로 검증 결과입니다. `source-data.json`에는 원본 엑셀의 각 셀 값과 행 번호가 있습니다.
 
@@ -56,17 +70,17 @@ python scripts/dataset.py activate --dataset data/datasets/공고ID/dataset.json
 
 | 폴더 | 보관 내용 |
 |---|---|
-| `setup_env.sh`, `start_site.sh` | 환경 구성, 사이트 실행·중지 진입점(공통 설정 `scripts/project_env.sh`) |
+| `setup_env.sh`, `start_site.sh`, `delete_site.sh` | 환경 구성, 사이트 실행·중지, 사이트 삭제 진입점(공통 설정 `scripts/project_env.sh`) |
 | `docs/` | 설계 기록(`design.md`), 환경설정(`ENV_SETUP.md`), 스킬 사용 가이드(`SKILL_GUIDE.md`) |
-| `.agents/skills/lh-notice-map/` | 스킬 실행기·템플릿·데이터 표준과 교체 가이드(`references/`) |
+| `.agents/skills/lh-notice-map/` | 스킬 실행기(공고 사이트 추가)·템플릿·데이터 표준과 입력 준비 가이드(`references/`) |
 | `.claude/skills/lh-notice-map/` | Claude Code용 스킬 절차 |
 | `scripts/` | Python 수집·변환·검증 도구, 실행 중 서버 탐지, 호스팅 빌드 |
-| `config/` | 공고별 열 매핑, 활성 데이터 상태 |
+| `config/` | 열 매핑 예시, 작업공간 사이트의 데이터 기록 |
 | `data/notices/` | 공고별 원본 첨부파일, 홍보물, 수집 명세, 정리 XLSX |
 | `data/datasets/` | 표준 JSON과 원본·페이지·썸네일 자산 |
 | `data/intermediate/` | 공고별 원본 셀 추출·검증 좌표·연결 감사 자료 |
 | `data/schema/` | 데이터 JSON 스키마 |
-| `public/` | 브라우저에 제공하는 지도 앱과 활성 데이터 스냅샷 |
+| `public/` | 작업공간 사이트(지도 앱과 데이터) |
 | `backend/` | 경쟁률 백엔드(`server.py`·`competition.py` 로컬 서버, `competition.mjs`·`site/` 호스팅 Worker) |
 | `dist/` | `scripts/build_hosted.mjs`가 만드는 호스팅 빌드 출력(무시됨) |
 | `lh-runs/` | 스킬로 빌드한 공고별 독립 사이트(커밋 대상, 전달 ZIP·`tmp/` 제외) |
@@ -86,4 +100,4 @@ Codex 스킬은 [`.agents/skills/lh-notice-map/`](.agents/skills/lh-notice-map/S
 ./start_site.sh --all                                  # 빌드된 모든 사이트 실행
 ```
 
-실행마다 새 폴더가 생깁니다. 기존 데이터 교체·삭제나 기존 사이트 게시를 자동 수행하지 않습니다.
+실행마다 새 사이트가 추가됩니다. 기존 사이트의 변경·삭제나 게시를 자동으로 하지 않습니다.

@@ -21,6 +21,7 @@ git clone <저장소 URL> strong_jeonse && cd strong_jeonse
 - `setup_env.sh`는 기존 환경을 먼저 확인해 이미 갖춰진 단계를 건너뛴다. 설치된 apt 패키지는 제외하고, 정상 `.venv`가 있으면 `python3-venv`도 요구하지 않는다. 정상 `.venv`는 재사용한다. `requirements.txt`와 Python 버전의 해시(`.venv/.requirements.sha256`)가 같고 `pip check`·import가 통과하면 pip 단계를 생략한다. 옵션: `--no-system`(apt 생략, sudo 불필요), `--recreate`(.venv 재생성), `--upgrade`(pip·패키지 재설치/업그레이드), `--no-test`.
 - `python3-venv`(ensurepip)가 없으면 pip 없는 venv를 만든 뒤 시스템 pip로 venv 안에 pip를 설치한다. 시스템 pip도 없으면 `sudo apt install python3-venv`가 필요하다.
 - `start_site.sh`는 `public/`(작업공간)과 `lh-runs/*/site/dist`(실행 폴더, 최신순)를 찾는다. 하나면 바로 실행하고, 여러 개면 번호를 묻는다. 터미널이 아닐 때는 번호나 경로를 인자로 준다. `--list`, `--port N`(사용 중이면 다음 빈 포트), `--runs-dir DIR`, `--bind ADDR`을 지원한다. `.venv`가 없으면 패키지 없이 바로 만들어 실행한다. 서버는 표준 라이브러리만 사용한다.
+- 사이트 삭제: `./delete_site.sh`는 같은 번호 목록에서 고른 실행 폴더 사이트(여러 개 가능)를 확인 후 삭제한다. 작업공간 `public/`은 삭제할 수 없다. 실행 중이면 중지할지 먼저 묻고 중지한 뒤 삭제한다(`--yes`는 묻지 않고 중지·삭제). git에 커밋된 실행은 git으로 복구할 수 있고, 커밋되지 않은 파일이 있으면 미리 경고한다.
 - 여러 사이트 동시 운용: 사이트마다 서버가 따로 뜬다. `./start_site.sh --all`은 실행 중이 아닌 모든 사이트를 백그라운드로 띄우고, 사이트별 전체 URL을 출력한다(8765부터 빈 포트 순서). `./start_site.sh N --bg`는 한 사이트를 백그라운드로 띄운다. 로그는 `tmp/logs/site-<실행폴더명>.log`에 남는다. `./start_site.sh N --stop`은 그 사이트만, `./start_site.sh --stop-all`은 목록의 모든 사이트 서버를 중지한다.
 - 공고 URL마다 빌드한 사이트는 `lh-runs/<UTC시각>-<panId>-<고유값>/`에 계속 쌓인다. 기존 실행 폴더와 작업공간 `public/`은 덮어쓰지 않는다. 같은 공고를 다시 빌드해도 새 폴더가 생긴다. 원본, 표준 데이터, 미리보기, 지오코딩 캐시, 사이트, 경쟁률 캐시(`tmp/competition/`)가 모두 실행 폴더 안에 있어 사이트끼리 상태를 공유하지 않는다. `build_notice.py`의 기본 `--runs-dir`은 실행 위치와 관계없이 프로젝트 루트의 `lh-runs/`이다(`LH_RUNS_DIR`로 변경 가능). `start_site.sh`도 같은 곳을 찾는다.
 - `start_site.sh`는 실행 여부와 관계없이 접속 주소 전체(`http://localhost:8765/`)를 한 줄로 출력한다. `--list`에도 실행 중인 사이트의 주소와 PID가 나온다.
@@ -195,14 +196,14 @@ python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/s
 
 `실제공고ID`를 원문에서 확인한 숫자로 바꾼다. 기본 명령은 새 공고의 원본·홍보물 수집과 미리보기·좌표·표준 데이터·별도 사이트 생성을 수행한다. HWP/HWPX는 다운로드하지 않는다. 자료 형식이 다르거나 좌표를 확정하지 못하면 보고서를 남기고 중단한다. 수집과 공개 주소 검색 및 패키지 설치에는 인터넷이 필요하다.
 
-스킬 실행마다 `lh-runs/<UTC시각>-<공고ID>-<고유값>/`이 생긴다. 출력의 `RUN_ROOT` 값을 확인하고 그 폴더를 사용한다. 작업공간의 `public/`이나 활성 데이터, 이전 실행 폴더는 교체하지 않는다. 새 결과는 다음처럼 연다.
+스킬 실행마다 `lh-runs/<UTC시각>-<공고ID>-<고유값>/`이 생긴다. 출력의 `RUN_ROOT` 값을 확인하고 그 폴더를 사용한다. 작업공간의 `public/`과 이전 실행 폴더는 그대로 두고 새 사이트만 추가한다. 새 결과는 다음처럼 연다.
 
 ```bash
 ./start_site.sh            # 새 실행 폴더가 목록에 최신순으로 나타난다
 ./start_site.sh 'lh-runs/실제실행폴더/site/dist'
 ```
 
-8765가 사용 중이면 다음 빈 포트를 자동으로 사용한다. 경쟁률 캐시는 그 실행 폴더의 `tmp/competition/`에 저장된다. 새 빌드의 `reports/run.json`이 `complete`인지 확인하고 지도 필터·목록·세대 표·PDF 이미지·원본 링크를 점검한다. 자세한 데이터 설정은 [스킬 가이드](SKILL_GUIDE.md), [데이터 교체 가이드](../.agents/skills/lh-notice-map/references/DATA_GUIDE.md), [미디어 표준](../.agents/skills/lh-notice-map/references/DATA_STANDARD.md)을 따른다.
+8765가 사용 중이면 다음 빈 포트를 자동으로 사용한다. 경쟁률 캐시는 그 실행 폴더의 `tmp/competition/`에 저장된다. 새 빌드의 `reports/run.json`이 `complete`인지 확인하고 지도 필터·목록·세대 표·PDF 이미지·원본 링크를 점검한다. 자세한 데이터 설정은 [스킬 가이드](SKILL_GUIDE.md), [공고 데이터 준비 가이드](../.agents/skills/lh-notice-map/references/DATA_GUIDE.md), [미디어 표준](../.agents/skills/lh-notice-map/references/DATA_STANDARD.md)을 따른다.
 
 ### 5.4 네트워크 수집 없이 기존 표준 패키지로 빌드
 
@@ -282,7 +283,7 @@ WSL용 `.venv`와 Windows용 `.venv`를 한 경로에서 공유하지 않는다.
 | 지도 배경만 빈 화면 | 인터넷·지도 타일 요청 확인. 목록 데이터 문제와 별개로 점검 |
 | 다른 PC에서 파일 경로 오류 | 이전 PC의 절대 경로, 잘못 복사한 `.venv`, 환경 전용 `node_modules` 링크 확인 |
 
-설정한 Python 패키지 버전을 남기려면 다음을 실행한다. 원본·로그를 삭제하거나 현재 활성 데이터를 교체하지 않는다.
+설정한 Python 패키지 버전을 남기려면 다음을 실행한다. 원본·로그를 삭제하거나 사이트 데이터를 바꾸지 않는다.
 
 ```bash
 mkdir -p outputs/reports

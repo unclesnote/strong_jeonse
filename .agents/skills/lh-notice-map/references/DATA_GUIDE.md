@@ -1,94 +1,33 @@
-# 새 공고 데이터 교체 가이드
+# 공고 데이터 준비 가이드
 
-지도 HTML·CSS·JavaScript를 수정하지 않고 공고를 교체하는 방법이다. 표준 정의는 [`DATA_STANDARD.md`](DATA_STANDARD.md), 설계 기록은 작업공간의 `docs/design.md`를 참고한다.
+새 공고는 항상 스킬(`build_notice.py`)이 `lh-runs/`에 **사이트를 하나 더 추가**해서 반영한다. 기존 사이트는 바꾸지 않는다. 대부분의 공고는 URL만 주면 끝난다. 이 문서는 자동 처리가 안 될 때 스킬에 넘길 입력을 준비하는 방법을 다룬다. 예를 들어 주택목록 XLSX를 자동으로 감지하지 못했거나, 이미 만든 표준 패키지가 있거나, 예전 형식의 자료를 옮겨야 할 때다.
 
-이 문서는 두 곳에서 쓰인다. 경로는 다음처럼 읽는다.
-
-| 위치 | 명령 실행 폴더 | 사이트 폴더(`<사이트>`) | `activate` 추가 인자 |
-|---|---|---|---|
-| 작업공간 | 프로젝트 최상위 | `public/` | 없음(기본값) |
-| 스킬 실행 폴더 | `lh-runs/<실행>/` | `site/dist/` | `--dist site/dist --state-dir config` |
-
-새 공고는 보통 이 문서의 수동 절차 대신 스킬(`build_notice.py`)로 새 실행 폴더에 빌드한다. 수동 교체는 작업공간 `public/`을 바꾸므로, 다른 공고를 쌓아 두려면 스킬을 쓴다.
-
-환경은 작업공간에서 `./setup_env.sh`로 준비한다. 아래 명령의 `python`은 작업공간의 `.venv/bin/python`이다(`source .venv/bin/activate` 후 `python`). Python 3.10 이상, `jsonschema` 4.x, Poppler의 `pdfinfo`가 필요하다. 미리보기를 새로 변환할 때에는 `pdftoppm`, Pillow, PPTX용 LibreOffice도 필요하다. 검증은 PDF 원본 페이지 수를 확인할 도구가 없으면 통과 처리하지 않는다.
+표준 정의는 [`DATA_STANDARD.md`](DATA_STANDARD.md), 설계 기록은 작업공간의 `docs/design.md`를 참고한다. 명령은 작업공간 최상위에서 실행한다. 환경은 `./setup_env.sh`로 준비한다. 아래 `python`은 작업공간의 `.venv/bin/python`이다(`source .venv/bin/activate` 후 `python`).
 
 ## 1. 입력 방식 선택
 
-| 가진 자료 | 사용할 방법 |
+| 가진 자료 | 사이트 추가 방법 |
 |---|---|
-| 표준 `dataset.json`과 `assets/` 폴더 | 2절의 검증·활성화만 실행 |
-| 새 LH 주택목록 XLSX와 수집·좌표·미리보기 명세 | 3절의 설정 기반 가져오기 후 활성화 |
-| 이전 스크립트가 만든 `source-data.json`·좌표·첨부 명세 | 4절의 이전 형식 변환 후 활성화 |
+| LH 공고 URL만 | `python scripts/build_notice.py 'URL'` (수집부터 자동) |
+| URL + 자동 감지가 안 되는 주택목록 XLSX | 2절의 설정 파일을 만들어 `--config 설정.json` 추가 |
+| 표준 `dataset.json`과 `assets/` 폴더 | 3절의 검증 후 `--from-bundle 폴더` |
+| 이전 스크립트가 만든 `source-data.json`·좌표·첨부 명세 | 4절에서 표준 패키지로 변환한 뒤 `--from-bundle` |
 
-‘데이터만 교체’는 공고 내용과 미디어 연결을 표준 파일로 제공하면 화면 코드를 고치지 않고 반영한다는 뜻이다. XLSX만으로 홍보물 연결과 좌표를 추측하지 않는다. 새 주소의 좌표와 실제 파일·미리보기 준비는 필요하다.
+어느 방식이든 결과는 `lh-runs/<시각>-<panId>-<고유값>/`의 새 사이트다. 실행은 `./start_site.sh`로 한다. XLSX만으로 홍보물 연결과 좌표를 추측하지 않는다. 새 주소의 좌표와 실제 파일·미리보기 준비는 필요하다.
 
-## 2. 표준 패키지를 바로 교체하기
+## 2. 설정 파일로 주택목록 XLSX 지정(`--config`)
 
-새 폴더를 다음처럼 준비한다. 기존 공고 폴더를 덮어쓰지 말고 새 공고 ID로 만든다.
-
-```text
-data/datasets/my-new-notice/
-  dataset.json
-  assets/files/...
-  assets/previews/...
-```
-
-### 먼저 검증
+스킬은 주택목록 XLSX를 자동으로 고르고 시트·헤더·열을 감지한다. 주택목록이 여러 개이거나 헤더가 불명확하면 추측하지 않고 멈춘다. 그때 설정 파일을 만들어 `--config`로 넘긴다.
 
 ```bash
-python scripts/dataset.py validate \
-  --dataset data/datasets/my-new-notice/dataset.json \
-  --asset-root data/datasets/my-new-notice
+python scripts/build_notice.py 'URL' --config config/my-notice.json
 ```
 
-`--asset-root`는 그 아래에 `assets/`가 있는 폴더다. `assets/` 자체를 지정하지 않는다. 모든 검증을 통과하기 전에는 현재 지도 데이터가 바뀌지 않는다.
+작업공간의 `config/lh-current.json`이 완성된 예시다. 이 파일의 `notice`, `spreadsheet`, 선택적 `groupAliases`만 새 공고에 맞게 고친다. `paths`는 스킬이 실행 폴더의 경로로 자동 설정하므로 적지 않아도 된다.
 
-### 실제 반영 없이 준비 상태 확인
-
-```bash
-python scripts/dataset.py activate \
-  --dataset data/datasets/my-new-notice/dataset.json \
-  --asset-root data/datasets/my-new-notice \
-  --dry-run
-```
-
-### 활성화
-
-```bash
-python scripts/dataset.py activate \
-  --dataset data/datasets/my-new-notice/dataset.json \
-  --asset-root data/datasets/my-new-notice
-```
-
-실행 폴더에서는 위 명령에 `--dist site/dist --state-dir config`를 붙인다. 붙이지 않으면 실행 폴더 안에 `public/`이 새로 생긴다.
-
-성공하면 `config/active-dataset.json`에 활성 공고·해시·자산 경로가 기록되고 `config/validation-audit.json`에 검증 결과가 기록된다. 미디어는 `<사이트>/datasets/<공고 ID>/<내용 해시>/assets/`에 먼저 복사된다. 이어서 경쟁률 소스 설정 `<사이트>/competition-config.json`을 쓰고, 마지막으로 `<사이트>/data.js`를 교체한다. 복사나 검증이 실패하면 이전 데이터 포인터를 유지한다.
-
-작업공간 최상위에서 사이트를 실행한다. 이미 실행 중이면 그대로 두고 브라우저만 새로고침해도 데이터가 반영된다. 경쟁률 소스가 바뀌었으면 `--restart`로 재시작한다.
-
-```bash
-./start_site.sh --list          # 사이트 번호·경쟁률 소스 URL 확인
-./start_site.sh <번호> --restart
-```
-
-출력된 `http://localhost:…/` 주소를 연다. 화면 코드 수정은 필요하지 않다. 호스팅된 작업공간 사이트는 `scripts/build_hosted.mjs`로 `dist/`를 다시 만들어 게시해야 반영된다. 로컬 파일 교체가 배포를 자동 실행하지는 않는다.
-
-## 3. 새 XLSX를 설정으로 가져오기
-
-작업공간의 `config/lh-current.json`을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
-
-새 설정에서 다음 부분을 바꾼다.
-
-1. `notice`: 새 공고 ID·원문 제목·날짜·URL·화면 제목·지역·배지·공급기관
-2. `paths.xlsx`: 기준 XLSX의 정확한 경로
-3. `paths.manifest`: 새 공고의 수집 명세 `manifest.json`
-4. `paths.geocodes`: 원문 주소별 검증 좌표 명세
-5. `paths.attachments`: 원본과 미리보기 경로가 들어 있는 첨부 명세
-6. `paths.assetRoot`: 해당 파일들을 가진 자산 루트
-7. `spreadsheet.fileId`, `sheetName`, `headerRow`, `dataStartRow`, `columns`
-
-설정 안의 상대 경로는 **설정 파일이 있는 폴더** 기준이다. 공백·한글·괄호가 있는 경로를 그대로 사용할 수 있다. 명령행에 직접 쓸 때에는 따옴표로 감싼다.
+1. `notice`: 새 공고 ID·원문 제목·날짜·URL·화면 제목·지역·배지·공급기관. `id`와 `sourceUrl`의 `panId`는 URL과 같아야 한다. `sourceUrl`은 경쟁률 백엔드의 소스가 된다.
+2. `spreadsheet.fileId`: 기준 주택목록 XLSX의 첨부 파일 ID
+3. `spreadsheet.sheetName`, `headerRow`, `dataStartRow`, `columns`
 
 ### 엑셀 열 위치가 달라졌을 때
 
@@ -115,44 +54,50 @@ python scripts/dataset.py activate \
 
 XLSX와 수집 명세의 파일 ID·파일명을 대조한다. 다른 공고의 엑셀과 홍보물을 실수로 결합하면 가져오기를 중단한다. 공급자료의 주택군 명칭과 엑셀 명칭이 다른 경우에만 확인한 `groupAliases`를 명시한다. `rawFields`는 원본 값을 계속 보존한다.
 
-### 추출만 먼저 검토
+추출 결과는 실행 폴더의 `data/intermediate/<ID>/source-data.json`에서 세대수·주소·원본 행·미기재 값을 확인한다. 설정이 틀렸으면 고쳐서 새 실행으로 다시 추가한다. 실패한 실행 폴더는 `./delete_site.sh`로 지울 수 있다.
 
-```bash
-python scripts/import_xlsx.py \
-  --config config/my-new-notice.json \
-  --output data/datasets/my-new-notice/dataset.json \
-  --extract-only tmp/my-new-notice-source.json
+## 3. 표준 패키지로 추가(`--from-bundle`)
+
+다음 구조의 표준 패키지가 있으면 수집 없이 사이트를 추가한다.
+
+```text
+data/datasets/<공고ID>/
+  dataset.json
+  assets/files/...
+  assets/previews/...
 ```
 
-이 명령은 세대 추출 결과만 만든다. `--output`의 표준 데이터나 현재 지도를 변경하지 않는다. 세대수·주소·원본 행·미기재 값을 확인한다.
-
-### 표준 데이터 생성
+먼저 검증한다. 이 명령은 아무것도 쓰지 않는다.
 
 ```bash
-python scripts/import_xlsx.py \
-  --config config/my-new-notice.json \
-  --output data/datasets/my-new-notice/dataset.json
+python scripts/dataset.py validate \
+  --dataset data/datasets/<공고ID>/dataset.json \
+  --asset-root data/datasets/<공고ID>
 ```
 
-이 단계도 현재 지도는 변경하지 않는다. 출력된 표준 데이터에 2절의 검증·활성화를 적용한다. 일반적인 공고 교체에서 `<사이트>/app.js`, `index.html`, `style.css`는 수정하지 않는다.
+`--asset-root`는 그 아래에 `assets/`가 있는 폴더다. `assets/` 자체를 지정하지 않는다. 통과하면 사이트를 추가한다. URL의 `panId`와 패키지의 공고 ID가 같아야 한다.
+
+```bash
+python scripts/build_notice.py 'URL' --from-bundle data/datasets/<공고ID>
+```
 
 ## 4. 이전 수집 형식에서 변환
 
-기존 파이프라인의 자료가 이미 있으면 다음 명령으로 표준 형식에 넣을 수 있다.
+기존 파이프라인의 자료가 있으면 먼저 표준 패키지로 바꾼 뒤 3절로 추가한다.
 
 ```bash
 python scripts/dataset.py import-current \
-  --notice-id my-new-notice \
+  --notice-id <공고ID> \
   --source path/to/source-data.json \
   --geocodes path/to/geocodes.json \
   --attachments path/to/assets/attachments.json \
   --asset-root path/to/bundle-root \
   --manifest path/to/manifest.json \
   --notice-config path/to/notice-metadata.json \
-  --output data/datasets/my-new-notice/dataset.json
+  --output data/datasets/<공고ID>/dataset.json
 ```
 
-`notice-metadata.json`은 `lh-current.json`의 `notice` 객체만 담은 파일이다. `--notice-id`와 그 객체의 `id`는 같아야 한다. 변환기는 원본 셀값·행 번호, 파일 해시, 홍보물 연결 근거를 보존한다.
+`notice-metadata.json`은 `lh-current.json`의 `notice` 객체만 담은 파일이다. `--notice-id`와 그 객체의 `id`는 같아야 한다. 변환기는 원본 셀값·행 번호, 파일 해시, 홍보물 연결 근거를 보존한다. 이 명령은 `--output` 파일만 쓴다.
 
 ## 5. PDF·이미지·평면도 연결하기
 
@@ -163,9 +108,9 @@ python scripts/dataset.py import-current \
 5. 건물 전용으로 확정할 수 없는 주택군 공통 자료는 `match: "group"`으로 표시한다.
 6. 세대 전용 평면도는 `targetType: "unit"`으로 연결한다. 다른 세대만 검색되면 해당 전용 자료는 표시하지 않는다.
 
-PDF를 새 파일로 바꾸었다면 원본 `sha256`·`size`, 모든 페이지와 썸네일도 새로 만든다. 파일명만 바꾸고 기존 이미지 미리보기를 유지하지 않는다. 기존 파일과 다른 내용이면 검증된 새 패키지로 활성화한다.
+PDF를 새 파일로 바꾸었다면 원본 `sha256`·`size`, 모든 페이지와 썸네일도 새로 만든다. 파일명만 바꾸고 기존 이미지 미리보기를 유지하지 않는다.
 
-## 6. 반영 전에 확인할 항목
+## 6. 추가 전후 확인 항목
 
 - [ ] 공고 ID·제목·날짜·원문 URL이 새 공고와 일치
 - [ ] 기준 XLSX·정정 여부·파일 ID가 맞음
@@ -174,13 +119,13 @@ PDF를 새 파일로 바꾸었다면 원본 `sha256`·`size`, 모든 페이지�
 - [ ] 원문 주소마다 검증 좌표와 출처가 있음
 - [ ] 모든 PDF 페이지와 이미지 부모 관계가 맞음
 - [ ] 주택군 공통 자료와 특정 세대 자료의 관계가 구분됨
-- [ ] `validate`와 `activate --dry-run` 통과
-- [ ] 활성화 후 제목·세대수·주소수·필터·홍보물 미리보기 확인
-- [ ] `./start_site.sh --list`의 경쟁률 소스 URL이 새 공고이고, 화면의 경쟁률 패널이 `정상 조회`(접수 전이면 `조회 불가`)
+- [ ] `validate` 통과, 새 실행의 `reports/run.json`이 `complete`
+- [ ] `./start_site.sh`로 연 새 사이트의 제목·세대수·주소수·필터·홍보물 미리보기 확인
 - [ ] 지역·방수 등을 복수 선택했을 때 검색된 건물만 지도에 표시됨
-- [ ] 호스팅 사이트를 사용하는 경우 새 버전 게시 완료
+- [ ] `./start_site.sh --list`의 경쟁률 소스 URL이 새 공고이고, 경쟁률 패널이 `정상 조회`(접수 전이면 `조회 불가`)
+- [ ] 기존 사이트들은 그대로 남아 있음
 
-## 7. 오류와 되돌리기
+## 7. 오류
 
 | 오류 | 확인할 내용 |
 |---|---|
@@ -192,16 +137,15 @@ PDF를 새 파일로 바꾸었다면 원본 `sha256`·`size`, 모든 페이지�
 | 페이지 부모·번호 오류 | 모든 파생 이미지의 부모가 실제 원본 ID인지, 1부터 연속인지 확인 |
 | XLSX 열·시트 오류 | 시트 이름·헤더 행·데이터 시작 행·열 매핑 확인 |
 | 수식 캐시 없음 | 원본을 계산 가능한 스프레드시트 앱에서 계산·저장한 뒤 다시 가져오기 |
+| `Site already has data` | 이미 데이터가 있는 사이트 폴더에 쓰려 했다. 사이트는 바꾸지 않고 항상 새로 추가한다. 스킬로 새 실행을 만든다. |
 
-실패한 활성화는 기존 데이터 포인터를 유지한다. 이미 성공한 교체를 되돌리려면 이전 공고의 표준 패키지로 `activate`를 다시 실행한다. 이전 스냅샷은 열려 있는 탭의 자료 링크를 위해 보존한다. 사용 중인 스냅샷을 무작정 삭제하지 않는다.
+검증이나 빌드가 실패한 실행도 폴더와 보고서를 남긴다. 반쯤 만든 사이트는 데이터 파일이 없으므로 화면에 공고가 나오지 않는다. 원인을 고쳐 새 실행으로 다시 추가한다. 필요 없는 실행은 `./delete_site.sh`로 지운다.
 
-`build`로 별도 검토용 출력도 만들 수 있다.
+`dataset.py build`로 사이트 없이 데이터·미디어 출력만 검토할 수도 있다. 출력 폴더가 이미 있으면 거부한다.
 
 ```bash
 python scripts/dataset.py build \
-  --dataset data/datasets/my-new-notice/dataset.json \
-  --asset-root data/datasets/my-new-notice \
+  --dataset data/datasets/<공고ID>/dataset.json \
+  --asset-root data/datasets/<공고ID> \
   --output tmp/review-build
 ```
-
-이는 데이터·미디어 출력이며 전체 지도 앱의 HTML·CSS까지 복제하는 명령은 아니다. 검토 후 활성화를 별도로 실행한다.

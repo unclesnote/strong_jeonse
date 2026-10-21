@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Versioned notice data: import, validate, build and transactionally activate.
+"""Versioned notice data: import, validate, build, and activate a NEW site once.
 
-Canonical paths are always assets/... relative to --asset-root. Activation copies
-all referenced assets into an immutable content-addressed snapshot before the
-single live browser data pointer is replaced. No API credentials or network use.
+Canonical paths are always assets/... relative to --asset-root. Activation writes
+the data of a new site folder exactly once: it copies all referenced assets into a
+content-addressed snapshot, then writes competition-config.json and data.js last.
+A site that already has data.js is refused: every notice is added as a new site
+(build_notice.py), never replaced. No API credentials or network use.
 """
 from __future__ import annotations
 import argparse, collections, contextlib, copy, datetime, hashlib, json, math, os
@@ -293,7 +295,6 @@ def competition_config(data):
 
 def build(dataset_path,asset_root,output):
     data=read_json(dataset_path);report=validate(data,asset_root);output=Path(output).resolve()
-    if output==PROJECT/'public':raise DatasetError('Use activate to replace live dist data')
     if output.exists():raise DatasetError('Build output already exists; choose a new output directory')
     output.parent.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.'+output.name+'.',dir=output.parent))
@@ -306,15 +307,17 @@ def build(dataset_path,asset_root,output):
         if stage.exists():shutil.rmtree(stage)
     return audit_report(data,report)|{'output':str(output)}
 
-def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
+def activate(dataset_path,asset_root,dist,state_dir=None,dry_run=False):
     dataset_path=Path(dataset_path).resolve();asset_root=Path(asset_root).resolve()
     data=read_json(dataset_path);report=validate(data,asset_root)
     content_hash=hashlib.sha256(encode_json(data)+encode_json(report['fileHashes'])).hexdigest()
     prefix=f'datasets/{data["notice"]["id"]}/{content_hash[:20]}/'
     if dry_run:return audit_report(data,report)|{'dryRun':True,'assetPrefix':prefix,'contentHash':content_hash}
-    dist=Path(dist or PROJECT/'public').resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
+    dist=Path(dist).resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
+    # Sites are only ever added. Writing over an existing site's data is not supported.
+    if (dist/'data.js').exists():raise DatasetError(f'Site already has data: {dist}. Add a new site with build_notice.py instead')
     dist.mkdir(parents=True,exist_ok=True);state_dir.mkdir(parents=True,exist_ok=True)
-    # All copying and runtime compilation finishes before touching active state.
+    # All copying and runtime compilation finishes before any site file is written.
     stage=Path(tempfile.mkdtemp(prefix='.dataset-stage-',dir=dist))
     snapshot=dist/prefix;created_snapshot=False
     try:
@@ -328,8 +331,8 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
             for url in asset_urls(data):
                 if digest(local_file(snapshot,url))!=report['fileHashes'][url]:raise DatasetError('Existing immutable snapshot content differs')
         else:os.replace(stage,snapshot);created_snapshot=True
-        # The app reads only data.js: replace that pointer LAST. Roll back every
-        # active-state file if a write/rename fails. Previous snapshots stay valid.
+        # The app reads only data.js, so write it LAST. If any write fails, remove every
+        # file written here so a half-built site never looks complete.
         updates=[(dist/'competition-config.json',encode_json(competition_config(data))),(state_dir/'active-dataset.json',encode_json(config)),(state_dir/'validation-audit.json',encode_json(audit)),(dist/'data.js',payload)]
         backups={p:p.read_bytes() if p.exists() else None for p,_ in updates}
         try:
@@ -348,15 +351,16 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='command',required=True)
-    imp=sub.add_parser('import-current',help='Migrate extracted source data; no live changes')
+    imp=sub.add_parser('import-current',help='Migrate extracted source data; writes only --output')
     for option in ('notice-id','source','geocodes','attachments','asset-root','manifest','output'):imp.add_argument('--'+option,required=True)
     imp.add_argument('--notice-config')
     ids=sub.add_parser('ids',help='Generate the canonical stable group/building/unit ID from exact source values')
     ids.add_argument('--notice-id',required=True);ids.add_argument('--kind',required=True,choices=['group','building','unit']);ids.add_argument('--values-json',required=True,help='JSON array: [groupName], [groupName,address], or [groupName,address,originalId]')
     for command in ('validate','build','activate'):
-        p=sub.add_parser(command);p.add_argument('--dataset',required=True);p.add_argument('--asset-root',default=str(PROJECT/'public'))
+        p=sub.add_parser(command,help='Write the data of a NEW site folder once (refuses a site that already has data.js)' if command=='activate' else None)
+        p.add_argument('--dataset',required=True);p.add_argument('--asset-root',required=True,help='Folder that contains assets/')
         if command=='build':p.add_argument('--output',required=True)
-        if command=='activate':p.add_argument('--dry-run',action='store_true');p.add_argument('--dist');p.add_argument('--state-dir')
+        if command=='activate':p.add_argument('--dry-run',action='store_true');p.add_argument('--dist',required=True,help='New site folder');p.add_argument('--state-dir')
     args=parser.parse_args(argv)
     try:
         if args.command=='ids':

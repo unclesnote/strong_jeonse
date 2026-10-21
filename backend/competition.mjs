@@ -30,7 +30,7 @@ export function parseCompetition(html,meta){
  const totals={};for(const k of ['supply','recruitment','applications'])totals[k]=list.some(g=>g[k]===null)?null:list.reduce((s,g)=>s+g[k],0);
  if(totalCells.length!==4)throw Error('공급정보 합계 행을 확인할 수 없습니다.');
  for(const [i,k] of ['supply','recruitment','applications'].entries())if(count(totalCells[i+1])!==totals[k])throw Error('신청 현황 합계가 개별 행과 다릅니다.');
- if(Array.isArray(meta.expectedGroups)){const actual=new Set(list.map(g=>g.key));const expected=new Set(meta.expectedGroups.map(groupKey));if(actual.size!==expected.size||[...expected].some(k=>!actual.has(k)))throw Error('원문 주택군과 현재 데이터셋이 다릅니다. 데이터 교체를 확인하세요.');}
+ if(Array.isArray(meta.expectedGroups)){const actual=new Set(list.map(g=>g.key));const expected=new Set(meta.expectedGroups.map(groupKey));if(actual.size!==expected.size||[...expected].some(k=>!actual.has(k)))throw Error('원문 주택군과 이 사이트의 데이터셋이 다릅니다. 정정공고라면 스킬로 새 사이트를 추가하세요.');}
  if(Number.isSafeInteger(meta.totalUnits)&&meta.totalUnits!==totals.supply)throw Error('원문 공급호수가 현재 주택목록과 다릅니다. 정정 자료를 확인하세요.');
  return {noticeId:nid,sourceUrl,scope:'housing-group',groups:list,sourceRowCount:rows.length,totals:{...totals,supplyRatio:totals.applications!==null&&totals.supply>0?totals.applications/totals.supply:null,recruitmentRatio:totals.applications!==null&&totals.recruitment>0?totals.applications/totals.recruitment:null}};
 }

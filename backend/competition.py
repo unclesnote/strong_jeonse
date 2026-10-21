@@ -94,7 +94,7 @@ def parse_competition(html, meta):
     for i, k in enumerate(FIELDS):
         if count(total_cells[i + 1]) != totals[k]: raise CompetitionError('신청 현황 합계가 개별 행과 다릅니다.')
     if isinstance(meta.get('expectedGroups'), list) and {g['key'] for g in groups} != {group_key(x) for x in meta['expectedGroups']}:
-        raise CompetitionError('원문 주택군과 현재 데이터셋이 다릅니다. 데이터 교체를 확인하세요.')
+        raise CompetitionError('원문 주택군과 이 사이트의 데이터셋이 다릅니다. 정정공고라면 스킬로 새 사이트를 추가하세요.')
     if isinstance(meta.get('totalUnits'), int) and meta['totalUnits'] != totals['supply']:
         raise CompetitionError('원문 공급호수가 현재 주택목록과 다릅니다. 정정 자료를 확인하세요.')
     return {'noticeId': nid, 'sourceUrl': source_url, 'scope': 'housing-group', 'groups': groups, 'sourceRowCount': len(rows),
