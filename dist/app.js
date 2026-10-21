@@ -27,6 +27,14 @@ const cities=[...new Set(D.buildings.map(b=>b.city))].sort((a,b)=>a.localeCompar
 $('#city').innerHTML+=[...cities].map(c=>`<option>${esc(c)}</option>`).join('');
 $('#rooms-filter').innerHTML+=[...new Set(everyUnit.map(u=>u.rooms).filter(v=>v!=null))].sort((a,b)=>a-b).map(v=>`<option value="${v}">방 ${v}개</option>`).join('');
 $('#type-filter').innerHTML+=[...new Set(everyUnit.map(u=>u.type))].sort().map(v=>`<option>${esc(v)}</option>`).join('');
+for(const element of $$('.filter-strip .filter-chip')){
+ const copy=element.cloneNode(true);const control=copy.matches('button')?copy:copy.querySelector('select');
+ if(control){control.id='list-'+control.id;const label=control.getAttribute('aria-label');if(label)control.setAttribute('aria-label','목록 '+label);}
+ $('#list-filters').append(copy);
+}
+$('#list-filter-toggle').onclick=()=>{const open=$('#list-filters').hidden;$('#list-filters').hidden=!open;$('#list-filter-toggle').setAttribute('aria-expanded',String(open));};
+$('#list-filters').addEventListener('change',e=>{const target=e.target;if(target.tagName!=='SELECT')return;const original=$('#'+target.id.replace('list-',''));original.value=target.value;original.dispatchEvent(new Event('change'));});
+$('#list-elevator-filter').onclick=()=>$('#elevator-filter').click();
 function notify(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3000);}
 function unitPass(u,b){
  if(state.deposit&&!(u.deposit!=null&&u.deposit<=+state.deposit))return false;
@@ -46,12 +54,16 @@ function getFiltered(ignoreBounds=false){return D.buildings.filter(b=>(!state.ci
  });}
 function update(){
  filtered=getFiltered();const total=filtered.reduce((sum,b)=>sum+b.visibleCount,0);
+ for(const id of ['city','deposit-filter','area-filter','rooms-filter','type-filter'])$('#list-'+id).value=$('#'+id).value;
+ const filterCount=[state.city,state.deposit,state.area,state.rooms,state.type,state.elevator].filter(Boolean).length;
+ $('#filter-count').textContent=filterCount;$('#filter-count').hidden=!filterCount;$('#list-filter-toggle').classList.toggle('active',filterCount>0);
  $('#results-title').textContent=state.savedOnly?'저장한 주택':'전체 주택';
  $('#results-count').textContent=`${filtered.length}곳 · ${num(total)}세대`;
  $('#clear-search').hidden=!state.query;
  $('#sort-direction').textContent=state.ascending?'↑':'↓';$('#sort-direction').title=state.ascending?'오름차순':'내림차순';
  $$('select').forEach(s=>s.classList.toggle('active',!!s.value&&s.id!=='sort'));
  $('#elevator-filter').classList.toggle('active',state.elevator);$('#elevator-filter').setAttribute('aria-pressed',String(state.elevator));
+ $('#list-elevator-filter').classList.toggle('active',state.elevator);$('#list-elevator-filter').setAttribute('aria-pressed',String(state.elevator));
  $('#saved-count').hidden=!saved.size;$('#saved-count').textContent=saved.size;
  $$('.rail-button').forEach(b=>b.classList.toggle('active',b.dataset.action===(state.savedOnly?'saved-view':'map-view')));
  $('#result-list').innerHTML=filtered.length?filtered.map(b=>card(b)).join(''):`<div class="empty-state">${svg(state.savedOnly?'bookmark':'search')}<strong>${state.savedOnly?'저장한 주택이 없습니다':'검색 결과가 없습니다'}</strong>${state.savedOnly?'건물 카드의 저장 버튼을 눌러 모아보세요.':'검색어와 필터를 변경해 보세요.'}</div>`;

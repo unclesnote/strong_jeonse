@@ -23,7 +23,8 @@
       <div class="search-box"><i data-icon="search"></i><input id="search" type="search" placeholder="주택명, 주소, 동·호수 검색" aria-label="주택 검색"><button id="clear-search" aria-label="검색어 지우기" hidden>×</button></div>
       <div class="notice-line"><span class="notice-badge">정정공고</span><span id="notice-date"></span><button data-action="documents">공고 보기 <span>↗</span></button></div>
     </header>
-    <section class="list-heading"><div><h2 id="results-title">전체 주택</h2><span id="results-count" aria-live="polite"></span></div><button class="text-button" id="reset-filters"><i data-icon="reset"></i>초기화</button></section>
+    <section class="list-heading"><div><h2 id="results-title">전체 주택</h2><span id="results-count" aria-live="polite"></span></div><div class="heading-actions"><button class="list-filter-button" id="list-filter-toggle" aria-expanded="false" aria-controls="list-filters">필터 <span id="filter-count" hidden></span><span class="filter-chevron">⌄</span></button><button class="text-button" id="reset-filters" aria-label="검색과 필터 초기화"><i data-icon="reset"></i>초기화</button></div></section>
+    <section id="list-filters" class="sidebar-filters" aria-label="목록 필터" hidden></section>
     <div class="sort-bar"><span>건물·주소 기준</span><label><span class="sr-only">목록 정렬 항목</span><select id="sort" aria-label="목록 정렬 항목"><option value="name">주택명순</option><option value="address">주소순</option><option value="deposit">보증금순</option><option value="area">면적순</option><option value="rooms">방수순</option><option value="units">세대수순</option><option value="media">홍보물 수순</option><option value="type">주택유형순</option><option value="elevator">승강기순</option></select></label><button id="sort-direction" class="icon-button" aria-label="정렬 방향 바꾸기" title="오름차순">↑</button></div>
     <div id="result-list" class="result-list"></div>
     <footer class="sidebar-footer"><span id="source-summary"></span><button data-action="table-view">전체 세대 비교 <span>→</span></button></footer>
