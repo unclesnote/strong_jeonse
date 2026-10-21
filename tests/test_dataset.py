@@ -4,7 +4,7 @@ import copy, importlib.util, json, shutil, tempfile, unittest
 from unittest import mock
 
 PROJECT=Path(__file__).resolve().parents[1]
-spec=importlib.util.spec_from_file_location('notice_dataset',PROJECT/'tools/dataset.py')
+spec=importlib.util.spec_from_file_location('notice_dataset',PROJECT/'scripts/dataset.py')
 ds=importlib.util.module_from_spec(spec);spec.loader.exec_module(ds)
 FIXTURE=PROJECT/'tests/fixtures/tiny-bundle'
 

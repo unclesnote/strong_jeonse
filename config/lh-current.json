@@ -56,11 +56,11 @@
     }
   },
   "paths": {
-    "xlsx": "../../../outputs/lh_2015122300020927/공고첨부/69044664_(정정공고)(게시용)2026년경기남부든든전세매입임대주택주택목록(2026.09.30).xlsx",
-    "manifest": "../../../outputs/lh_2015122300020927/manifest.json",
-    "geocodes": "../geocodes.json",
-    "attachments": "../datasets/2015122300020927/assets/attachments.json",
-    "assetRoot": "../datasets/2015122300020927"
+    "xlsx": "../data/notices/lh_2015122300020927/공고첨부/69044664_(정정공고)(게시용)2026년경기남부든든전세매입임대주택주택목록(2026.09.30).xlsx",
+    "manifest": "../data/notices/lh_2015122300020927/manifest.json",
+    "geocodes": "../data/intermediate/2015122300020927/geocodes.json",
+    "attachments": "../data/datasets/2015122300020927/assets/attachments.json",
+    "assetRoot": "../data/datasets/2015122300020927"
   },
   "spreadsheet": {
     "fileId": "69044664",

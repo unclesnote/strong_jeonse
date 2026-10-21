@@ -1,0 +1,1592 @@
+[
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100226",
+    "housing": "수원고색(ANO예담채2차)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "8",
+      "60",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59453327,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_104ANO예담채고색2차(수정).pdf",
+        "cmnPhyAhflNm": "2024111259453327.pdf",
+        "cmnAhflSz": 374941,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 고색로 9(고색동) ANO예담채 고색2차"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100223",
+    "housing": "수원고색(디케이타워)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "95",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59256039,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_디케이-타워제1동.pdf",
+        "cmnPhyAhflNm": "2024102959256039.pdf",
+        "cmnAhflSz": 503783,
+        "cmnAhflPth": "/Files/upload/2024/COM/10/29/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 호매실로 21-4(고색동) 디케이-타워 제1동"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100191",
+    "housing": "수원고색(라움AB)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "153",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57858947,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_2461,2462라움A,B동.pdf",
+        "cmnPhyAhflNm": "2024070357858947.pdf",
+        "cmnAhflSz": 1219307,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움A동"
+      },
+      {
+        "cmnAhflSn": 57858957,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_2461,2462라움A,B동.pdf",
+        "cmnPhyAhflNm": "2024070357858957.pdf",
+        "cmnAhflSz": 1219307,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 호매실로 29-9(고색동) 라움B동"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100177",
+    "housing": "수원곡반정",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "4",
+      "15",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 61812849,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원(곡반정동)_든든전세_하우스토리.pdf",
+        "cmnPhyAhflNm": "2025051561812849.pdf",
+        "cmnAhflSz": 692993,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/15/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 곡선로49번길 5-16(곡반정동) 하우스토리"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 0,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100153",
+    "housing": "수원매탄",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "8",
+      "46",
+      "청약신청하기"
+    ],
+    "items": []
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100225",
+    "housing": "수원세류(모던힐타운)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "4",
+      "17",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859438,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_102모던힐타운(1).pdf",
+        "cmnPhyAhflNm": "2024070357859438.pdf",
+        "cmnAhflSz": 232747,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 권선구 정조로398번길 18(세류동) 모던힐타운"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 5,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100124",
+    "housing": "수원송죽",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "15",
+      "165",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859049,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_2366플러스타워.pdf",
+        "cmnPhyAhflNm": "2024070357859049.pdf",
+        "cmnAhflSz": 1365763,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+      },
+      {
+        "cmnAhflSn": 59909660,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "상가_평면도.PNG",
+        "cmnPhyAhflNm": "2024121659909660.PNG",
+        "cmnAhflSz": 150265,
+        "cmnAhflPth": "/Files/upload/2024/COM/12/16/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+      },
+      {
+        "cmnAhflSn": 59909661,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "12",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원상가_내부사진.PNG",
+        "cmnPhyAhflNm": "2024121659909661.PNG",
+        "cmnAhflSz": 113621,
+        "cmnAhflPth": "/Files/upload/2024/COM/12/16/",
+        "lsSplInfUplFlDsCdNm": "호실사진",
+        "dngHsAdr": "경기도 수원시 장안구 송원로 28(송죽동) 플러스타워"
+      },
+      {
+        "cmnAhflSn": 62246544,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세(수원송죽동)_행복주택1(A동).pdf",
+        "cmnPhyAhflNm": "2025061862246544.pdf",
+        "cmnAhflSz": 1118209,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/18/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 송원로1번길 5(송죽동) 행복주택1"
+      },
+      {
+        "cmnAhflSn": 61812787,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원(송죽동)_든든전세_행복주택1(B동).pdf",
+        "cmnPhyAhflNm": "2025051561812787.pdf",
+        "cmnAhflSz": 1261108,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/15/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 송정로 63(송죽동) 행복주택1"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 3,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100245",
+    "housing": "수원원천(광교웰스하임)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "150",
+      "899",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 66943724,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆든든전세홍보물_수원원천동(광교웰스하임).pdf",
+        "cmnPhyAhflNm": "2026052066943724.pdf",
+        "cmnAhflSz": 1918925,
+        "cmnAhflPth": "/Files/upload/2026/COM/05/20/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 영통구 삼성로320번길 17(원천동) 영통구 원천동 295-1,295-5"
+      },
+      {
+        "cmnAhflSn": 66943708,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "09",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆든든전세홍보물_수원원천동(광교웰스하임).pdf",
+        "cmnPhyAhflNm": "2026052066943708.pdf",
+        "cmnAhflSz": 1918925,
+        "cmnAhflPth": "/Files/upload/2026/COM/05/20/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 수원시 영통구 삼성로320번길 17(원천동) 원천동 295-1,295-5"
+      },
+      {
+        "cmnAhflSn": 66943714,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆든든전세홍보물_수원원천동(광교웰스하임).pdf",
+        "cmnPhyAhflNm": "2026052066943714.pdf",
+        "cmnAhflSz": 1918925,
+        "cmnAhflPth": "/Files/upload/2026/COM/05/20/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 영통구 원천동 영통구 원천동 295-1,295-5"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100244",
+    "housing": "수원율전",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "4",
+      "17",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59453382,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_201율전동(서부로2207번길7).pdf",
+        "cmnPhyAhflNm": "2024111259453382.pdf",
+        "cmnAhflSz": 339285,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 서부로2207번길 7(율전동) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100230",
+    "housing": "수원율전(리치하우스)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "10",
+      "62",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59469504,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_299리치하우스.pdf",
+        "cmnPhyAhflNm": "2024111359469504.pdf",
+        "cmnAhflSz": 574759,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/13/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 율전로 112(율전동) 율전 리치하우스"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100237",
+    "housing": "수원인계(개성로니엘)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "10",
+      "102",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 62238841,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_개성로니엘.pdf",
+        "cmnPhyAhflNm": "2025061762238841.pdf",
+        "cmnAhflSz": 1859400,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 팔달구 경수대로565번길 62(인계동) 인계동 개성로니엘 오피스텔"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100229",
+    "housing": "수원조원(뜨레모아아파트)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "94",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859491,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_199뜨레모아아파트(1).pdf",
+        "cmnPhyAhflNm": "2024070357859491.pdf",
+        "cmnAhflSz": 307780,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 송정로118번길 7(조원동) 뜨레모아아파트"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41110",
+    "dng": "",
+    "apt": "P411100224",
+    "housing": "수원조원(핸즈빌3차)",
+    "row": [
+      "매입다가구(경기수원시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "27",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859475,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_101,103핸즈빌3차(1).pdf",
+        "cmnPhyAhflNm": "2024070357859475.pdf",
+        "cmnAhflSz": 397663,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차"
+      },
+      {
+        "cmnAhflSn": 57859462,
+        "sbdLgoNo": "P41110",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "수원_101,103핸즈빌3차(1).pdf",
+        "cmnPhyAhflNm": "2024070357859462.pdf",
+        "cmnAhflSz": 397663,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 수원시 장안구 조원로24번길 19(조원동) 핸즈빌 3차"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41390",
+    "dng": "",
+    "apt": "P413900045",
+    "housing": "시흥대야(제이엘타워)",
+    "row": [
+      "매입다가구(경기시흥시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "101",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 68351622,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥대야_제이엘타워.pdf",
+        "cmnPhyAhflNm": "2026082868351622.pdf",
+        "cmnAhflSz": 591867,
+        "cmnAhflPth": "/Files/upload/2026/COM/08/28/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 시흥시 은계중앙로306번길 71(대야동) 제이엘타워"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41390",
+    "dng": "",
+    "apt": "P413900049",
+    "housing": "시흥신천(헬시온)",
+    "row": [
+      "매입다가구(경기시흥시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "4",
+      "31",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 49636371,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "13",
+        "ahflDesc": "청약센터_홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥시헬시온(리플렛).pdf",
+        "cmnPhyAhflNm": "2022081049636371.pdf",
+        "cmnAhflSz": 421735,
+        "cmnAhflPth": "/Files/upload/2022/COM/08/10/",
+        "lsSplInfUplFlDsCdNm": "기타",
+        "dngHsAdr": "경기도 시흥시 신천2길 27(신천동) 헬시온"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 5,
+    "sbd": "P41390",
+    "dng": "",
+    "apt": "P413900010",
+    "housing": "시흥은행(해피에버)",
+    "row": [
+      "매입다가구(경기시흥시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "34",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59469541,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥_2363해피에버2동.pdf",
+        "cmnPhyAhflNm": "2024111359469541.pdf",
+        "cmnAhflSz": 496518,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/13/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 시흥시 은계로 110(은행동) 해피에버 2동 (은행동 669-2)"
+      },
+      {
+        "cmnAhflSn": 59469528,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥_2362해피에버1.pdf",
+        "cmnPhyAhflNm": "2024111359469528.pdf",
+        "cmnAhflSz": 502888,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/13/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+      },
+      {
+        "cmnAhflSn": 59909827,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥상가_평면도.PNG",
+        "cmnPhyAhflNm": "2024121659909827.PNG",
+        "cmnAhflSz": 222783,
+        "cmnAhflPth": "/Files/upload/2024/COM/12/16/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+      },
+      {
+        "cmnAhflSn": 59909828,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "12",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥상가_내부사진(102).PNG",
+        "cmnPhyAhflNm": "2024121659909828.PNG",
+        "cmnAhflSz": 163293,
+        "cmnAhflPth": "/Files/upload/2024/COM/12/16/",
+        "lsSplInfUplFlDsCdNm": "호실사진",
+        "dngHsAdr": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+      },
+      {
+        "cmnAhflSn": 59909829,
+        "sbdLgoNo": "P41390",
+        "lsSplInfUplFlDsCd": "12",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "시흥상가_내부사진(103).PNG",
+        "cmnPhyAhflNm": "2024121659909829.PNG",
+        "cmnAhflSz": 165791,
+        "cmnAhflPth": "/Files/upload/2024/COM/12/16/",
+        "lsSplInfUplFlDsCdNm": "호실사진",
+        "dngHsAdr": "경기도 시흥시 은계로 114(은행동) 해피에버 1동 (은행동 669-1)"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41270",
+    "dng": "",
+    "apt": "P412700101",
+    "housing": "안산본오(포레스트휴)",
+    "row": [
+      "매입다가구(경기안산시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "8",
+      "57",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57842159,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세홍보자료(본오동199포레스트휴).pdf",
+        "cmnPhyAhflNm": "2024070257842159.pdf",
+        "cmnAhflSz": 1095620,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/02/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) "
+      },
+      {
+        "cmnAhflSn": 57842322,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "안산_든든전세_199도면.JPG",
+        "cmnPhyAhflNm": "2024070257842322.JPG",
+        "cmnAhflSz": 92137,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/02/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 안산시 상록구 본오로7길 40(본오동,Forest 休) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41270",
+    "dng": "",
+    "apt": "P412700115",
+    "housing": "안산이동",
+    "row": [
+      "매입다가구(경기안산시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "10",
+      "103",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57842179,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세홍보자료(이동2463).pdf",
+        "cmnPhyAhflNm": "2024070257842179.pdf",
+        "cmnAhflSz": 1237890,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/02/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22"
+      },
+      {
+        "cmnAhflSn": 57842431,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "도면(안산_든든전세_2463).JPG",
+        "cmnPhyAhflNm": "2024070257842431.JPG",
+        "cmnAhflSz": 106525,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/02/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 안산시 상록구 광덕1로 364(이동) 와이에스22"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 4,
+    "sbd": "P41270",
+    "dng": "",
+    "apt": "P412700127",
+    "housing": "안산초지(더하이)",
+    "row": [
+      "매입다가구(경기안산시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "50",
+      "236",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 62244864,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_TheHigh(초지동더하이).pdf",
+        "cmnPhyAhflNm": "2025061762244864.pdf",
+        "cmnAhflSz": 6031282,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(1)"
+      },
+      {
+        "cmnAhflSn": 62244868,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_TheHigh(초지동더하이).pdf",
+        "cmnPhyAhflNm": "2025061762244868.pdf",
+        "cmnAhflSz": 6031282,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(2)"
+      },
+      {
+        "cmnAhflSn": 62244871,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_TheHigh(초지동더하이).pdf",
+        "cmnPhyAhflNm": "2025061762244871.pdf",
+        "cmnAhflSz": 6031282,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(3)"
+      },
+      {
+        "cmnAhflSn": 62244875,
+        "sbdLgoNo": "P41270",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_TheHigh(초지동더하이).pdf",
+        "cmnPhyAhflNm": "2025061762244875.pdf",
+        "cmnAhflSz": 6031282,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안산시 단원구 원포공원1로 22(초지동) 더하이(4)"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700021",
+    "housing": "안양안양(미래타운)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "4",
+      "69",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59453486,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "안양_101미래타운(안양동).pdf",
+        "cmnPhyAhflNm": "2024111259453486.pdf",
+        "cmnAhflSz": 449252,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 만안구 현충로 12(안양동) 미래타운"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700026",
+    "housing": "안양안양(부성파인스위트)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "4",
+      "51",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59256216,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_부성파인스위트.pdf",
+        "cmnPhyAhflNm": "2024102959256216.pdf",
+        "cmnAhflSz": 1033980,
+        "cmnAhflPth": "/Files/upload/2024/COM/10/29/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 만안구 만안로55번길 20-11(안양동,부성파인스위트) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700025",
+    "housing": "안양안양(우석팰리스6차)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "4",
+      "63",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 61812895,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "안양(안양동)_든든전세_우석펠리스6차.pdf",
+        "cmnPhyAhflNm": "2025051561812895.pdf",
+        "cmnAhflSz": 862476,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/15/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 만안구 안양로369번길 57(안양동,우석펠리스6차) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700036",
+    "housing": "안양안양(한일코지세상)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "8",
+      "48",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 48413951,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "2한일코지세상(안양동393-20).pdf",
+        "cmnPhyAhflNm": "2022051648413951.pdf",
+        "cmnAhflSz": 1382483,
+        "cmnAhflPth": "/Files/upload/2022/COM/05/16/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 만안구 만안로123번길 18(안양동) 한일코지세상2"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700020",
+    "housing": "안양안양(휴누림)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "8",
+      "61",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59452612,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물(수정)",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "안양__102휴누림.pdf",
+        "cmnPhyAhflNm": "2024111259452612.pdf",
+        "cmnAhflSz": 425308,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 만안구 만안로 111(안양동) 휴누림"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700046",
+    "housing": "안양호계(개성하이뷰)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "8",
+      "110",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 62265606,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_개성하이뷰(안양시동안구흥안대로104).pdf",
+        "cmnPhyAhflNm": "2025061962265606.pdf",
+        "cmnAhflSz": 1504114,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/19/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰"
+      },
+      {
+        "cmnAhflSn": 54912465,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "개성하이뷰평면도.PNG",
+        "cmnPhyAhflNm": "2023103054912465.PNG",
+        "cmnAhflSz": 710321,
+        "cmnAhflPth": "/Files/upload/2023/COM/10/30/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 안양시 동안구 흥안대로 104(호계동) 개성하이뷰"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41170",
+    "dng": "",
+    "apt": "P411700057",
+    "housing": "안양호계(노블레스뷰)",
+    "row": [
+      "매입다가구(경기안양시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "102",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859228,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "안양_2361노블레스뷰.pdf",
+        "cmnPhyAhflNm": "2024070357859228.pdf",
+        "cmnAhflSz": 409935,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰"
+      },
+      {
+        "cmnAhflSn": 62540310,
+        "sbdLgoNo": "P41170",
+        "lsSplInfUplFlDsCd": "09",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "세대평면도(안양호계동엘에스로30).pdf",
+        "cmnPhyAhflNm": "2025070762540310.pdf",
+        "cmnAhflSz": 1748448,
+        "cmnAhflPth": "/Files/upload/2025/COM/07/07/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 안양시 동안구 엘에스로 30(호계동) 노블레스뷰"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41670",
+    "dng": "",
+    "apt": "P416700015",
+    "housing": "여주창동(현대홈타운)",
+    "row": [
+      "매입다가구(경기여주시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "10",
+      "6",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859289,
+        "sbdLgoNo": "P41670",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "여주_102현대홈타운2차.pdf",
+        "cmnPhyAhflNm": "2024070357859289.pdf",
+        "cmnAhflSz": 913965,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 여주시 우암로 45(창동) 현대 홈타운 2차"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41670",
+    "dng": "",
+    "apt": "P416700021",
+    "housing": "여주현암(청아한)",
+    "row": [
+      "매입다가구(경기여주시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "10",
+      "19",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59256092,
+        "sbdLgoNo": "P41670",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_청아한.pdf",
+        "cmnPhyAhflNm": "2024102959256092.pdf",
+        "cmnAhflSz": 696271,
+        "cmnAhflPth": "/Files/upload/2024/COM/10/29/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 여주시 현암2길 58-8(현암동) 청아한"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41370",
+    "dng": "",
+    "apt": "P413700029",
+    "housing": "오산 로렌하우스",
+    "row": [
+      "매입다가구(경기오산시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "30",
+      "319",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 64417729,
+        "sbdLgoNo": "P41370",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "로렌하우스 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆오산_로렌하우스홍보물.pdf",
+        "cmnPhyAhflNm": "2025112064417729.pdf",
+        "cmnAhflSz": 2171154,
+        "cmnAhflPth": "/Files/upload/2025/COM/11/20/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 오산시 금암로 15-1(금암동) 로렌하우스"
+      },
+      {
+        "cmnAhflSn": 64635967,
+        "sbdLgoNo": "P41370",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆오산_로렌하우스홍보물_최종.pptx",
+        "cmnPhyAhflNm": "2025120464635967.pptx",
+        "cmnAhflSz": 8041252,
+        "cmnAhflPth": "/Files/upload/2025/COM/12/04/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 오산시 금암로 15-11(금암동) 로렌하우스"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41370",
+    "dng": "",
+    "apt": "P413700027",
+    "housing": "오산세교(디아스트라)",
+    "row": [
+      "매입다가구(경기오산시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "3",
+      "22",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 62240296,
+        "sbdLgoNo": "P41370",
+        "lsSplInfUplFlDsCd": "09",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_디아스트라(세교동).pdf",
+        "cmnPhyAhflNm": "2025061762240296.pdf",
+        "cmnAhflSz": 1816668,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/17/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 오산시 세마역로 65(세교동) 602-4"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41370",
+    "dng": "",
+    "apt": "P413700026",
+    "housing": "오산세교(리강더하이빌)",
+    "row": [
+      "매입다가구(경기오산시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "15",
+      "62",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 62254878,
+        "sbdLgoNo": "P41370",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "든든전세_리강더하이빌.pdf",
+        "cmnPhyAhflNm": "2025061862254878.pdf",
+        "cmnAhflSz": 1562833,
+        "cmnAhflPth": "/Files/upload/2025/COM/06/18/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 오산시 세마역로 69(세교동) 리강 THE HIGHVILL"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41370",
+    "dng": "",
+    "apt": "P413700024",
+    "housing": "오산수청(라온누리)",
+    "row": [
+      "매입다가구(경기오산시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "20",
+      "32",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 61799003,
+        "sbdLgoNo": "P41370",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "오산(수청동)_든든전세_라온누리빌딩.pdf",
+        "cmnPhyAhflNm": "2025051461799003.pdf",
+        "cmnAhflSz": 1068193,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/14/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 오산시 내삼미로79번길 23(수청동) 라온누리 빌딩"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41460",
+    "dng": "",
+    "apt": "P414600107",
+    "housing": "용인고림(드림캐슬)",
+    "row": [
+      "매입다가구(경기용인시)",
+      "",
+      "지도",
+      "홍보물",
+      "70~80㎡",
+      "",
+      "8",
+      "49",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 68797002,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인_102드림캐슬_.pdf",
+        "cmnPhyAhflNm": "2026093068797002.pdf",
+        "cmnAhflSz": 667059,
+        "cmnAhflPth": "/Files/upload/2026/COM/09/30/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) "
+      },
+      {
+        "cmnAhflSn": 59453092,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "든든전세 홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인_102드림캐슬_.pdf",
+        "cmnPhyAhflNm": "2024111259453092.pdf",
+        "cmnAhflSz": 667059,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 용인시 처인구 고진로27번길 23(고림동,드림캐슬) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41460",
+    "dng": "",
+    "apt": "P414600108",
+    "housing": "용인고림(아이린캐슬)",
+    "row": [
+      "매입다가구(경기용인시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "4",
+      "22",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 59453709,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인_103,104아이린캐슬(고림동).pdf",
+        "cmnPhyAhflNm": "2024111259453709.pdf",
+        "cmnAhflSz": 670334,
+        "cmnAhflPth": "/Files/upload/2024/COM/11/12/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 용인시 처인구 고진로27번길 25(고림동,아이린캐슬) "
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 2,
+    "sbd": "P41460",
+    "dng": "",
+    "apt": "P414600032",
+    "housing": "용인삼가(산들하임)",
+    "row": [
+      "매입다가구(경기용인시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "25",
+      "173",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 61812591,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "09",
+        "ahflDesc": "평면도",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인(삼가동)_산들하임101동평면도.PNG",
+        "cmnPhyAhflNm": "2025051561812591.PNG",
+        "cmnAhflSz": 495352,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/15/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 용인시 처인구 중부대로 1091(삼가동) 산들하임"
+      },
+      {
+        "cmnAhflSn": 61812580,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "09",
+        "ahflDesc": "평면도",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인(삼가동)_산들하임103동평면도.PNG",
+        "cmnPhyAhflNm": "2025051561812580.PNG",
+        "cmnAhflSz": 721677,
+        "cmnAhflPth": "/Files/upload/2025/COM/05/15/",
+        "lsSplInfUplFlDsCdNm": "평면도",
+        "dngHsAdr": "경기도 용인시 처인구 중부대로 1091-2(삼가동) 산들하임"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41460",
+    "dng": "",
+    "apt": "P414600080",
+    "housing": "용인상갈(골드캐슬)",
+    "row": [
+      "매입다가구(경기용인시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "12",
+      "194",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859360,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인_108골드캐슬101동.pdf",
+        "cmnPhyAhflNm": "2024070357859360.pdf",
+        "cmnAhflSz": 429554,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 용인시 기흥구 신갈로 2-1(상갈동) 골드캐슬"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41460",
+    "dng": "",
+    "apt": "P414600055",
+    "housing": "용인상갈(나인브릿지)",
+    "row": [
+      "매입다가구(경기용인시)",
+      "",
+      "지도",
+      "홍보물",
+      "60~70㎡",
+      "",
+      "12",
+      "195",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 57859368,
+        "sbdLgoNo": "P41460",
+        "lsSplInfUplFlDsCd": "08",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "용인_109나인브릿지101동.pdf",
+        "cmnPhyAhflNm": "2024070357859368.pdf",
+        "cmnAhflSz": 412806,
+        "cmnAhflPth": "/Files/upload/2024/COM/07/03/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 용인시 기흥구 상갈로11번길 15(상갈동) 나인브릿지"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  },
+  {
+    "count": 1,
+    "sbd": "P41590",
+    "dng": "",
+    "apt": "P415900030",
+    "housing": "화성병점(서해스카이2단지)",
+    "row": [
+      "매입다가구(경기화성시)",
+      "",
+      "지도",
+      "홍보물",
+      "80㎡ 이상",
+      "",
+      "200",
+      "498",
+      "청약신청하기"
+    ],
+    "items": [
+      {
+        "cmnAhflSn": 66943739,
+        "sbdLgoNo": "P41590",
+        "lsSplInfUplFlDsCd": "08",
+        "ahflDesc": "홍보물",
+        "lccNtYn": "Y",
+        "mnNtYn": "N",
+        "cmnAhflNm": "☆든든전세홍보물_화성병점(서해스카이팰리스2단지).pdf",
+        "cmnPhyAhflNm": "2026052066943739.pdf",
+        "cmnAhflSz": 1180636,
+        "cmnAhflPth": "/Files/upload/2026/COM/05/20/",
+        "lsSplInfUplFlDsCdNm": "카다로그",
+        "dngHsAdr": "경기도 화성시 병점구 병점노을4로 7(병점동) 병점역서해스카이팰리스 2단지 제1동"
+      }
+    ],
+    "endpoint": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectListAptBrndAhfInf.do"
+  }
+]

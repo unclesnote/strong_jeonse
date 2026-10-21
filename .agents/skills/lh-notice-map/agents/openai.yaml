@@ -1,0 +1,4 @@
+interface:
+  display_name: "LH 공고 지도 빌더"
+  short_description: "LH 공고 URL로 첨부자료를 수집하고 독립 지도 사이트를 생성"
+  default_prompt: "$lh-notice-map 으로 이 LH 공고 URL의 자료와 지도 사이트를 새 실행 폴더에 만들어줘."

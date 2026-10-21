@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="공고의 주택목록을 지도에서 비교하고 세대별 조건과 홍보물을 확인하세요.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>주택 지도</title>
+  <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="vendor/MarkerCluster.css"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <nav class="rail" aria-label="주 메뉴">
+    <a class="brand" href="./" aria-label="든든전세 지도 홈"><svg viewBox="0 0 32 32" fill="none"><path d="M5 14 16 5l11 9v13h-8v-9h-6v9H5V14Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></a>
+    <button class="rail-button active" data-action="map-view" aria-label="지도 보기"><i data-icon="map"></i><span>지도</span></button>
+    <button class="rail-button" data-action="table-view" aria-label="전체 세대 표 보기"><i data-icon="table"></i><span>세대 표</span></button>
+    <button class="rail-button" data-action="saved-view" aria-label="저장한 건물 보기"><i data-icon="bookmark"></i><span>저장</span><b id="saved-count" hidden>0</b></button>
+    <button class="rail-button" data-action="documents" aria-label="공고와 자료 열기"><i data-icon="file"></i><span>공고·자료</span></button>
+    <div class="rail-bottom"><span class="rail-lh">LH</span><span>주택목록 기반</span></div>
+  </nav>
+  <aside class="sidebar" aria-label="주택 검색과 목록">
+    <header class="search-header">
+      <div class="eyebrow">주택 공고</div><h1><span id="app-title">주택 지도</span><span class="live-dot"></span></h1>
+      <div class="search-box"><i data-icon="search"></i><input id="search" type="search" placeholder="주택명, 주소, 동·호수 검색" aria-label="주택 검색"><button id="clear-search" aria-label="검색어 지우기" hidden>×</button></div>
+      <div class="notice-line"><span class="notice-badge">정정공고</span><span id="notice-date"></span><button data-action="documents">공고 보기 <span>↗</span></button></div>
+    </header>
+    <section class="list-heading"><div><h2 id="results-title">전체 주택</h2><span id="results-count" aria-live="polite"></span></div><div class="heading-actions"><button class="list-filter-button" id="list-filter-toggle" aria-expanded="false" aria-controls="list-filters">필터 <span id="filter-count" hidden></span><span class="filter-chevron">⌄</span></button><button class="text-button" id="reset-filters" aria-label="검색과 필터 초기화"><i data-icon="reset"></i>초기화</button></div></section>
+    <section id="list-filters" class="sidebar-filters" aria-label="목록 필터" hidden></section>
+    <div class="sort-bar"><span>건물·주소 기준</span><label><span class="sr-only">목록 정렬 항목</span><select id="sort" aria-label="목록 정렬 항목"><option value="name">주택명순</option><option value="address">주소순</option><option value="deposit">보증금순</option><option value="area">면적순</option><option value="rooms">방수순</option><option value="units">세대수순</option><option value="media">홍보물 수순</option><option value="type">주택유형순</option><option value="elevator">승강기순</option></select></label><button id="sort-direction" class="icon-button" aria-label="정렬 방향 바꾸기" title="오름차순">↑</button></div>
+    <div id="result-list" class="result-list"></div>
+    <footer class="sidebar-footer"><span id="source-summary"></span><button data-action="table-view">전체 세대 비교 <span>→</span></button></footer>
+  </aside>
+  <main class="map-area" aria-label="주택 지도">
+    <div id="map"></div>
+    <div class="filter-strip" aria-label="주택 필터"></div>
+    <div class="map-tools"><button id="fit-all" title="검색 결과 전체 보기" aria-label="검색 결과 전체 보기"><i data-icon="expand"></i></button><div class="zoom-tools"><button id="zoom-in" aria-label="지도 확대">＋</button><button id="zoom-out" aria-label="지도 축소">−</button></div><button id="toggle-labels" aria-label="주소 라벨 표시 전환" title="주소 라벨" aria-pressed="false"><i data-icon="label"></i></button></div>
+    <div class="map-bottom"><div class="map-status"><span class="green-dot"></span><span id="map-status">주소 위치를 불러오는 중</span></div><label class="viewport-toggle"><input id="in-map" type="checkbox">현재 지도 영역만</label></div>
+    <button class="mobile-list-switch" id="mobile-list">목록 보기</button>
+    <div id="tile-error" class="tile-error" hidden>지도 배경을 불러오지 못했습니다. 인터넷 연결을 확인하세요. 주택 목록과 자료는 계속 이용할 수 있습니다.</div>
+  </main>
+  <aside id="detail" class="detail-panel" aria-label="선택한 건물 상세정보" hidden></aside>
+</div>
+<section id="table-panel" class="table-panel" aria-label="세대별 원본 정보" hidden>
+  <header><div><span class="eyebrow">주택목록 엑셀 원본 기준</span><h2>세대별 상세 비교 <span id="table-count"></span></h2></div><div class="table-actions"><button id="csv-export" class="secondary-button"><i data-icon="download"></i>현재 표 CSV</button><button class="icon-button" data-action="close-table" aria-label="표 닫기">×</button></div></header>
+  <div class="table-info"><span>열 제목을 누르면 각 항목을 오름차순·내림차순으로 정렬합니다. 주택명을 누르면 지도와 홍보물이 함께 열립니다.</span><label>표 검색 <input id="table-search" placeholder="주소, 호수, 비고 등" aria-label="세대 표 검색"></label></div>
+  <div class="table-scroll"><table id="unit-table"><thead></thead><tbody></tbody></table></div>
+  <footer><span>보증금 단위: 원 · 면적 단위: ㎡ · 원본에 없는 값은 ‘—’로 표시합니다.</span><button data-action="source-xlsx" class="text-button">원본 주택목록 XLSX 다운로드 ↗</button></footer>
+</section>
+<dialog id="viewer" class="viewer">
+  <header><div><span id="viewer-kind"></span><h2 id="viewer-title"></h2></div><a id="viewer-download" class="secondary-button" download><i data-icon="download"></i>원본</a><button id="viewer-close" class="icon-button" aria-label="미리보기 닫기">×</button></header>
+  <div class="viewer-tools"><span id="viewer-pages"></span><span>이미지 미리보기</span><button id="viewer-zoom-out" aria-label="미리보기 축소">−</button><span id="viewer-zoom">100%</span><button id="viewer-zoom-in" aria-label="미리보기 확대">＋</button></div>
+  <div id="viewer-body" class="viewer-body"></div>
+</dialog>
+<dialog id="documents" class="documents"><header><div><span class="eyebrow">공고 자료</span><h2>공고와 주택목록</h2></div><button id="documents-close" class="icon-button" aria-label="자료 닫기">×</button></header><p id="documents-title"></p><div id="common-files"></div><a id="source-link" class="source-link" target="_blank" rel="noopener">공고 원문 열기 ↗</a><p class="source-note">보증금·면적·동호수는 해당 공고의 주택목록을 기준으로 표시합니다. 주택군 공통 홍보물은 선택한 건물과 다를 수 있어 구분해 표시합니다. HWP/HWPX는 제외했습니다.</p></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<section id="filter-popover" class="filter-popover" role="dialog" aria-label="복수 선택 필터" hidden></section>
+<script src="vendor/leaflet.js"></script><script src="vendor/leaflet.markercluster.js"></script><script src="data.js"></script><script src="app.js"></script>
+</body></html>
