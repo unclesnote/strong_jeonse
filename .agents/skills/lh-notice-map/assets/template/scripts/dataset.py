@@ -288,6 +288,9 @@ def copy_assets(data,asset_root,target,report):
         src=local_file(asset_root,url);dst=target/url;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
         if digest(dst)!=report['fileHashes'][url]:raise DatasetError(f'Asset copy checksum mismatch: {url}')
 
+def competition_config(data):
+    return {**{k:data['notice'][k] for k in ('id','sourceUrl','title')},'totalUnits':len(data['units']),'expectedGroups':[g['name'] for g in data['groups']]}
+
 def build(dataset_path,asset_root,output):
     data=read_json(dataset_path);report=validate(data,asset_root);output=Path(output).resolve()
     if output==PROJECT/'site/dist':raise DatasetError('Use activate to replace live dist data')
@@ -296,6 +299,7 @@ def build(dataset_path,asset_root,output):
     stage=Path(tempfile.mkdtemp(prefix='.'+output.name+'.',dir=output.parent))
     try:
         copy_assets(data,asset_root,stage,report)
+        (stage/'competition-config.json').write_bytes(encode_json(competition_config(data)))
         (stage/'data.js').write_bytes(runtime_bytes(data));(stage/'dataset.json').write_bytes(encode_json(data));(stage/'validation-audit.json').write_bytes(encode_json(audit_report(data,report)))
         os.replace(stage,output)
     finally:
@@ -326,7 +330,7 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
         else:os.replace(stage,snapshot);created_snapshot=True
         # The app reads only data.js: replace that pointer LAST. Roll back every
         # active-state file if a write/rename fails. Previous snapshots stay valid.
-        updates=[(state_dir/'active-dataset.json',encode_json(config)),(state_dir/'validation-audit.json',encode_json(audit)),(dist/'data.js',payload)]
+        updates=[(dist/'competition-config.json',encode_json(competition_config(data))),(state_dir/'active-dataset.json',encode_json(config)),(state_dir/'validation-audit.json',encode_json(audit)),(dist/'data.js',payload)]
         backups={p:p.read_bytes() if p.exists() else None for p,_ in updates}
         try:
             for path,content in updates:atomic_write(path,content)

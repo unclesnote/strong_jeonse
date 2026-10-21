@@ -288,14 +288,18 @@ def copy_assets(data,asset_root,target,report):
         src=local_file(asset_root,url);dst=target/url;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
         if digest(dst)!=report['fileHashes'][url]:raise DatasetError(f'Asset copy checksum mismatch: {url}')
 
+def competition_config(data):
+    return {**{k:data['notice'][k] for k in ('id','sourceUrl','title')},'totalUnits':len(data['units']),'expectedGroups':[g['name'] for g in data['groups']]}
+
 def build(dataset_path,asset_root,output):
     data=read_json(dataset_path);report=validate(data,asset_root);output=Path(output).resolve()
-    if output==PROJECT/'dist':raise DatasetError('Use activate to replace live dist data')
+    if output==PROJECT/'public':raise DatasetError('Use activate to replace live dist data')
     if output.exists():raise DatasetError('Build output already exists; choose a new output directory')
     output.parent.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.'+output.name+'.',dir=output.parent))
     try:
         copy_assets(data,asset_root,stage,report)
+        (stage/'competition-config.json').write_bytes(encode_json(competition_config(data)))
         (stage/'data.js').write_bytes(runtime_bytes(data));(stage/'dataset.json').write_bytes(encode_json(data));(stage/'validation-audit.json').write_bytes(encode_json(audit_report(data,report)))
         os.replace(stage,output)
     finally:
@@ -308,7 +312,7 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
     content_hash=hashlib.sha256(encode_json(data)+encode_json(report['fileHashes'])).hexdigest()
     prefix=f'datasets/{data["notice"]["id"]}/{content_hash[:20]}/'
     if dry_run:return audit_report(data,report)|{'dryRun':True,'assetPrefix':prefix,'contentHash':content_hash}
-    dist=Path(dist or PROJECT/'dist').resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
+    dist=Path(dist or PROJECT/'public').resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
     dist.mkdir(parents=True,exist_ok=True);state_dir.mkdir(parents=True,exist_ok=True)
     # All copying and runtime compilation finishes before touching active state.
     stage=Path(tempfile.mkdtemp(prefix='.dataset-stage-',dir=dist))
@@ -326,7 +330,7 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
         else:os.replace(stage,snapshot);created_snapshot=True
         # The app reads only data.js: replace that pointer LAST. Roll back every
         # active-state file if a write/rename fails. Previous snapshots stay valid.
-        updates=[(state_dir/'active-dataset.json',encode_json(config)),(state_dir/'validation-audit.json',encode_json(audit)),(dist/'data.js',payload)]
+        updates=[(dist/'competition-config.json',encode_json(competition_config(data))),(state_dir/'active-dataset.json',encode_json(config)),(state_dir/'validation-audit.json',encode_json(audit)),(dist/'data.js',payload)]
         backups={p:p.read_bytes() if p.exists() else None for p,_ in updates}
         try:
             for path,content in updates:atomic_write(path,content)
@@ -350,7 +354,7 @@ def main(argv=None):
     ids=sub.add_parser('ids',help='Generate the canonical stable group/building/unit ID from exact source values')
     ids.add_argument('--notice-id',required=True);ids.add_argument('--kind',required=True,choices=['group','building','unit']);ids.add_argument('--values-json',required=True,help='JSON array: [groupName], [groupName,address], or [groupName,address,originalId]')
     for command in ('validate','build','activate'):
-        p=sub.add_parser(command);p.add_argument('--dataset',required=True);p.add_argument('--asset-root',default=str(PROJECT/'dist'))
+        p=sub.add_parser(command);p.add_argument('--dataset',required=True);p.add_argument('--asset-root',default=str(PROJECT/'public'))
         if command=='build':p.add_argument('--output',required=True)
         if command=='activate':p.add_argument('--dry-run',action='store_true');p.add_argument('--dist');p.add_argument('--state-dir')
     args=parser.parse_args(argv)

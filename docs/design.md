@@ -222,3 +222,94 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 - [x] 새 실행 폴더 생성·기존 결과 보존·ID 불일치 차단 검증
 
 사이트 배포 도구는 정적 출력 경로를 제한하므로 최종 앱 출력은 최상위 `dist/`에 둔다. 데이터 원본·설계·실행 도구는 각각의 전용 폴더에 유지한다.
+
+
+## 13. 환경설정 문서
+
+[ENV_SETUP.md](ENV_SETUP.md)에 Ubuntu 및 Windows 환경설정을 기록한다. Ubuntu 24.04/Python 3.12를 구체적인 설치 기준으로 사용하고 Windows 전체 파이프라인은 WSL2+Ubuntu로 안내한다. Windows 네이티브는 정적 사이트 보기와 Python 환경 생성 절차를 구분하며, LibreOffice 명령·프로필 URI 차이 때문에 전체 자동 변환을 실기 검증했다고 표시하지 않는다.
+
+의존성은 `config/requirements.txt`에 지원 버전 범위로 모았다. 새 환경은 `.venv/`에서 설치하고 시스템 Python과 분리한다. 문서에는 Poppler, LibreOffice Impress, 한글 폰트, UTF-8·한국 날짜 설정, 프로젝트 복사, 설치 확인, 테스트, 새 공고 격리 빌드, 브라우저 접근 제약, 로컬 서버, 데이터 보존 및 게시 조건을 포함한다. 선택적 JS 서식 XLSX 도구의 환경 전용 의존성과 표준 Python 정리 XLSX 생성 경로도 구분한다.
+
+- [x] Ubuntu 시스템 패키지·Python 가상환경·설치 확인 명령 기록
+- [x] Windows WSL2 전체 실행 및 Windows 네이티브 사이트 보기 기록
+- [x] 필수 Python 패키지 목록과 `.venv/` 제외 설정 추가
+- [x] README·스킬 사용 가이드·데이터 교체 가이드에 환경설정 문서 연결
+- [x] 현재 Ubuntu 환경의 실행파일·패키지 점검과 문서 내 경로 검증
+
+## 14. 청약 경쟁률 백엔드·정렬·필터
+
+LH 상세 공고(`selectWrtancInfo.do?panId=…`)의 공급정보 표 `htyListTb08`은 주택군 단위로 공급호수·모집인원·신청건수와 합계 행을 제공한다. 브라우저가 LH를 직접 조회하지 않고, 백엔드가 원문을 30분 주기로 파싱해 `/api/competition`으로 제공한다. 로컬 서버는 Python 표준 라이브러리 구현(`backend/server.py`, `backend/competition.py`, sqlite3)이고, 호스팅 Worker(`backend/site`, D1)는 같은 규칙의 `backend/competition.mjs`를 쓴다(16절).
+
+- 파싱 결과는 응답 `panId`, 합계 행, 주택군 집합, 총 공급호수(주택목록 세대수)가 `competition-config.json`과 모두 일치할 때만 저장한다. 같은 주택군의 여러 행은 합산한다. 미공개 값은 null로 두며 0:1로 표시하지 않는다.
+- 조회 실패 시 마지막 정상 수치·조회 시각을 유지하고 `stale-error`와 오류를 표시한다. 실패 후 자동 재조회는 5분 백오프한다.
+- 로컬 서버는 30분 타이머로 갱신한다. Worker에는 타이머가 없으므로 `GET`이 30분 경과(또는 실패 후 5분 경과) 시 지연 갱신한다. `POST /api/competition/refresh`는 동일 출처만 허용하고 캐시를 무시한다. 동시 조회는 메모리 Promise와 DB 잠금(45초)으로 하나로 합친다.
+- UI는 경쟁률 패널(상태·조회 시각·전체 신청건수·`지금 새로고침`), 공급호수/모집인원 기준 선택, 카드·상세·표의 주택군 경쟁률, `경쟁률순`·`신청건수순` 정렬(미공개는 항상 마지막), 경쟁률 구간 복수 선택 필터를 제공한다. 백엔드가 없으면 기존 지도 기능은 그대로 동작한다.
+- 앱 원본은 `public/`, 호스팅 빌드 출력은 `dist/`(무시됨)로 분리했다. 스킬 템플릿은 `backend/`와 갱신된 `site/dist`를 포함하고, 실행별 `docs/RUN.md`에 백엔드 실행 명령을 기록한다.
+
+- [x] LH 공급정보 표 파서와 합계·주택군·공고 ID 교차 검증
+- [x] 30분 주기 갱신, 즉시 새로고침 API, 실패 시 이전 값 유지·백오프
+- [x] Worker 환경의 지연 갱신(GET 시 30분 경과 확인)
+- [x] 경쟁률 기준 선택·정렬·구간 필터 UI
+- [x] 실제 공고 응답 픽스처 기반 테스트(`tests/competition.test.mjs`, Python 래퍼)
+- [x] 스킬 템플릿·SKILL.md·RUN.md 반영
+- [ ] 호스팅 Worker 빌드·배포 검증(Sites 빌드 도구 `SITES_BUILD_HELPER` 필요)
+
+## 15. Claude Code 스킬
+
+`.claude/skills/lh-notice-map/SKILL.md`는 Codex 스킬(`.agents/skills/lh-notice-map/`)과 같은 실행기·템플릿·참조문서를 참조하는 Claude Code용 절차다. 자료를 복사하지 않아 단일 원본을 유지한다. 대화형 브라우저 대신 WebFetch·headless Chrome으로 공고 HTML을 확인하고, Node 경로 탐색, 상주 서버의 백그라운드 실행, 경쟁률 API·화면 점검, 게시 제한(Artifact는 백엔드 불가)을 명시했다.
+
+- [x] Claude Code 프로젝트 스킬 추가(경쟁률 백엔드 절차 포함)
+- [x] 스킬 사용 가이드에 Claude Code 호출 방법 기록
+
+## 16. Python 로컬 백엔드와 한 번에 실행하는 환경 스크립트
+
+PATH에 Node.js가 없으면 `node backend/server.mjs`가 실행되지 않는다. Ubuntu 24.04의 apt로 받을 수 있는 Node(18.19)에는 `node:sqlite`도 없다. 그래서 로컬 서버를 Python 표준 라이브러리로 다시 구현하고 Node 로컬 서버는 제거했다. JS 파서(`competition.mjs`)는 호스팅 Worker용으로 남긴다. 두 파서는 같은 원문 픽스처에서 같은 JSON을 만들어야 하며, Node가 있으면 `tests/test_competition.py`가 둘을 대조한다. SQLite 스키마도 같아서 기존 캐시를 그대로 읽는다.
+
+경쟁률 소스 URL은 사이트 단위다. 사이트 폴더마다 있는 `competition-config.json`의 `sourceUrl`을 쓰며, 이 값은 데이터셋 `notice.sourceUrl`에서 생성된다. `start_site.sh --list`와 서버 시작 메시지에 표시한다. 경쟁률 기능 이전에 만든 실행 폴더는 이 파일과 경쟁률 UI가 없어 "소스 URL 미등록"으로 표시하며, 경쟁률이 필요하면 새로 빌드한다.
+
+- `scripts/project_env.sh`: 공통 설정. `.venv/` 전용 Python, `PIP_CACHE_DIR=tmp/pip-cache`, `PYTHONPYCACHEPREFIX=tmp/pycache`, `PYTHONNOUSERSITE=1`, UTF-8·TZ를 정한다. `python3-venv`가 없으면 `venv --without-pip`으로 만들고 시스템 pip(`--python`)로 venv 안에 pip를 설치한다.
+- `./setup_env.sh`: 부족한 apt 패키지만 설치한다(실패해도 경고 후 계속). 이어서 `.venv` 생성·검사, requirements 설치, `pip check`, 도구 확인, 전체 테스트를 수행한다. `--no-system`, `--recreate`, `--no-test`를 지원한다.
+- `./start_site.sh`: `public/`과 `--runs-dir`(기본 `lh-runs`)의 `*/site/dist`를 최신순으로 나열한다. 하나면 바로 실행하고, 여러 개면 대화형 번호 선택을 받는다. 터미널이 아니면 목록을 출력하고 종료 코드 2로 끝난다. 사용 중인 포트는 건너뛴다. 실행 폴더 사이트는 그 실행의 `backend/server.py`와 `tmp/competition/` 캐시를 쓴다.
+
+- [x] Python 로컬 백엔드(정적 파일·API·30분 스레드·동시 조회 공유·5분 백오프)
+- [x] JS 파서와의 결과 대조 테스트, 서비스·서버 테스트
+- [x] `setup_env.sh`·`start_site.sh`·`project_env.sh`, 캐시를 프로젝트 `tmp/` 안에 둠
+- [x] python3-venv 없는 Ubuntu에서 `setup_env.sh --no-system` 실제 실행·테스트 통과
+- [x] 사이트 목록·서버 출력에 경쟁률 소스 URL 표시
+- [x] 진입 스크립트 `setup_env.sh`·`start_site.sh`를 프로젝트 루트로 이동(AGENTS.md에 예외 기록). 공통 설정 `scripts/project_env.sh`는 `scripts/`에 둠
+- [x] README·ENV_SETUP·DATA_GUIDE·두 SKILL.md·RUN.md 갱신, 템플릿 backend 교체
+- [x] `setup_env.sh` 기존 환경 확인: 설치된 apt 제외(정상 venv면 python3-venv 제외), 정상 `.venv` 재사용, requirements·Python 버전 해시가 같으면 pip 생략(`--upgrade`로 강제)
+- [x] `start_site.sh` 실행 중 확인(`scripts/site_procs.py`, /proc 기반): 재시작·중지·유지 질문, `--restart`(포트 유지)·`--stop`, 비대화형은 주소만 출력
+- [x] 실행 여부와 관계없이 전체 접속 URL을 한 줄로 출력, `--list`에 실행 중 주소 표시
+
+## 17. 여러 공고 사이트 동시 운용
+
+공고 URL로 빌드할 때마다 `lh-runs/<UTC시각>-<panId>-<고유값>/`이 새로 생긴다. 원본, 데이터셋, 미리보기, 지오코딩 캐시, 사이트, 경쟁률 캐시가 모두 그 안에 있어 실행끼리 상태를 공유하지 않는다. 기존 실행과 작업공간 `public/`은 덮어쓰지 않는다. 경쟁률 SQLite도 사이트별 파일이고 행은 공고 ID로 구분한다.
+
+- `build_notice.py` 기본 `--runs-dir`을 cwd 기준 `lh-runs`에서 프로젝트 루트(`AGENTS.md`·`start_site.sh`가 있는 상위 폴더)의 `lh-runs/`로 바꿨다. `LH_RUNS_DIR`로 바꿀 수 있다. 다른 위치에서 실행해도 `start_site.sh`가 사이트를 찾는다. Codex SKILL.md의 `/workspace/lh-runs` 예시를 제거했다.
+- `start_site.sh`에 `--all`(실행 중이 아닌 모든 사이트를 백그라운드로 실행, 빈 포트 순차 배정, 포트가 열릴 때까지 대기 후 URL 출력), `--bg`, `--stop-all`을 추가했다. 로그는 `tmp/logs/`에 남긴다.
+- 빈 포트 검사에 `SO_REUSEADDR`를 적용했다. 서버를 내린 직후 TIME_WAIT 포트를 사용 중으로 오인해 재시작 주소가 바뀌던 문제를 고쳤다.
+
+- [x] 표준 패키지로 같은 공고를 2회 빌드 → 별도 실행 폴더 2개 생성, 기존 폴더 불변
+- [x] `--all`로 작업공간 + 실행 2개 동시 실행, 각 API `ok`, 사이트별 경쟁률 캐시 분리
+- [x] `--all` 재실행 시 중복 실행 없음, 개별 `--stop`·`--stop-all` 확인
+
+## 18. 경쟁률 새로고침·기준 시각 표시와 지도 툴팁 폭
+
+- 새로고침 버튼을 회색 텍스트 링크에서 아이콘이 있는 테두리 버튼(`경쟁률 새로고침`)으로 바꿨다. 조회 중에는 아이콘이 회전하고 비활성화된다. 위치는 사이드바 `청약 경쟁률` 패널 제목 오른쪽이다.
+- 패널에 `데이터 기준` 줄을 따로 두었다. 마지막 정상 조회 시각(예: 10월 22일 (목) 00:12), 몇 분 전인지, 다음 자동 갱신 시각을 표시하고 1분마다 갱신한다. 조회에 실패하면 상태 줄에 "갱신 실패 · 위 시각의 이전 값 표시"로 알린다. 카드와 지도 툴팁의 경쟁률에도 짧은 기준 시각(`10. 22. 00:12 기준`)을 붙였다.
+- 툴팁이 세로로 길쭉하던 원인: Leaflet 툴팁은 크기 0인 pane에 절대 위치로 붙는다. 그래서 `white-space:normal`이면 최소 내용 폭(단어 단위)으로 줄어든다. `width:max-content; max-width:min(340px,80vw)`로 고쳤다. 툴팁에 경쟁률·신청건수 줄을 추가했다.
+
+- [x] 버튼·기준 시각·툴팁 수정, 스킬 템플릿 `site/dist`에 동일 반영
+- [x] headless Chrome으로 패널 화면과 툴팁의 수정 전·후 비교 확인
+
+## 19. 빌드 결과의 git 보관
+
+공고 빌드(`lh-runs/<실행>/`)는 git에 커밋한다. 전달용 `reports/첨부파일.zip`은 `data/notices/lh_<ID>/`와 내용이 같아 재생성할 수 있으므로 `.gitignore`(`lh-runs/*/reports/*.zip`)로 제외한다. 실행별 `tmp/`(지오코딩 캐시·경쟁률 SQLite·임시 의존성)와 `__pycache__/`는 기존 규칙으로 제외된다. 가장 큰 파일은 약 8MB라서 GitHub의 파일 크기 제한(100MB)에 걸리지 않는다. git은 같은 내용을 한 번만 저장하므로 실행 폴더 안 `site/dist`와 `data/datasets`의 중복은 용량을 늘리지 않는다. 공고당 실제 증가분은 약 150~250MB로 예상한다.
+
+## 20. clone 직후 실행 검증
+
+git에 올라갈 파일만(`git ls-files -co --exclude-standard`) 새 폴더에 복사해 clone 직후 상태를 재현했다. `./setup_env.sh --no-system` → `./start_site.sh` 순서로 venv 생성, 패키지 설치, 테스트 통과, 사이트 200, 경쟁률 API `ok`, 화면의 카드 56개·기준 시각 표시를 확인했다.
+
+- `--bg`/`--all` 서버를 `setsid`로 새 세션에서 띄운다. 실행한 터미널이나 도구 세션이 끝날 때 서버가 같이 종료되던 문제를 고쳤다.
+- 변환 도구가 없는 상태의 테스트 실패는 `setup_env.sh`에서 경고로 처리한다(사이트 보기에는 불필요). 도구가 모두 있는데 실패하면 기존처럼 오류로 끝난다.

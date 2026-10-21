@@ -23,9 +23,15 @@
       <div class="search-box"><i data-icon="search"></i><input id="search" type="search" placeholder="주택명, 주소, 동·호수 검색" aria-label="주택 검색"><button id="clear-search" aria-label="검색어 지우기" hidden>×</button></div>
       <div class="notice-line"><span class="notice-badge">정정공고</span><span id="notice-date"></span><button data-action="documents">공고 보기 <span>↗</span></button></div>
     </header>
+    <section class="competition-panel" aria-label="청약 경쟁률 현황">
+      <div class="competition-heading"><strong>청약 경쟁률</strong><button id="competition-refresh" class="competition-refresh" type="button" title="LH 원문에서 지금 다시 조회"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg><span>경쟁률 새로고침</span></button></div>
+      <div class="competition-stamp"><span>데이터 기준</span><strong id="competition-updated">—</strong><small id="competition-age"></small></div>
+      <label class="competition-basis">경쟁률 기준 <select id="competition-basis" aria-label="경쟁률 기준"><option value="supplyRatio">공급호수 기준</option><option value="recruitmentRatio">모집인원 기준</option></select></label>
+      <p id="competition-status" role="status">신청 현황을 불러오는 중입니다.</p><small>주택군 단위 · 원문 신청건수 ÷ 선택한 기준</small>
+    </section>
     <section class="list-heading"><div><h2 id="results-title">전체 주택</h2><span id="results-count" aria-live="polite"></span></div><div class="heading-actions"><button class="list-filter-button" id="list-filter-toggle" aria-expanded="false" aria-controls="list-filters">필터 <span id="filter-count" hidden></span><span class="filter-chevron">⌄</span></button><button class="text-button" id="reset-filters" aria-label="검색과 필터 초기화"><i data-icon="reset"></i>초기화</button></div></section>
     <section id="list-filters" class="sidebar-filters" aria-label="목록 필터" hidden></section>
-    <div class="sort-bar"><span>건물·주소 기준</span><label><span class="sr-only">목록 정렬 항목</span><select id="sort" aria-label="목록 정렬 항목"><option value="name">주택명순</option><option value="address">주소순</option><option value="deposit">보증금순</option><option value="area">면적순</option><option value="rooms">방수순</option><option value="units">세대수순</option><option value="media">홍보물 수순</option><option value="type">주택유형순</option><option value="elevator">승강기순</option></select></label><button id="sort-direction" class="icon-button" aria-label="정렬 방향 바꾸기" title="오름차순">↑</button></div>
+    <div class="sort-bar"><span>건물·주소 기준</span><label><span class="sr-only">목록 정렬 항목</span><select id="sort" aria-label="목록 정렬 항목"><option value="name">주택명순</option><option value="address">주소순</option><option value="deposit">보증금순</option><option value="area">면적순</option><option value="rooms">방수순</option><option value="units">세대수순</option><option value="media">홍보물 수순</option><option value="type">주택유형순</option><option value="elevator">승강기순</option><option value="competition">경쟁률순</option><option value="applications">신청건수순</option></select></label><button id="sort-direction" class="icon-button" aria-label="정렬 방향 바꾸기" title="오름차순">↑</button></div>
     <div id="result-list" class="result-list"></div>
     <footer class="sidebar-footer"><span id="source-summary"></span><button data-action="table-view">전체 세대 비교 <span>→</span></button></footer>
   </aside>
@@ -43,7 +49,7 @@
   <header><div><span class="eyebrow">주택목록 엑셀 원본 기준</span><h2>세대별 상세 비교 <span id="table-count"></span></h2></div><div class="table-actions"><button id="csv-export" class="secondary-button"><i data-icon="download"></i>현재 표 CSV</button><button class="icon-button" data-action="close-table" aria-label="표 닫기">×</button></div></header>
   <div class="table-info"><span>열 제목을 누르면 각 항목을 오름차순·내림차순으로 정렬합니다. 주택명을 누르면 지도와 홍보물이 함께 열립니다.</span><label>표 검색 <input id="table-search" placeholder="주소, 호수, 비고 등" aria-label="세대 표 검색"></label></div>
   <div class="table-scroll"><table id="unit-table"><thead></thead><tbody></tbody></table></div>
-  <footer><span>보증금 단위: 원 · 면적 단위: ㎡ · 원본에 없는 값은 ‘—’로 표시합니다.</span><button data-action="source-xlsx" class="text-button">원본 주택목록 XLSX 다운로드 ↗</button></footer>
+  <footer><span>보증금: 원 · 면적: ㎡ · 경쟁률은 주택군 기준의 추가 조회값이며 세대별 신청건수가 아닙니다. 미공개는 —.</span><button data-action="source-xlsx" class="text-button">원본 주택목록 XLSX 다운로드 ↗</button></footer>
 </section>
 <dialog id="viewer" class="viewer">
   <header><div><span id="viewer-kind"></span><h2 id="viewer-title"></h2></div><a id="viewer-download" class="secondary-button" download><i data-icon="download"></i>원본</a><button id="viewer-close" class="icon-button" aria-label="미리보기 닫기">×</button></header>

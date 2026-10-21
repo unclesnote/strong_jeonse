@@ -36,9 +36,16 @@ def infer_spreadsheet(path,ident,adapter):
     if len(candidates)!=1:raise ValueError('주택목록의 시트·열을 확정할 수 없습니다. --config에 spreadsheet 매핑을 제공하세요.')
     return candidates[0]
 
+def default_runs_dir():
+    # 실행 위치(cwd)와 관계없이 모든 공고 빌드를 프로젝트 루트의 lh-runs/에 쌓는다.
+    if os.environ.get('LH_RUNS_DIR'):return Path(os.environ['LH_RUNS_DIR'])
+    for parent in Path(__file__).resolve().parents:
+        if (parent/'AGENTS.md').is_file() and (parent/'start_site.sh').is_file():return parent/'lh-runs'
+    return Path('lh-runs')
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('url');p.add_argument('--runs-dir',type=Path,default=Path('lh-runs'))
+    p.add_argument('url');p.add_argument('--runs-dir',type=Path,default=default_runs_dir(),help='실행 폴더를 쌓는 곳. 기본: LH_RUNS_DIR 또는 프로젝트 루트의 lh-runs/(start_site.sh가 찾는 위치)')
     p.add_argument('--notice-id',help='브라우저에서 확인한 panId. URL 값과 다르면 중단')
     p.add_argument('--html',type=Path,help='브라우저에서 저장한 해당 공고 HTML')
     p.add_argument('--config',type=Path,help='선택: 공고 메타데이터·spreadsheet 매핑·groupAliases')
@@ -75,7 +82,7 @@ def main():
         params=parse_qs(u.query);params['panId']=[ident]
         url=u._replace(query=urlencode(params,doseq=True)).geturl();report['resolvedUrl']=url
         # Copy only allowlisted implementation resources, never .git, hosting identity or data.js.
-        for d in ['scripts','data/schema','site/dist']:shutil.copytree(template/d,run/d,dirs_exist_ok=True)
+        for d in ['scripts','data/schema','site/dist','backend']:shutil.copytree(template/d,run/d,dirs_exist_ok=True)
         references=template.parents[1]/'references'
         if references.exists():
             for name in ['DATA_STANDARD.md','DATA_GUIDE.md']:
@@ -158,8 +165,9 @@ def main():
                     if path.is_file():archive.write(path,path.relative_to(raw))
         step('validate',[sys.executable,run/'scripts/dataset.py','validate','--dataset',dataset,'--asset-root',bundle])
         step('activate',[sys.executable,run/'scripts/dataset.py','activate','--dataset',dataset,'--asset-root',bundle,'--dist',run/'site/dist','--state-dir',run/'config'])
+        if not (run/'site/dist/competition-config.json').is_file():raise RuntimeError('competition-config.json was not generated')
         report.update(status='complete',siteDirectory='site/dist',dataset=str(dataset.relative_to(run)),validation=load(run/'config/validation-audit.json'))
-        (run/'docs/RUN.md').write_text('실행별 새 폴더입니다. 기존 프로젝트를 수정하지 않습니다.\n\n로컬 실행: python -m http.server 8765 --bind 127.0.0.1 --directory site/dist\n\n호스팅은 새 Sites 프로젝트를 생성하고 이 실행 폴더에 새 ID를 저장해 진행합니다.\n',encoding='utf-8')
+        (run/'docs/RUN.md').write_text('실행별 새 폴더입니다. 기존 프로젝트를 수정하지 않습니다.\n\n로컬 실행(지도 + 경쟁률 백엔드, Python 표준 라이브러리): 작업공간에서 ./start_site.sh 후 이 실행을 선택하거나, 이 폴더에서 python backend/server.py --directory site/dist --state-dir tmp/competition --port 8765\n\n경쟁률 소스 URL: site/dist/competition-config.json의 sourceUrl(데이터셋 notice.sourceUrl에서 생성). 백엔드가 30분마다 조회해 /api/competition으로 제공하고, 화면의 \'지금 새로고침\'은 POST /api/competition/refresh로 즉시 조회합니다.\n\n호스팅은 새 Sites 프로젝트를 생성하고 이 실행 폴더에 새 ID를 저장해 진행합니다.\n',encoding='utf-8')
         print('COMPLETE='+str(run/'site/dist'),flush=True);return 0
     except Exception as e:
         if report['status']!='needs_browser':report['status']='failed'

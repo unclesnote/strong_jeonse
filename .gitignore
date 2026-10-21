@@ -4,4 +4,20 @@ outputs/
 __pycache__/
 *.pyc
 .DS_Store
-lh-runs/
+# 공고 빌드(lh-runs/)는 커밋한다. 재생성 가능한 전달 ZIP만 제외한다. 실행별 tmp/는 위 tmp/ 규칙으로 제외된다.
+lh-runs/*/reports/*.zip
+
+/.venv/
+
+/backend/site/node_modules/
+/backend/site/public/
+/backend/site/dist/
+/backend/site/.sites-runtime/
+/backend/site/.vinext/
+/backend/site/.wrangler/
+/data/runtime/
+/dist/
+
+# build_hosted.mjs가 빌드 때마다 복사하는 생성물
+/backend/site/.openai/
+/backend/site/competition-config.json

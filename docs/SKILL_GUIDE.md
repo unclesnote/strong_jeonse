@@ -1,13 +1,17 @@
 # LH URL 지도 빌드 스킬
 
+먼저 `./setup_env.sh`로 환경을 한 번에 준비합니다(상세: [Windows·Ubuntu 환경설정](ENV_SETUP.md)). 빌드한 사이트는 `./start_site.sh`로 열고, 여러 개면 번호로 고릅니다.
+
 스킬은 이 프로젝트의 [`.agents/skills/lh-notice-map/SKILL.md`](../.agents/skills/lh-notice-map/SKILL.md)에 있습니다. 프로젝트 전용 스킬 검색 위치는 `.agents/skills/`입니다. 공용 폴더에 설치하지 않습니다. [공식 문서](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills)
 
 Codex에서 `$lh-notice-map 이 공고 URL로 새 지도 사이트를 만들어줘`로 요청합니다. 목록에 바로 보이지 않으면 프로젝트를 다시 열거나 위 SKILL.md 경로를 직접 지정합니다.
 
+Claude Code용 스킬은 [`.claude/skills/lh-notice-map/SKILL.md`](../.claude/skills/lh-notice-map/SKILL.md)입니다. 실행기·템플릿·참조문서는 위 Codex 스킬 폴더의 파일을 그대로 쓰고, 브라우저 대체(headless Chrome), Node 경로 확인, 게시 제한 같은 Claude Code 전용 절차만 따로 적었습니다. Claude Code에서는 `/lh-notice-map 이 공고 URL로 새 지도 사이트를 만들어줘`로 요청합니다. 두 SKILL.md는 동작이 바뀔 때 함께 갱신합니다.
+
 명령으로 실행할 때는 작업공간 최상위에서 다음을 사용합니다.
 
 ```bash
-python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID' --runs-dir lh-runs
+.venv/bin/python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID' --runs-dir lh-runs
 ```
 
 `panId` 없는 URL만으로는 어떤 공고인지 식별할 수 없습니다. 이때는 `needs_browser` 보고서를 남기고 멈춥니다. 스킬을 수행하는 에이전트가 브라우저의 실제 공고와 파일 ID를 확인한 후 HTML을 저장하여 `--html 확인한공고.html --notice-id 실제ID`로 새 실행을 이어갑니다. 앞선 공고나 최신 공고를 임의 선택하지 않습니다.

@@ -1,5 +1,7 @@
 # 새 공고 데이터 교체 가이드
 
+운영체제별 설치·가상환경·외부 변환 도구는 [환경설정 가이드](ENV_SETUP.md)를 따른다.
+
 지도 HTML·CSS·JavaScript를 수정하지 않고 공고를 교체하는 방법이다. 모든 명령은 작업공간 최상위 폴더에서 실행한다. 표준 정의는 [`DATA_STANDARD.md`](DATA_STANDARD.md), 현재 구현과 TODO는 [`design.md`](design.md)를 참고한다.
 
 실행 환경은 Python 3.10 이상과 `jsonschema` 4.x, Poppler의 `pdfinfo`가 필요하다. 이 작업 환경에는 설치되어 있다. 새 환경에서는 Python 패키지를 `python -m pip install "jsonschema>=4.10,<5"`로 설치하고, 운영체제의 Poppler 패키지를 설치한다. 미리보기를 새로 변환할 때에는 `pdftoppm`, Pillow, PPTX용 LibreOffice도 필요하다. 검증은 PDF 원본 페이지 수를 확인할 도구가 없으면 통과 처리하지 않는다.
@@ -57,14 +59,14 @@ python scripts/dataset.py activate \
 로컬 서버를 실행하고 브라우저를 새로고침한다.
 
 ```bash
-python -m http.server 8765 --bind 127.0.0.1 --directory dist
+./start_site.sh   # public/ 선택. 경쟁률 백엔드 포함
 ```
 
 주소는 `http://127.0.0.1:8765/`다. 정적 서버 재시작이나 화면 코드 수정은 필요하지 않다. 이미 열려 있는 탭은 새로고침해야 한다. 호스팅된 사이트에는 활성화된 `dist/`를 기존 Sites 프로젝트로 다시 게시해야 반영된다. 로컬 파일 교체가 서버 배포를 자동 실행하지는 않는다.
 
 ## 3. 새 XLSX를 설정으로 가져오기
 
-[`config/lh-current.json`](config/lh-current.json)을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
+[`config/lh-current.json`](../config/lh-current.json)을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
 
 새 설정에서 다음 부분을 바꾼다.
 

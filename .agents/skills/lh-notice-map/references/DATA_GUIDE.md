@@ -57,14 +57,14 @@ python scripts/dataset.py activate \
 로컬 서버를 실행하고 브라우저를 새로고침한다.
 
 ```bash
-python -m http.server 8765 --bind 127.0.0.1 --directory site/dist
+python backend/server.py --directory site/dist --state-dir tmp/competition --port 8765
 ```
 
 주소는 `http://127.0.0.1:8765/`다. 정적 서버 재시작이나 화면 코드 수정은 필요하지 않다. 이미 열려 있는 탭은 새로고침해야 한다. 호스팅된 사이트에는 활성화된 `site/dist/`를 기존 Sites 프로젝트로 다시 게시해야 반영된다. 로컬 파일 교체가 서버 배포를 자동 실행하지는 않는다.
 
 ## 3. 새 XLSX를 설정으로 가져오기
 
-[`config/lh-current.json`](config/lh-current.json)을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
+[`config/lh-current.json`](../config/lh-current.json)을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
 
 새 설정에서 다음 부분을 바꾼다.
 
