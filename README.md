@@ -4,7 +4,7 @@
 
 ## 실행
 
-프로젝트 폴더에서 `python -m http.server 8765 --bind 127.0.0.1 --directory sites/jeonse-map/dist`를 실행하고 `http://127.0.0.1:8765/`를 여세요. 별도 설치나 API 키는 필요하지 않습니다. 지도 배경에는 인터넷 연결이 필요합니다.
+프로젝트 폴더에서 `python -m http.server 8765 --bind 127.0.0.1 --directory dist`를 실행하고 `http://127.0.0.1:8765/`를 여세요. 별도 설치나 API 키는 필요하지 않습니다. 지도 배경에는 인터넷 연결이 필요합니다.
 
 ## 데이터 기준
 
@@ -25,7 +25,7 @@ python scripts/dataset.py validate --dataset data/datasets/공고ID/dataset.json
 python scripts/dataset.py activate --dataset data/datasets/공고ID/dataset.json --asset-root data/datasets/공고ID
 ```
 
-활성화 후 브라우저를 새로고침합니다. 실제 호스팅 사이트는 새 `sites/jeonse-map/dist/`를 다시 게시해야 합니다. `sites/jeonse-map/dist/data.js`는 생성물이므로 직접 수정하지 않습니다. 새 XLSX는 `scripts/import_xlsx.py`와 `config/lh-current.json`의 시트·열 매핑으로 표준 패키지에 넣습니다.
+활성화 후 브라우저를 새로고침합니다. 실제 호스팅 사이트는 새 `dist/`를 다시 게시해야 합니다. `dist/data.js`는 생성물이므로 직접 수정하지 않습니다. 새 XLSX는 `scripts/import_xlsx.py`와 `config/lh-current.json`의 시트·열 매핑으로 표준 패키지에 넣습니다.
 
 기존 수집·변환 도구도 남겨 두었습니다. `scripts/collect_lh.py`는 `LH_PAN_ID`와 `LH_NOTICE_HTML`을 받아 첨부를 수집합니다. `scripts/prepare_site_assets.py`에는 Pillow, Poppler, LibreOffice가 필요합니다. `scripts/geocode_addresses.py`는 한 번 수집한 주소 검색 응답을 `tmp/`에 저장해 재사용하며 페이지 이용 중에는 주소 검색 API를 호출하지 않습니다. 중간 산출물은 `scripts/dataset.py import-current`로 변환합니다. `scripts/build_data.py`는 표준 활성화 명령의 호환 진입점입니다.
 
@@ -50,7 +50,7 @@ python scripts/dataset.py activate --dataset data/datasets/공고ID/dataset.json
 | `data/datasets/` | 표준 JSON과 원본·페이지·썸네일 자산 |
 | `data/intermediate/` | 공고별 원본 셀 추출·검증 좌표·연결 감사 자료 |
 | `data/schema/` | 데이터 JSON 스키마 |
-| `sites/jeonse-map/dist/` | 브라우저에 제공하는 지도 앱과 배포용 데이터 스냅샷 |
+| `dist/` | 브라우저에 제공하는 지도 앱과 배포용 데이터 스냅샷 |
 | `tests/` | 검증 테스트와 독립 예제 데이터 |
 | `outputs/` | 사용자 전달 ZIP과 배포 패키지 |
 | `tmp/` | 재생성 가능한 캐시·검토용 빌드 |

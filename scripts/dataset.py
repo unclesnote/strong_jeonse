@@ -290,7 +290,7 @@ def copy_assets(data,asset_root,target,report):
 
 def build(dataset_path,asset_root,output):
     data=read_json(dataset_path);report=validate(data,asset_root);output=Path(output).resolve()
-    if output==PROJECT/'sites/jeonse-map/dist':raise DatasetError('Use activate to replace live dist data')
+    if output==PROJECT/'dist':raise DatasetError('Use activate to replace live dist data')
     if output.exists():raise DatasetError('Build output already exists; choose a new output directory')
     output.parent.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.'+output.name+'.',dir=output.parent))
@@ -308,7 +308,7 @@ def activate(dataset_path,asset_root,dist=None,state_dir=None,dry_run=False):
     content_hash=hashlib.sha256(encode_json(data)+encode_json(report['fileHashes'])).hexdigest()
     prefix=f'datasets/{data["notice"]["id"]}/{content_hash[:20]}/'
     if dry_run:return audit_report(data,report)|{'dryRun':True,'assetPrefix':prefix,'contentHash':content_hash}
-    dist=Path(dist or PROJECT/'sites/jeonse-map/dist').resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
+    dist=Path(dist or PROJECT/'dist').resolve();state_dir=Path(state_dir or PROJECT/'config').resolve()
     dist.mkdir(parents=True,exist_ok=True);state_dir.mkdir(parents=True,exist_ok=True)
     # All copying and runtime compilation finishes before touching active state.
     stage=Path(tempfile.mkdtemp(prefix='.dataset-stage-',dir=dist))
@@ -350,7 +350,7 @@ def main(argv=None):
     ids=sub.add_parser('ids',help='Generate the canonical stable group/building/unit ID from exact source values')
     ids.add_argument('--notice-id',required=True);ids.add_argument('--kind',required=True,choices=['group','building','unit']);ids.add_argument('--values-json',required=True,help='JSON array: [groupName], [groupName,address], or [groupName,address,originalId]')
     for command in ('validate','build','activate'):
-        p=sub.add_parser(command);p.add_argument('--dataset',required=True);p.add_argument('--asset-root',default=str(PROJECT/'sites/jeonse-map/dist'))
+        p=sub.add_parser(command);p.add_argument('--dataset',required=True);p.add_argument('--asset-root',default=str(PROJECT/'dist'))
         if command=='build':p.add_argument('--output',required=True)
         if command=='activate':p.add_argument('--dry-run',action='store_true');p.add_argument('--dist');p.add_argument('--state-dir')
     args=parser.parse_args(argv)

@@ -52,15 +52,15 @@ python scripts/dataset.py activate \
   --asset-root data/datasets/my-new-notice
 ```
 
-성공하면 `config/active-dataset.json`에 활성 공고·해시·자산 경로가 기록되고 `config/validation-audit.json`에 검증 결과가 기록된다. 미디어는 `sites/jeonse-map/dist/datasets/<공고 ID>/<내용 해시>/assets/`에 먼저 복사된다. 마지막으로 `sites/jeonse-map/dist/data.js`를 교체한다. 복사나 검증이 실패하면 이전 데이터 포인터를 유지한다.
+성공하면 `config/active-dataset.json`에 활성 공고·해시·자산 경로가 기록되고 `config/validation-audit.json`에 검증 결과가 기록된다. 미디어는 `dist/datasets/<공고 ID>/<내용 해시>/assets/`에 먼저 복사된다. 마지막으로 `dist/data.js`를 교체한다. 복사나 검증이 실패하면 이전 데이터 포인터를 유지한다.
 
 로컬 서버를 실행하고 브라우저를 새로고침한다.
 
 ```bash
-python -m http.server 8765 --bind 127.0.0.1 --directory sites/jeonse-map/dist
+python -m http.server 8765 --bind 127.0.0.1 --directory dist
 ```
 
-주소는 `http://127.0.0.1:8765/`다. 정적 서버 재시작이나 화면 코드 수정은 필요하지 않다. 이미 열려 있는 탭은 새로고침해야 한다. 호스팅된 사이트에는 활성화된 `sites/jeonse-map/dist/`를 기존 Sites 프로젝트로 다시 게시해야 반영된다. 로컬 파일 교체가 서버 배포를 자동 실행하지는 않는다.
+주소는 `http://127.0.0.1:8765/`다. 정적 서버 재시작이나 화면 코드 수정은 필요하지 않다. 이미 열려 있는 탭은 새로고침해야 한다. 호스팅된 사이트에는 활성화된 `dist/`를 기존 Sites 프로젝트로 다시 게시해야 반영된다. 로컬 파일 교체가 서버 배포를 자동 실행하지는 않는다.
 
 ## 3. 새 XLSX를 설정으로 가져오기
 
@@ -122,7 +122,7 @@ python scripts/import_xlsx.py \
   --output data/datasets/my-new-notice/dataset.json
 ```
 
-이 단계도 현재 지도는 변경하지 않는다. 출력된 표준 데이터에 2절의 검증·활성화를 적용한다. 일반적인 공고 교체에서 `sites/jeonse-map/dist/app.js`, `sites/jeonse-map/dist/index.html`, `sites/jeonse-map/dist/style.css`는 수정하지 않는다.
+이 단계도 현재 지도는 변경하지 않는다. 출력된 표준 데이터에 2절의 검증·활성화를 적용한다. 일반적인 공고 교체에서 `dist/app.js`, `dist/index.html`, `dist/style.css`는 수정하지 않는다.
 
 ## 4. 이전 수집 형식에서 변환
 

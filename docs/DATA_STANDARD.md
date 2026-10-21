@@ -167,4 +167,4 @@ PDF·이미지·PPTX·XLSX를 모두 `media` 레코드로 관리한다. 확장�
 
 `validate`는 스키마와 ID·참조·단위·좌표·원본 해시·파일 존재·페이지 관계를 확인한다. `build`는 검토할 별도 결과만 만든다. `activate`는 검증과 파일 복사가 모두 성공한 뒤 화면의 데이터 포인터를 교체한다.
 
-화면은 원본 표준 파일을 임의 수정하지 않는다. `sites/jeonse-map/dist/data.js`는 생성물이며 직접 편집하지 않는다. 데이터 교체 순서와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.
+화면은 원본 표준 파일을 임의 수정하지 않는다. `dist/data.js`는 생성물이며 직접 편집하지 않는다. 데이터 교체 순서와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.

@@ -40,7 +40,7 @@ LH 경기남부 든든전세 정정공고의 주택목록을 지도, 건물 목�
 
 `source-data.json`은 원본 세대 값, 원본 행 번호, A:Q 셀 값을 보존한다. `geocodes.json`은 원문 주소별 좌표, 조회문, 일치 주소와 출처를 보존한다. `data/datasets/2015122300020927/assets/attachments.json`은 파일 ID별 원본 경로와 이미지 페이지 경로를 관리한다.
 
-`scripts/import_xlsx.py`와 `scripts/dataset.py`는 위 자료를 결합해 브라우저가 사용하는 `sites/jeonse-map/dist/data.js`를 생성한다.
+`scripts/import_xlsx.py`와 `scripts/dataset.py`는 위 자료를 결합해 브라우저가 사용하는 `dist/data.js`를 생성한다.
 
 - `meta`: 공고, 기준일, 전체 개수, 공통 첨부와 원본 열 정보
 - `buildings[]`: ID, 주택군, 원문 주소, 지역, 검증한 좌표, 원본 세대 배열, 미디어 배열
@@ -105,14 +105,14 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 
 ## 7. 구현 파일과 실행
 
-- `sites/jeonse-map/dist/index.html`: 화면 뼈대와 접근성 레이블
-- `sites/jeonse-map/dist/style.css`: 데스크톱·모바일 레이아웃
-- `sites/jeonse-map/dist/app.js`: 검색, 복수 선택 상태, 정렬, 목록/마커 갱신, 표와 미리보기
-- `sites/jeonse-map/dist/data.js`: 원본과 미디어를 결합한 정적 데이터
-- `sites/jeonse-map/dist/vendor/`: Leaflet 관련 라이브러리
-- `sites/jeonse-map/dist/datasets/<noticeId>/<hash>/assets/`: 원본 파일, 미리보기와 썸네일
+- `dist/index.html`: 화면 뼈대와 접근성 레이블
+- `dist/style.css`: 데스크톱·모바일 레이아웃
+- `dist/app.js`: 검색, 복수 선택 상태, 정렬, 목록/마커 갱신, 표와 미리보기
+- `dist/data.js`: 원본과 미디어를 결합한 정적 데이터
+- `dist/vendor/`: Leaflet 관련 라이브러리
+- `dist/datasets/<noticeId>/<hash>/assets/`: 원본 파일, 미리보기와 썸네일
 
-정적 HTTP 서버로 실행한다. `python -m http.server 8765 --bind 127.0.0.1 --directory sites/jeonse-map/dist`. 페이지 실행 중 별도 지오코딩 API를 호출하지 않는다. 지도 타일은 사용자가 현재 보는 영역만 불러온다. API 키나 인증 토큰을 소스에 넣지 않는다.
+정적 HTTP 서버로 실행한다. `python -m http.server 8765 --bind 127.0.0.1 --directory dist`. 페이지 실행 중 별도 지오코딩 API를 호출하지 않는다. 지도 타일은 사용자가 현재 보는 영역만 불러온다. API 키나 인증 토큰을 소스에 넣지 않는다.
 
 ## 8. 검증 기준
 
@@ -153,11 +153,11 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 - XLSX 어댑터: `scripts/import_xlsx.py --config ... --output ...`
 - 공고별 설정: `config/<name>.json`의 제목·출처·시트·헤더·열 매핑·필터 구간
 - 활성 상태: `config/active-dataset.json`과 `config/validation-audit.json`
-- 화면 입력: 검증 뒤 생성하는 `sites/jeonse-map/dist/data.js`. 화면 제목·지역·배지·기관명과 필터 구간도 데이터에서 읽는다.
+- 화면 입력: 검증 뒤 생성하는 `dist/data.js`. 화면 제목·지역·배지·기관명과 필터 구간도 데이터에서 읽는다.
 
 미디어의 다대다 관계와 PDF 페이지·썸네일의 원본 부모 ID를 표준화했다. 세대 전용 자료는 `bindings`로 대상 세대를 추적해 필터에서 제외된 세대의 자료가 다른 세대에 표시되지 않게 한다.
 
-활성화는 필요한 자산을 `sites/jeonse-map/dist/datasets/<noticeId>/<contentHash>/assets/`에 먼저 준비하고, 데이터 포인터를 마지막에 교체한다. 검증 실패·파일 복사 실패·상태 기록 실패를 테스트하고 이전 포인터가 유지되는지 확인한다. 기존 스냅샷은 열려 있는 탭의 미디어 링크를 위해 보존한다.
+활성화는 필요한 자산을 `dist/datasets/<noticeId>/<contentHash>/assets/`에 먼저 준비하고, 데이터 포인터를 마지막에 교체한다. 검증 실패·파일 복사 실패·상태 기록 실패를 테스트하고 이전 포인터가 유지되는지 확인한다. 기존 스냅샷은 열려 있는 탭의 미디어 링크를 위해 보존한다.
 
 ### 추상화 TODO
 
@@ -208,7 +208,7 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 
 ## 12. 작업공간과 스킬 폴더 정리
 
-문서는 `docs/`, 실행 도구는 `scripts/`, 원본은 `data/notices/`, 표준 패키지는 `data/datasets/`, 중간 추출·좌표는 `data/intermediate/`, 스키마는 `data/schema/`, 설정은 `config/`, 테스트는 `tests/`, 지도 결과는 `sites/jeonse-map/dist/`, 전달 ZIP은 `outputs/`, 캐시는 `tmp/`에 둔다. 모든 경로는 작업공간 최상위 기준이다.
+문서는 `docs/`, 실행 도구는 `scripts/`, 원본은 `data/notices/`, 표준 패키지는 `data/datasets/`, 중간 추출·좌표는 `data/intermediate/`, 스키마는 `data/schema/`, 설정은 `config/`, 테스트는 `tests/`, 지도 결과는 `dist/`, 전달 ZIP은 `outputs/`, 캐시는 `tmp/`에 둔다. 모든 경로는 작업공간 최상위 기준이다.
 
 스킬은 공용 홈 경로가 아닌 이 저장소의 `.agents/skills/lh-notice-map/`에 둔다. Codex의 프로젝트 스킬 검색 경로에 맞춘 것이다. 실행마다 `lh-runs/<시각>-<공고ID>-<고유값>/`을 새로 만들며 내부에서도 `docs/`, `scripts/`, `config/`, `data/`, `site/`, `reports/`, `tmp/`를 분리한다. 실패 로그도 보존한다. 기본 스킬 빌드는 기존 사이트를 변경하지 않으며 게시에는 새 사이트 ID를 쓴다.
 
@@ -220,3 +220,5 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 - [x] 실제 데이터 재검증·원본 값 비교·13개 테스트 통과
 - [x] 스킬을 프로젝트의 `.agents/skills/`에 배치하고 공용 경로에서 제거
 - [x] 새 실행 폴더 생성·기존 결과 보존·ID 불일치 차단 검증
+
+사이트 배포 도구는 정적 출력 경로를 제한하므로 최종 앱 출력은 최상위 `dist/`에 둔다. 데이터 원본·설계·실행 도구는 각각의 전용 폴더에 유지한다.
