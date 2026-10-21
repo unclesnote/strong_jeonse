@@ -31,14 +31,7 @@
   </aside>
   <main class="map-area" aria-label="주택 지도">
     <div id="map"></div>
-    <div class="filter-strip" aria-label="주택 필터">
-      <label class="filter-chip"><i data-icon="pin"></i><select id="city" aria-label="지역 필터"><option value="">전체 지역</option></select></label>
-      <label class="filter-chip"><select id="deposit-filter" aria-label="보증금 필터"><option value="">보증금 전체</option><option value="150000000">1.5억 이하</option><option value="200000000">2억 이하</option><option value="250000000">2.5억 이하</option><option value="300000000">3억 이하</option></select></label>
-      <label class="filter-chip"><select id="area-filter" aria-label="실사용면적 필터"><option value="">면적 전체</option><option value="0-70">70㎡ 미만</option><option value="70-80">70~80㎡</option><option value="80-9999">80㎡ 이상</option></select></label>
-      <label class="filter-chip"><select id="rooms-filter" aria-label="방수 필터"><option value="">방수 전체</option></select></label>
-      <label class="filter-chip"><select id="type-filter" aria-label="주택유형 필터"><option value="">주택유형</option></select></label>
-      <button id="elevator-filter" class="filter-chip toggle" aria-pressed="false"><i data-icon="elevator"></i>승강기</button>
-    </div>
+    <div class="filter-strip" aria-label="주택 필터"></div>
     <div class="map-tools"><button id="fit-all" title="검색 결과 전체 보기" aria-label="검색 결과 전체 보기"><i data-icon="expand"></i></button><div class="zoom-tools"><button id="zoom-in" aria-label="지도 확대">＋</button><button id="zoom-out" aria-label="지도 축소">−</button></div><button id="toggle-labels" aria-label="주소 라벨 표시 전환" title="주소 라벨" aria-pressed="false"><i data-icon="label"></i></button></div>
     <div class="map-bottom"><div class="map-status"><span class="green-dot"></span><span id="map-status">주소 위치를 불러오는 중</span></div><label class="viewport-toggle"><input id="in-map" type="checkbox">현재 지도 영역만</label></div>
     <button class="mobile-list-switch" id="mobile-list">목록 보기</button>
@@ -59,5 +52,6 @@
 </dialog>
 <dialog id="documents" class="documents"><header><div><span class="eyebrow">LH 공식 자료</span><h2>공고와 주택목록</h2></div><button id="documents-close" class="icon-button" aria-label="자료 닫기">×</button></header><p id="documents-title"></p><div id="common-files"></div><a id="source-link" class="source-link" target="_blank" rel="noopener">LH청약플러스 공고 원문 열기 ↗</a><p class="source-note">보증금·면적·동호수는 정정공고 주택목록을 기준으로 표시합니다. 주택군 공통 홍보물은 선택한 건물과 다를 수 있어 구분해 표시합니다. HWP/HWPX는 제외했습니다.</p></dialog>
 <div id="toast" class="toast" role="status" hidden></div>
+<section id="filter-popover" class="filter-popover" role="dialog" aria-label="복수 선택 필터" hidden></section>
 <script src="vendor/leaflet.js"></script><script src="vendor/leaflet.markercluster.js"></script><script src="data.js"></script><script src="app.js"></script>
 </body></html>

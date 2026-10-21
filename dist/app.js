@@ -14,7 +14,7 @@ const shortAddress=a=>a.replace(/^경기도\s+/,'').replace(/\([^)]*\)/g,' ').re
 const name=b=>b.group.replace(/^[가-힣]+시?\(/,'').replace(/\)$/,'');
 const app=$('.app-shell');
 let saved;try{saved=new Set(JSON.parse(localStorage.getItem('jeonse-saved-v2')||'[]'));}catch{saved=new Set();}
-let state={query:'',city:'',deposit:'',area:'',rooms:'',type:'',elevator:false,savedOnly:false,sort:'name',ascending:true,selected:null,inMap:false,labels:false};
+let state={query:'',cities:[],deposits:[],areas:[],rooms:[],types:[],elevators:[],savedOnly:false,sort:'name',ascending:true,selected:null,inMap:false,labels:false};
 let filtered=[],map,clusters,markers=new Map(),detailSort={key:'deposit',asc:true},tableState={key:'id',asc:true,search:'',buildingId:null},viewerZoom=100,toastTimer;
 const originalById=new Map(D.buildings.map(b=>[b.id,b]));
 const everyUnit=D.buildings.flatMap(b=>b.units.map(u=>({...u,buildingId:b.id,city:b.city})));
@@ -24,29 +24,45 @@ $('#source-summary').textContent=`원본 ${D.meta.totalUnits}세대 · ${D.meta.
 $('#documents-title').textContent=D.meta.title;
 $('#source-link').href=D.meta.sourceUrl;
 const cities=[...new Set(D.buildings.map(b=>b.city))].sort((a,b)=>a.localeCompare(b,'ko'));
-$('#city').innerHTML+=[...cities].map(c=>`<option>${esc(c)}</option>`).join('');
-$('#rooms-filter').innerHTML+=[...new Set(everyUnit.map(u=>u.rooms).filter(v=>v!=null))].sort((a,b)=>a-b).map(v=>`<option value="${v}">방 ${v}개</option>`).join('');
-$('#type-filter').innerHTML+=[...new Set(everyUnit.map(u=>u.type))].sort().map(v=>`<option>${esc(v)}</option>`).join('');
-for(const element of $$('.filter-strip .filter-chip')){
- const copy=element.cloneNode(true);const control=copy.matches('button')?copy:copy.querySelector('select');
- if(control){control.id='list-'+control.id;const label=control.getAttribute('aria-label');if(label)control.setAttribute('aria-label','목록 '+label);}
- $('#list-filters').append(copy);
-}
+const filterConfig=[
+ {key:'cities',label:'지역',empty:'전체 지역',icon:'pin',options:cities.map(v=>[v,v])},
+ {key:'deposits',label:'보증금',empty:'보증금 전체',options:[['0-150000000','1.5억 미만'],['150000000-200000000','1.5~2억'],['200000000-250000000','2~2.5억'],['250000000-300000000','2.5~3억'],['300000000-Infinity','3억 이상']],note:'구간은 시작 금액 이상, 끝 금액 미만입니다.'},
+ {key:'areas',label:'실사용면적',empty:'면적 전체',options:[['0-70','70㎡ 미만'],['70-80','70~80㎡'],['80-Infinity','80㎡ 이상'],['missing','원본 미기재']],note:'구간은 시작 면적 이상, 끝 면적 미만입니다.'},
+ {key:'rooms',label:'방수',empty:'방수 전체',options:[...new Set(everyUnit.map(u=>u.rooms).filter(v=>v!=null))].sort((a,b)=>a-b).map(v=>[String(v),`방 ${v}개`])},
+ {key:'types',label:'주택유형',empty:'주택유형',options:[...new Set(everyUnit.map(u=>u.type))].sort().map(v=>[v,v])},
+ {key:'elevators',label:'승강기',empty:'승강기 전체',icon:'elevator',options:[['yes','있음'],['no','없음']]}
+];
+const filterByKey=new Map(filterConfig.map(f=>[f.key,f]));
+for(const [selector,context] of [['.filter-strip','지도'],['#list-filters','목록']])$(selector).innerHTML=filterConfig.map(f=>`<button class="filter-chip multi-filter" data-filter="${f.key}" data-context="${context}" aria-expanded="false" aria-controls="filter-popover" aria-label="${context} ${f.label} 필터">${f.icon?svg(f.icon):''}<span data-filter-summary="${f.key}">${f.empty}</span><span class="filter-arrow">⌄</span></button>`).join('');
+let openFilter=null,filterTrigger=null;
 $('#list-filter-toggle').onclick=()=>{const open=$('#list-filters').hidden;$('#list-filters').hidden=!open;$('#list-filter-toggle').setAttribute('aria-expanded',String(open));};
-$('#list-filters').addEventListener('change',e=>{const target=e.target;if(target.tagName!=='SELECT')return;const original=$('#'+target.id.replace('list-',''));original.value=target.value;original.dispatchEvent(new Event('change'));});
-$('#list-elevator-filter').onclick=()=>$('#elevator-filter').click();
+function closeFilter(){if(filterTrigger)filterTrigger.setAttribute('aria-expanded','false');$('#filter-popover').hidden=true;openFilter=null;filterTrigger=null;}
+function openFilterMenu(key,trigger){
+ if(openFilter===key&&filterTrigger===trigger){closeFilter();return;}
+ closeFilter();openFilter=key;filterTrigger=trigger;trigger.setAttribute('aria-expanded','true');
+ const config=filterByKey.get(key),popover=$('#filter-popover');
+ popover.setAttribute('aria-label',`${config.label} 복수 선택`);
+ popover.innerHTML=`<header><strong>${config.label}</strong><button data-clear-filter="${key}">선택 초기화</button></header><p>여러 개 선택할 수 있습니다.</p><div class="filter-options">${config.options.map(([value,label])=>`<label><input type="checkbox" data-filter-choice="${key}" value="${esc(value)}" ${state[key].includes(value)?'checked':''}><span>${esc(label)}</span></label>`).join('')}</div><div class="filter-note">${config.note?esc(config.note)+'<br>':''}선택하지 않으면 전체를 표시합니다.</div><footer><span id="filter-selection-count">${state[key].length}개 선택</span><button data-close-filter>닫기</button></footer>`;
+ popover.hidden=false;
+ const rect=trigger.getBoundingClientRect(),width=Math.min(280,innerWidth-24);popover.style.width=width+'px';popover.style.left=Math.max(12,Math.min(rect.left,innerWidth-width-12))+'px';popover.style.top=Math.max(12,Math.min(rect.bottom+8,innerHeight-popover.offsetHeight-12))+'px';
+}
+function syncFilterControls(){for(const config of filterConfig){const selected=state[config.key],labels=config.options.filter(([v])=>selected.includes(v)).map(x=>x[1]);$$(`[data-filter="${config.key}"]`).forEach(button=>{button.classList.toggle('active',selected.length>0);button.querySelector('[data-filter-summary]').textContent=labels.length===1?labels[0]:labels.length?`${config.label} ${labels.length}개`:config.empty;});}
+ if(openFilter){$$('#filter-popover input').forEach(c=>c.checked=state[openFilter].includes(c.value));$('#filter-selection-count').textContent=`${state[openFilter].length}개 선택`;}
+}
+$('#filter-popover').addEventListener('change',e=>{const input=e.target;if(!input.matches('[data-filter-choice]'))return;const key=input.dataset.filterChoice;state[key]=input.checked?[...new Set([...state[key],input.value])]:state[key].filter(v=>v!==input.value);update();if(!state.inMap&&filtered.length)fitAll();});
 function notify(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3000);}
 function unitPass(u,b){
- if(state.deposit&&!(u.deposit!=null&&u.deposit<=+state.deposit))return false;
- if(state.area){const [lo,hi]=state.area.split('-').map(Number);if(!(u.area!=null&&u.area>=lo&&u.area<hi))return false;}
- if(state.rooms&&u.rooms!==+state.rooms)return false;
- if(state.type&&u.type!==state.type)return false;
- if(state.elevator&&!u.elevator)return false;
+ const inBands=(value,bands)=>bands.some(band=>{if(band==='missing')return value==null;const [lo,hi]=band.split('-').map(Number);return value!=null&&value>=lo&&value<hi;});
+ if(state.deposits.length&&!inBands(u.deposit,state.deposits))return false;
+ if(state.areas.length&&!inBands(u.area,state.areas))return false;
+ if(state.rooms.length&&!state.rooms.includes(String(u.rooms)))return false;
+ if(state.types.length&&!state.types.includes(u.type))return false;
+ if(state.elevators.length&&!state.elevators.includes(u.elevator?'yes':'no'))return false;
  if(state.query){const q=state.query.toLocaleLowerCase();const text=[b.group,b.address,u.building,u.unit,u.notes,u.type,`${u.building}동 ${u.unit}호`].join(' ').toLocaleLowerCase();if(!text.includes(q))return false;}
  return true;
 }
 function aggregate(b,units){const deposits=units.map(u=>u.deposit).filter(v=>v!=null),areas=units.map(u=>u.area).filter(v=>v!=null);return {...b,visibleUnits:units,visibleCount:units.length,minDeposit:deposits.length?Math.min(...deposits):null,maxDeposit:deposits.length?Math.max(...deposits):null,minArea:areas.length?Math.min(...areas):null,maxArea:areas.length?Math.max(...areas):null,rooms:[...new Set(units.map(u=>u.rooms).filter(v=>v!=null))].sort((a,b)=>a-b),types:[...new Set(units.map(u=>u.type))]};}
-function getFiltered(ignoreBounds=false){return D.buildings.filter(b=>(!state.city||b.city===state.city)&&(!state.savedOnly||saved.has(b.id))&&(!state.inMap||ignoreBounds||map.getBounds().contains([b.lat,b.lng]))).map(b=>aggregate(b,b.units.filter(u=>unitPass(u,b)))).filter(b=>b.visibleCount).sort((a,b)=>{
+function getFiltered(ignoreBounds=false){return D.buildings.filter(b=>(!state.cities.length||state.cities.includes(b.city))&&(!state.savedOnly||saved.has(b.id))&&(!state.inMap||ignoreBounds||map.getBounds().contains([b.lat,b.lng]))).map(b=>aggregate(b,b.units.filter(u=>unitPass(u,b)))).filter(b=>b.visibleCount).sort((a,b)=>{
  const k=state.sort;let va,vb;
  if(k==='name'){va=a.group;vb=b.group;}else if(k==='address'){va=a.address;vb=b.address;}else if(k==='deposit'){va=a.minDeposit;vb=b.minDeposit;}else if(k==='area'){va=a.minArea;vb=b.minArea;}else if(k==='rooms'){va=a.rooms[0];vb=b.rooms[0];}else if(k==='units'){va=a.visibleCount;vb=b.visibleCount;}else if(k==='media'){va=a.media.length;vb=b.media.length;}else if(k==='elevator'){va=Number(a.elevator);vb=Number(b.elevator);}else{va=a.types.join();vb=b.types.join();}
  if(va==null&&vb!=null)return 1;if(vb==null&&va!=null)return -1;
@@ -54,16 +70,13 @@ function getFiltered(ignoreBounds=false){return D.buildings.filter(b=>(!state.ci
  });}
 function update(){
  filtered=getFiltered();const total=filtered.reduce((sum,b)=>sum+b.visibleCount,0);
- for(const id of ['city','deposit-filter','area-filter','rooms-filter','type-filter'])$('#list-'+id).value=$('#'+id).value;
- const filterCount=[state.city,state.deposit,state.area,state.rooms,state.type,state.elevator].filter(Boolean).length;
+ syncFilterControls();
+ const filterCount=filterConfig.filter(f=>state[f.key].length).length;
  $('#filter-count').textContent=filterCount;$('#filter-count').hidden=!filterCount;$('#list-filter-toggle').classList.toggle('active',filterCount>0);
  $('#results-title').textContent=state.savedOnly?'저장한 주택':'전체 주택';
  $('#results-count').textContent=`${filtered.length}곳 · ${num(total)}세대`;
  $('#clear-search').hidden=!state.query;
  $('#sort-direction').textContent=state.ascending?'↑':'↓';$('#sort-direction').title=state.ascending?'오름차순':'내림차순';
- $$('select').forEach(s=>s.classList.toggle('active',!!s.value&&s.id!=='sort'));
- $('#elevator-filter').classList.toggle('active',state.elevator);$('#elevator-filter').setAttribute('aria-pressed',String(state.elevator));
- $('#list-elevator-filter').classList.toggle('active',state.elevator);$('#list-elevator-filter').setAttribute('aria-pressed',String(state.elevator));
  $('#saved-count').hidden=!saved.size;$('#saved-count').textContent=saved.size;
  $$('.rail-button').forEach(b=>b.classList.toggle('active',b.dataset.action===(state.savedOnly?'saved-view':'map-view')));
  $('#result-list').innerHTML=filtered.length?filtered.map(b=>card(b)).join(''):`<div class="empty-state">${svg(state.savedOnly?'bookmark':'search')}<strong>${state.savedOnly?'저장한 주택이 없습니다':'검색 결과가 없습니다'}</strong>${state.savedOnly?'건물 카드의 저장 버튼을 눌러 모아보세요.':'검색어와 필터를 변경해 보세요.'}</div>`;
@@ -128,8 +141,12 @@ function openMedia(id){const file=D.attachments[id];if(!file)return;if(!file.pag
 function zoomPreview(delta){viewerZoom=Math.max(50,Math.min(200,viewerZoom+delta));$('#viewer-zoom').textContent=viewerZoom+'%';$$('.preview-page').forEach(p=>p.style.width=`${Math.min(900,Math.max(200,$('#viewer-body').clientWidth-48))*viewerZoom/100}px`);}
 function openDocuments(){$('#common-files').innerHTML=D.meta.commonFiles.map(mediaCard).join('');$('#documents').showModal();}
 async function copyAddress(id){const b=originalById.get(id);try{await navigator.clipboard.writeText(b.address);notify('주소를 복사했습니다.');}catch{notify('복사가 제한되었습니다. 상세정보의 주소를 선택해 복사하세요.');}}
-function reset(){state={...state,query:'',city:'',deposit:'',area:'',rooms:'',type:'',elevator:false,savedOnly:false,inMap:false};$('#search').value='';for(const id of ['city','deposit-filter','area-filter','rooms-filter','type-filter'])$('#'+id).value='';$('#in-map').checked=false;update();fitAll();}
+function reset(){closeFilter();state={...state,query:'',cities:[],deposits:[],areas:[],rooms:[],types:[],elevators:[],savedOnly:false,inMap:false};$('#search').value='';$('#in-map').checked=false;update();fitAll();}
 document.addEventListener('click',event=>{
+ const filterButton=event.target.closest('[data-filter]');if(filterButton){openFilterMenu(filterButton.dataset.filter,filterButton);return;}
+ const clearFilter=event.target.closest('[data-clear-filter]');if(clearFilter){state[clearFilter.dataset.clearFilter]=[];update();return;}
+ if(event.target.closest('[data-close-filter]')){closeFilter();return;}
+ if(!event.target.closest('#filter-popover')&&openFilter)closeFilter();
  const t=event.target.closest('button,a,[data-building]');if(!t)return;
  if(t.dataset.save){event.stopPropagation();toggleSave(t.dataset.save);return;}
  if(t.dataset.media){openMedia(t.dataset.media);return;}
@@ -150,8 +167,7 @@ document.addEventListener('click',event=>{
 });
 $('#search').addEventListener('input',e=>{state.query=e.target.value.trim();update();});
 $('#clear-search').onclick=()=>{$('#search').value='';state.query='';update();};
-for(const [id,key] of [['city','city'],['deposit-filter','deposit'],['area-filter','area'],['rooms-filter','rooms'],['type-filter','type'],['sort','sort']])$('#'+id).addEventListener('change',e=>{state[key]=e.target.value;update();if(id==='city')fitAll();});
-$('#elevator-filter').onclick=()=>{state.elevator=!state.elevator;update();};
+$('#sort').addEventListener('change',e=>{state.sort=e.target.value;update();});
 $('#sort-direction').onclick=()=>{state.ascending=!state.ascending;update();};
 $('#reset-filters').onclick=reset;
 $('#fit-all').onclick=fitAll;$('#zoom-in').onclick=()=>map.zoomIn();$('#zoom-out').onclick=()=>map.zoomOut();
@@ -162,7 +178,8 @@ $('#table-search').oninput=e=>{tableState.search=e.target.value.trim();renderTab
 $('#csv-export').onclick=exportCSV;
 $('#viewer-close').onclick=()=>$('#viewer').close();$('#documents-close').onclick=()=>$('#documents').close();
 $('#viewer-zoom-in').onclick=()=>zoomPreview(25);$('#viewer-zoom-out').onclick=()=>zoomPreview(-25);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#viewer').open||$('#documents').open)return;if(!$('#table-panel').hidden)closeTable();else closeDetail();}if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-building]')){e.preventDefault();selectBuilding(e.target.dataset.building);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(openFilter){const trigger=filterTrigger;closeFilter();trigger?.focus();return;}if($('#viewer').open||$('#documents').open)return;if(!$('#table-panel').hidden)closeTable();else closeDetail();}if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-building]')){e.preventDefault();selectBuilding(e.target.dataset.building);}});
+window.addEventListener('resize',()=>closeFilter());
 for(const dialog of [$('#viewer'),$('#documents')])dialog.addEventListener('click',e=>{if(e.target===dialog){const rect=dialog.getBoundingClientRect();if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom)dialog.close();}});
 setupMap();update();fitAll();
 })();

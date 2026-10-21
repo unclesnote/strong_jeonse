@@ -22,6 +22,8 @@
 
 `media-sync-audit.json`은 원본 세대 정보 보존, 좌표와 미디어 연결, 파일 경로 검증 결과입니다. `source-data.json`에는 원본 엑셀의 각 셀 값과 행 번호가 있습니다.
 
+주요 기능 설계와 구현 체크리스트, 원본 대조 검증 결과는 [design.md](design.md)에 기록합니다. 지역·보증금·면적·방수·유형·승강기 필터는 각각 복수 선택할 수 있습니다. 같은 항목 안에서는 OR, 서로 다른 항목 사이에서는 AND로 결합하며, 일치하는 세대가 있는 건물만 목록과 지도에 함께 표시합니다.
+
 ## 지도와 라이브러리
 
 지도 배경: [OpenStreetMap](https://www.openstreetmap.org/copyright). 지도 UI: [Leaflet](https://leafletjs.com/), [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster). 좌표 확인: 카카오맵 공개 주소 검색. 공고와 첨부파일의 출처는 화면의 LH 원문 링크와 원본 다운로드에 표시합니다.
