@@ -1,8 +1,8 @@
 # 주택 공고·미디어 표준 데이터 1.0.0
 
-이 표준은 특정 공고의 파일명, 세대수, 지역, 엑셀 행 번호와 화면 코드를 분리하기 위한 입력 규약이다. 기준 스키마는 [`data/schema/notice-dataset.schema.json`](../data/schema/notice-dataset.schema.json)이며, 검증과 화면 데이터 생성은 [`scripts/dataset.py`](../scripts/dataset.py)가 수행한다.
+이 표준은 특정 공고의 파일명, 세대수, 지역, 엑셀 행 번호와 화면 코드를 분리하기 위한 입력 규약이다. 기준 스키마는 `data/schema/notice-dataset.schema.json`이며, 검증과 화면 데이터 생성은 `scripts/dataset.py`가 수행한다. 두 경로는 작업공간과 각 실행 폴더(`lh-runs/<실행>/`)에 같은 위치로 있다.
 
-실제 패키지는 각 실행 폴더의 `data/datasets/<noticeId>/dataset.json`에서 확인한다. 프로그램은 특정 지역이나 세대 수에 의존하지 않는다.
+실제 패키지 예시는 작업공간의 `data/datasets/2015122300020927/dataset.json`과 각 실행 폴더의 `data/datasets/<noticeId>/dataset.json`이다. 프로그램은 특정 지역이나 세대 수에 의존하지 않는다.
 
 ## 1. 패키지와 최상위 구조
 
@@ -167,4 +167,6 @@ PDF·이미지·PPTX·XLSX를 모두 `media` 레코드로 관리한다. 확장�
 
 `validate`는 스키마와 ID·참조·단위·좌표·원본 해시·파일 존재·페이지 관계를 확인한다. `build`는 검토할 별도 결과만 만든다. `activate`는 검증과 파일 복사가 모두 성공한 뒤 화면의 데이터 포인터를 교체한다.
 
-화면은 원본 표준 파일을 임의 수정하지 않는다. `site/dist/data.js`는 생성물이며 직접 편집하지 않는다. 데이터 교체 순서와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.
+`activate`와 `build`는 같은 사이트 폴더에 `competition-config.json`도 만든다. 공고 ID, `notice.sourceUrl`, 총 세대수, 주택군 이름 목록을 담으며, 경쟁률 백엔드가 이 파일을 소스로 쓴다. 소스 URL을 바꾸려면 `notice.sourceUrl`을 고친 뒤 다시 활성화한다.
+
+화면은 원본 표준 파일을 임의 수정하지 않는다. 사이트 폴더(작업공간 `public/`, 실행 폴더 `site/dist/`)의 `data.js`와 `competition-config.json`은 생성물이며 직접 편집하지 않는다. 데이터 교체 순서와 오류 해결은 [`DATA_GUIDE.md`](DATA_GUIDE.md)를 따른다.

@@ -6,13 +6,15 @@
 
 Codex에서 `$lh-notice-map 이 공고 URL로 새 지도 사이트를 만들어줘`로 요청합니다. 목록에 바로 보이지 않으면 프로젝트를 다시 열거나 위 SKILL.md 경로를 직접 지정합니다.
 
-Claude Code용 스킬은 [`.claude/skills/lh-notice-map/SKILL.md`](../.claude/skills/lh-notice-map/SKILL.md)입니다. 실행기·템플릿·참조문서는 위 Codex 스킬 폴더의 파일을 그대로 쓰고, 브라우저 대체(headless Chrome), Node 경로 확인, 게시 제한 같은 Claude Code 전용 절차만 따로 적었습니다. Claude Code에서는 `/lh-notice-map 이 공고 URL로 새 지도 사이트를 만들어줘`로 요청합니다. 두 SKILL.md는 동작이 바뀔 때 함께 갱신합니다.
+Claude Code용 스킬은 [`.claude/skills/lh-notice-map/SKILL.md`](../.claude/skills/lh-notice-map/SKILL.md)입니다. 실행기·템플릿·참조문서는 위 Codex 스킬 폴더의 파일을 그대로 쓰고, 브라우저 대체(WebFetch·headless Chrome), 비대화형 `start_site.sh` 사용, 게시 제한 같은 Claude Code 전용 절차만 따로 적었습니다. Claude Code에서는 `/lh-notice-map 이 공고 URL로 새 지도 사이트를 만들어줘`로 요청합니다. 두 SKILL.md는 동작이 바뀔 때 함께 갱신합니다.
 
 명령으로 실행할 때는 작업공간 최상위에서 다음을 사용합니다.
 
 ```bash
-.venv/bin/python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID' --runs-dir lh-runs
+.venv/bin/python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID'
 ```
+
+출력 위치 기본값은 실행 위치와 관계없이 프로젝트 루트의 `lh-runs/`입니다(`--runs-dir` 또는 `LH_RUNS_DIR`로 변경). `start_site.sh`도 이 위치를 찾습니다.
 
 `panId` 없는 URL만으로는 어떤 공고인지 식별할 수 없습니다. 이때는 `needs_browser` 보고서를 남기고 멈춥니다. 스킬을 수행하는 에이전트가 브라우저의 실제 공고와 파일 ID를 확인한 후 HTML을 저장하여 `--html 확인한공고.html --notice-id 실제ID`로 새 실행을 이어갑니다. 앞선 공고나 최신 공고를 임의 선택하지 않습니다.
 
@@ -28,12 +30,13 @@ lh-runs/<UTC시각>-<공고ID>-<고유값>/
 │   ├── intermediate/<ID>/ # 원본 셀·검증 좌표
 │   ├── datasets/<ID>/   # 표준 JSON과 원본·페이지·썸네일
 │   └── schema/          # 데이터 스키마
-├── site/dist/  # 별도 지도 사이트
-├── reports/    # run.json·단계별 로그·전달 ZIP
-└── tmp/        # 의존성·변환 캐시
+├── site/dist/  # 별도 지도 사이트(competition-config.json = 경쟁률 소스 URL 포함)
+├── backend/    # 경쟁률 백엔드(server.py·competition.py, 호스팅용 competition.mjs)
+├── reports/    # run.json·단계별 로그·전달 ZIP(ZIP은 git 제외)
+└── tmp/        # 의존성·변환 캐시·경쟁률 SQLite(git 제외)
 ```
 
-폴더명에 고유값을 포함하여 같은 공고를 연속 실행해도 기존 결과를 덮어쓰지 않습니다. 실패한 실행도 지우지 않습니다. 기존 프로젝트의 활성 상태나 사이트 ID를 복사하지 않습니다. 새 사이트를 게시할 때 새 Sites 프로젝트로 등록합니다. 현재 사이트 갱신은 해당 사이트를 명시한 별도 요청으로 수행합니다.
+폴더명에 고유값을 포함하여 같은 공고를 연속 실행해도 기존 결과를 덮어쓰지 않습니다. 빌드 폴더는 git에 커밋해 보관합니다. 실패한 실행도 지우지 않습니다. 기존 프로젝트의 활성 상태나 사이트 ID를 복사하지 않습니다. 새 사이트를 게시할 때 새 Sites 프로젝트로 등록합니다. 현재 사이트 갱신은 해당 사이트를 명시한 별도 요청으로 수행합니다.
 
 ## 입력과 검증
 
@@ -44,6 +47,17 @@ lh-runs/<UTC시각>-<공고ID>-<고유값>/
 필터는 한 항목 안에서 OR, 항목 사이에서 AND를 적용하며 같은 세대가 모든 조건을 충족해야 합니다. 해당 세대가 있는 건물만 지도에 표시합니다. 세대 전용 미디어는 제외된 세대와 함께 숨깁니다. 원본 미기재는 0이나 ‘없음’으로 바꾸지 않습니다.
 
 `reports/run.json`의 `status: complete`와 `config/validation-audit.json`을 확인합니다. 정리 XLSX는 `data/notices/lh_<ID>/첨부파일정리.xlsx`, ZIP은 `reports/첨부파일.zip`입니다. 로컬 결과가 완료되었다고 호스팅 게시도 완료된 것은 아닙니다.
+
+## 빌드한 사이트 실행
+
+```bash
+./start_site.sh --list     # 사이트별 폴더·경쟁률 소스 URL·실행 상태
+./start_site.sh <번호>     # 한 사이트(이미 실행 중이면 재시작·중지·유지 질문)
+./start_site.sh --all      # 모든 사이트를 동시에 백그라운드 실행, 사이트별 URL 출력
+./start_site.sh --stop-all # 모두 중지
+```
+
+각 사이트는 자기 폴더의 `competition-config.json`에 있는 LH 원문 URL로 경쟁률을 30분마다 조회하고, 캐시는 그 실행 폴더의 `tmp/competition/`에 따로 둡니다.
 
 ## 검증한 자료 재사용
 

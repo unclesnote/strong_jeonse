@@ -1,6 +1,15 @@
 # 든든전세 지도 주요 기능 설계
 
-작성일: 2026-10-21. 이 문서는 기능 설계와 구현·검증 체크리스트를 함께 관리한다.
+작성일: 2026-10-21. 이 문서는 기능 설계와 구현·검증 체크리스트를 함께 관리한다. 절은 작업 순서대로 쌓인 기록이다. 앞 절의 결정이 뒤 절에서 바뀐 경우 뒤 절을 따른다.
+
+**현재 구조 요약(2026-10-22 기준)**
+
+- 앱 원본·활성 데이터: `public/`. 13절까지의 `dist/`는 14절에서 `public/`으로 옮겼다. 지금 `dist/`는 호스팅 빌드 출력(무시됨)이다.
+- 서버: `backend/server.py`(Python 표준 라이브러리). 정적 파일과 청약 경쟁률 API를 제공한다(14·16절). 호스팅 Worker는 `backend/site` + `backend/competition.mjs`다.
+- 환경·실행: `./setup_env.sh`, `./start_site.sh`(16~17·20절).
+- 공고별 빌드: 스킬이 `lh-runs/<실행>/`에 쌓고 git에 커밋한다(11·17·19절).
+- 데이터 표준과 교체 가이드: `.agents/skills/lh-notice-map/references/`(단일 원본).
+- 스킬: Codex `.agents/skills/lh-notice-map/`, Claude Code `.claude/skills/lh-notice-map/`(15절).
 
 ## 1. 목적과 기준 자료
 
@@ -40,7 +49,7 @@ LH 경기남부 든든전세 정정공고의 주택목록을 지도, 건물 목�
 
 `source-data.json`은 원본 세대 값, 원본 행 번호, A:Q 셀 값을 보존한다. `geocodes.json`은 원문 주소별 좌표, 조회문, 일치 주소와 출처를 보존한다. `data/datasets/2015122300020927/assets/attachments.json`은 파일 ID별 원본 경로와 이미지 페이지 경로를 관리한다.
 
-`scripts/import_xlsx.py`와 `scripts/dataset.py`는 위 자료를 결합해 브라우저가 사용하는 `dist/data.js`를 생성한다.
+`scripts/import_xlsx.py`와 `scripts/dataset.py`는 위 자료를 결합해 브라우저가 사용하는 `public/data.js`를 생성한다.
 
 - `meta`: 공고, 기준일, 전체 개수, 공통 첨부와 원본 열 정보
 - `buildings[]`: ID, 주택군, 원문 주소, 지역, 검증한 좌표, 원본 세대 배열, 미디어 배열
@@ -105,14 +114,17 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 
 ## 7. 구현 파일과 실행
 
-- `dist/index.html`: 화면 뼈대와 접근성 레이블
-- `dist/style.css`: 데스크톱·모바일 레이아웃
-- `dist/app.js`: 검색, 복수 선택 상태, 정렬, 목록/마커 갱신, 표와 미리보기
-- `dist/data.js`: 원본과 미디어를 결합한 정적 데이터
-- `dist/vendor/`: Leaflet 관련 라이브러리
-- `dist/datasets/<noticeId>/<hash>/assets/`: 원본 파일, 미리보기와 썸네일
+아래는 작업공간 사이트(`public/`) 기준이다. 스킬 실행 폴더에서는 `site/dist/`가 같은 구성이다.
 
-정적 HTTP 서버로 실행한다. `python -m http.server 8765 --bind 127.0.0.1 --directory dist`. 페이지 실행 중 별도 지오코딩 API를 호출하지 않는다. 지도 타일은 사용자가 현재 보는 영역만 불러온다. API 키나 인증 토큰을 소스에 넣지 않는다.
+- `public/index.html`: 화면 뼈대와 접근성 레이블
+- `public/style.css`: 데스크톱·모바일 레이아웃
+- `public/app.js`: 검색, 복수 선택 상태, 정렬, 목록/마커 갱신, 표와 미리보기, 경쟁률 패널
+- `public/data.js`: 원본과 미디어를 결합한 정적 데이터
+- `public/competition-config.json`: 경쟁률 소스 URL과 검증 기준(공고 ID·총 세대수·주택군)
+- `public/vendor/`: Leaflet 관련 라이브러리
+- `public/datasets/<noticeId>/<hash>/assets/`: 원본 파일, 미리보기와 썸네일
+
+`./start_site.sh`로 실행한다. 내부적으로 `backend/server.py`가 정적 파일과 `/api/competition`을 제공한다. 처음에는 `python -m http.server`로 `dist/`를 제공했다. 페이지 실행 중 별도 지오코딩 API를 호출하지 않는다. 지도 타일은 사용자가 현재 보는 영역만 불러온다. API 키나 인증 토큰을 소스에 넣지 않는다.
 
 ## 8. 검증 기준
 
@@ -145,7 +157,7 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 
 ## 10. 공고 데이터 교체 추상화
 
-공고마다 화면 코드를 수정하는 방식 대신 버전 1.0.0의 표준 데이터 패키지를 입력으로 사용한다. 구조와 관계는 [DATA_STANDARD.md](DATA_STANDARD.md), 교체 명령·XLSX 열 매핑·실패 처리·되돌리기는 [DATA_GUIDE.md](DATA_GUIDE.md)에 명시한다.
+공고마다 화면 코드를 수정하는 방식 대신 버전 1.0.0의 표준 데이터 패키지를 입력으로 사용한다. 구조와 관계는 [DATA_STANDARD.md](../.agents/skills/lh-notice-map/references/DATA_STANDARD.md), 교체 명령·XLSX 열 매핑·실패 처리·되돌리기는 [DATA_GUIDE.md](../.agents/skills/lh-notice-map/references/DATA_GUIDE.md)에 명시한다.
 
 - 데이터 원본: `data/datasets/<noticeId>/dataset.json`과 해당 패키지의 `assets/`
 - 검증 계약: `data/schema/notice-dataset.schema.json`
@@ -153,11 +165,11 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 - XLSX 어댑터: `scripts/import_xlsx.py --config ... --output ...`
 - 공고별 설정: `config/<name>.json`의 제목·출처·시트·헤더·열 매핑·필터 구간
 - 활성 상태: `config/active-dataset.json`과 `config/validation-audit.json`
-- 화면 입력: 검증 뒤 생성하는 `dist/data.js`. 화면 제목·지역·배지·기관명과 필터 구간도 데이터에서 읽는다.
+- 화면 입력: 검증 뒤 생성하는 `public/data.js`(실행 폴더에서는 `site/dist/data.js`). 화면 제목·지역·배지·기관명과 필터 구간도 데이터에서 읽는다.
 
 미디어의 다대다 관계와 PDF 페이지·썸네일의 원본 부모 ID를 표준화했다. 세대 전용 자료는 `bindings`로 대상 세대를 추적해 필터에서 제외된 세대의 자료가 다른 세대에 표시되지 않게 한다.
 
-활성화는 필요한 자산을 `dist/datasets/<noticeId>/<contentHash>/assets/`에 먼저 준비하고, 데이터 포인터를 마지막에 교체한다. 검증 실패·파일 복사 실패·상태 기록 실패를 테스트하고 이전 포인터가 유지되는지 확인한다. 기존 스냅샷은 열려 있는 탭의 미디어 링크를 위해 보존한다.
+활성화는 필요한 자산을 `public/datasets/<noticeId>/<contentHash>/assets/`에 먼저 준비하고, 데이터 포인터를 마지막에 교체한다. 검증 실패·파일 복사 실패·상태 기록 실패를 테스트하고 이전 포인터가 유지되는지 확인한다. 기존 스냅샷은 열려 있는 탭의 미디어 링크를 위해 보존한다.
 
 ### 추상화 TODO
 
@@ -221,7 +233,7 @@ PDF와 PPTX는 모든 페이지를 WebP로 변환한다. 미리보기 창에서 
 - [x] 스킬을 프로젝트의 `.agents/skills/`에 배치하고 공용 경로에서 제거
 - [x] 새 실행 폴더 생성·기존 결과 보존·ID 불일치 차단 검증
 
-사이트 배포 도구는 정적 출력 경로를 제한하므로 최종 앱 출력은 최상위 `dist/`에 둔다. 데이터 원본·설계·실행 도구는 각각의 전용 폴더에 유지한다.
+사이트 배포 도구는 정적 출력 경로를 제한하므로 최종 앱 출력은 최상위 `dist/`에 두었다. 14절에서 앱 원본은 `public/`으로 옮기고, `dist/`는 호스팅 빌드 출력으로 바꿨다. 데이터 원본·설계·실행 도구는 각각의 전용 폴더에 유지한다.
 
 
 ## 13. 환경설정 문서
@@ -313,3 +325,9 @@ git에 올라갈 파일만(`git ls-files -co --exclude-standard`) 새 폴더에 
 
 - `--bg`/`--all` 서버를 `setsid`로 새 세션에서 띄운다. 실행한 터미널이나 도구 세션이 끝날 때 서버가 같이 종료되던 문제를 고쳤다.
 - 변환 도구가 없는 상태의 테스트 실패는 `setup_env.sh`에서 경고로 처리한다(사이트 보기에는 불필요). 도구가 모두 있는데 실패하면 기존처럼 오류로 끝난다.
+
+## 21. 문서 정리
+
+- `docs/DATA_GUIDE.md`·`docs/DATA_STANDARD.md`는 스킬 `references/`와 경로 몇 줄만 다른 중복본이라 삭제했다. 단일 원본은 `.agents/skills/lh-notice-map/references/`다. 이 원본은 빌드 때 실행 폴더 `docs/`로 복사되므로, 작업공간(`public/`)과 실행 폴더(`site/dist/`, `activate --dist site/dist --state-dir config`) 양쪽 경로를 표로 안내한다. 어디서 열어도 깨지지 않도록 상대 링크는 경로 표기로 바꿨다. 경쟁률 설정 생성과 `start_site.sh` 확인 절차도 추가했다.
+- Codex SKILL.md는 환경·빌드·여러 공고 운용·경쟁률·확인 절을 다시 구성했다. 버튼 이름, 기준 시각, git 보관 내용도 현재 상태로 맞췄다. Claude Code SKILL.md는 공통 규칙을 Codex SKILL.md에서 읽고, Claude Code 전용 절차(비대화형 `--bg` 실행, headless 확인, sudo 제약, 게시 제한)만 담도록 줄였다.
+- README, ENV_SETUP, SKILL_GUIDE의 `dist/`·정적 서버·옛 버튼 이름·`--runs-dir lh-runs` 표기를 현재 구조에 맞게 고쳤다. 이 문서 앞부분에 현재 구조 요약을 두었다.

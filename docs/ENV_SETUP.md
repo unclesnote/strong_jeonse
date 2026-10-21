@@ -37,7 +37,7 @@ git clone <저장소 URL> strong_jeonse && cd strong_jeonse
 |---|---|---|
 | Ubuntu 24.04 계열 / Python 3.12 | 수집부터 미리보기·데이터 검증·지도 빌드까지 | 현재 Linux 환경에서 기능·데이터·테스트 확인 |
 | Windows + WSL2 + Ubuntu 24.04 | Ubuntu와 같은 전체 파이프라인 | 코드 의존성과 공식 WSL 설치 절차에 맞춘 안내. Windows 장비에서 직접 실행한 검증은 미실시 |
-| Windows 기본 PowerShell + Python | 이미 완성된 `dist/`의 로컬 지도 열기 | 표준 Python HTTP 서버 사용. Windows 실기 검증은 미실시 |
+| Windows 기본 PowerShell + Python | 이미 완성된 `public/`의 로컬 지도·경쟁률 보기 | 표준 라이브러리 서버 `backend/server.py` 사용. Windows 실기 검증은 미실시 |
 
 전체 빌드의 Windows 실행 경로는 WSL2다. 현재 변환 코드는 `libreoffice` 명령과 Linux 형식의 LibreOffice 프로필 URI를 사용한다. Windows의 `soffice.com` 경로를 PATH에 추가하는 것만으로 전체 파이프라인이 호환된다고 보장하지 않는다. Windows 네이티브 자동 변환은 별도 실행파일 탐색·URI 처리와 실기 검증이 필요하다. 운영체제별 LibreOffice 명령 형식은 [공식 안내](https://help.libreoffice.org/latest/en-US/text/shared/guide/start_parameters.html)를 참고한다.
 
@@ -82,7 +82,7 @@ cd /실제/프로젝트/경로/strong_jeonse
 python3 --version
 ```
 
-위 `/실제/프로젝트/경로/strong_jeonse`는 사용자의 실제 경로로 바꾼다. 소스 코드와 함께 `.agents/skills/` 및 `tests/fixtures/`도 복사한다. 기존 지도를 확인하려면 `dist/`, 기존 데이터를 검증하려면 `data/datasets/`도 필요하다. `.venv/`는 다른 PC에서 복사하지 않고 아래에서 다시 만든다.
+위 `/실제/프로젝트/경로/strong_jeonse`는 사용자의 실제 경로로 바꾼다. 가장 쉬운 방법은 `git clone`이다. 지도(`public/`), 데이터(`data/datasets/`), 빌드한 공고 사이트(`lh-runs/`), 스킬, 테스트가 모두 저장소에 들어 있다. 폴더를 직접 복사할 때도 이 폴더들을 함께 복사한다. `.venv/`와 `tmp/`는 다른 PC에서 복사하지 않고 `./setup_env.sh`로 다시 만든다.
 
 ### 3.2 프로젝트 전용 Python 환경
 
@@ -152,9 +152,9 @@ cd ~/work/strong_jeonse
 
 Windows 브라우저에서 WSL의 로컬 웹 서버는 통상 `http://localhost:8765/`로 접속한다. 접속 문제는 [Microsoft WSL 네트워크 안내](https://learn.microsoft.com/en-us/windows/wsl/networking)를 확인한다. 먼저 WSL 안에서 같은 주소가 열리는지 확인하고, 자동 localhost 연결이 실패하면 배포판 실행 상태와 로컬 네트워크 설정을 점검한다.
 
-### 4.3 Codex 스킬 사용 위치
+### 4.3 스킬 사용 위치(Codex·Claude Code)
 
-Codex가 이 프로젝트 폴더를 작업공간으로 열어 `.agents/skills/lh-notice-map/SKILL.md`를 읽도록 한다. WSL에서 빌드할 경우 에이전트의 셸도 WSL 환경을 사용하거나 WSL 터미널에서 아래 CLI를 직접 실행한다. 공용 사용자 스킬 폴더에 복사할 필요는 없다. Codex 설치·로그인은 사용 중인 앱의 설정에 따르며 Python CLI 빌드 자체에는 Codex가 필수는 아니다.
+Codex가 이 프로젝트 폴더를 작업공간으로 열어 `.agents/skills/lh-notice-map/SKILL.md`를 읽도록 한다. WSL에서 빌드할 경우 에이전트의 셸도 WSL 환경을 사용하거나 WSL 터미널에서 아래 CLI를 직접 실행한다. 공용 사용자 스킬 폴더에 복사할 필요는 없다. Claude Code는 프로젝트 폴더를 열면 `.claude/skills/lh-notice-map/SKILL.md`를 `/lh-notice-map`으로 쓸 수 있다. 이 스킬은 공통 규칙을 Codex 스킬 파일에서 읽는다. 에이전트 설치·로그인은 사용 중인 앱의 설정에 따르며, Python CLI 빌드 자체에는 에이전트가 필요 없다.
 
 ## 5. 실행과 검증 — Ubuntu / WSL 공통
 
@@ -190,19 +190,19 @@ python scripts/dataset.py validate --dataset data/datasets/2015122300020927/data
 실제 공고 ID가 포함된 URL을 따옴표로 감싼다. `&`가 들어 있어도 한 개의 URL 인자로 전달되어야 한다.
 
 ```bash
-python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID' --runs-dir lh-runs
+python scripts/build_notice.py 'https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=실제공고ID'   # 기본 출력: 프로젝트 루트의 lh-runs/
 ```
 
 `실제공고ID`를 원문에서 확인한 숫자로 바꾼다. 기본 명령은 새 공고의 원본·홍보물 수집과 미리보기·좌표·표준 데이터·별도 사이트 생성을 수행한다. HWP/HWPX는 다운로드하지 않는다. 자료 형식이 다르거나 좌표를 확정하지 못하면 보고서를 남기고 중단한다. 수집과 공개 주소 검색 및 패키지 설치에는 인터넷이 필요하다.
 
-스킬 실행마다 `lh-runs/<UTC시각>-<공고ID>-<고유값>/`이 생긴다. 출력의 `RUN_ROOT` 값을 확인하고 그 폴더를 사용한다. 기존 프로젝트의 `dist/`나 활성 데이터는 교체하지 않는다. 새 결과는 다음처럼 연다.
+스킬 실행마다 `lh-runs/<UTC시각>-<공고ID>-<고유값>/`이 생긴다. 출력의 `RUN_ROOT` 값을 확인하고 그 폴더를 사용한다. 작업공간의 `public/`이나 활성 데이터, 이전 실행 폴더는 교체하지 않는다. 새 결과는 다음처럼 연다.
 
 ```bash
 ./start_site.sh            # 새 실행 폴더가 목록에 최신순으로 나타난다
 ./start_site.sh 'lh-runs/실제실행폴더/site/dist'
 ```
 
-8765가 사용 중이면 다음 빈 포트를 자동으로 사용한다. 경쟁률 캐시는 그 실행 폴더의 `tmp/competition/`에 저장된다. 새 빌드의 `reports/run.json`이 `complete`인지 확인하고 지도 필터·목록·세대 표·PDF 이미지·원본 링크를 점검한다. 자세한 데이터 설정은 [스킬 가이드](SKILL_GUIDE.md), [데이터 교체 가이드](DATA_GUIDE.md), [미디어 표준](DATA_STANDARD.md)을 따른다.
+8765가 사용 중이면 다음 빈 포트를 자동으로 사용한다. 경쟁률 캐시는 그 실행 폴더의 `tmp/competition/`에 저장된다. 새 빌드의 `reports/run.json`이 `complete`인지 확인하고 지도 필터·목록·세대 표·PDF 이미지·원본 링크를 점검한다. 자세한 데이터 설정은 [스킬 가이드](SKILL_GUIDE.md), [데이터 교체 가이드](../.agents/skills/lh-notice-map/references/DATA_GUIDE.md), [미디어 표준](../.agents/skills/lh-notice-map/references/DATA_STANDARD.md)을 따른다.
 
 ### 5.4 네트워크 수집 없이 기존 표준 패키지로 빌드
 
@@ -226,7 +226,7 @@ HTML은 해당 상세 페이지의 실제 내용을 보존해야 한다. Windows
 
 ## 6. Windows 기본 환경에서 완성된 지도만 보기
 
-이 절은 WSL 없이 이미 만들어진 `dist/`를 확인하는 용도다. [Python Windows 공식 안내](https://docs.python.org/3/using/windows.html)를 따라 Python을 설치하고 새 PowerShell에서 `py --version`이 실행되는지 확인한다. 프로젝트를 예를 들어 `C:\work\strong_jeonse`에 준비한 후 실행한다.
+이 절은 WSL 없이 이미 만들어진 `public/`(작업공간 사이트)을 확인하는 용도다. 실행 폴더 사이트는 `--directory lh-runs\<실행>\site\dist --state-dir lh-runs\<실행>\tmp\competition`으로 연다. [Python Windows 공식 안내](https://docs.python.org/3/using/windows.html)를 따라 Python을 설치하고 새 PowerShell에서 `py --version`이 실행되는지 확인한다. 프로젝트를 예를 들어 `C:\work\strong_jeonse`에 준비한 후 실행한다.
 
 ```powershell
 Set-Location 'C:\work\strong_jeonse'
@@ -261,7 +261,7 @@ WSL용 `.venv`와 Windows용 `.venv`를 한 경로에서 공유하지 않는다.
 
 프로젝트의 문서는 `docs/`, 스크립트는 `scripts/`, 자료는 `data/`, 전달 ZIP은 `outputs/`, 가상환경은 `.venv/`, 임시는 `tmp/`에 둔다. `.venv/`와 Python 캐시는 소스 관리에서 제외한다. 파일 원본·미리보기·배포용 스냅샷을 보관하므로 원본 총크기만큼의 공간으로 끝나지 않는다. 실제 공고 사례의 원본은 약 75MB였고 표준 자산과 사이트 사본 및 ZIP은 추가 공간을 사용했다. 새 실행은 이전 폴더를 남기므로 여유 디스크를 확보한다.
 
-로컬 빌드에는 호스팅 계정이나 자격증명이 필요하지 않다. ChatGPT Sites에 게시하려면 해당 서비스의 로그인·연결과 새 프로젝트 등록 절차가 별도로 필요하다. 새 공고 결과에는 기존 `.openai/hosting.json`이나 사이트 ID를 복사하지 않는다. 다른 정적 호스팅을 쓰는 경우 새 실행의 `site/dist/` 전체를 그 서비스 절차에 따라 배포한다.
+로컬 빌드에는 호스팅 계정이나 자격증명이 필요하지 않다. ChatGPT Sites에 게시하려면 해당 서비스의 로그인·연결과 새 프로젝트 등록 절차가 별도로 필요하다. 새 공고 결과에는 기존 `.openai/hosting.json`이나 사이트 ID를 복사하지 않는다. 일반 정적 호스팅에 `site/dist/`만 올리면 지도는 동작하지만 경쟁률은 표시되지 않는다. 경쟁률 API에는 `backend/server.py`를 실행할 수 있는 서버나, `scripts/build_hosted.mjs`로 만드는 Worker 빌드가 필요하다.
 
 ## 8. 문제 해결
 

@@ -1,3 +1,10 @@
+> **이 프로젝트에서의 역할** — 청약 경쟁률 API를 포함한 **호스팅(Cloudflare Worker) 빌드**용 폴더입니다. 로컬 실행에는 쓰지 않습니다. 로컬은 루트의 `./start_site.sh`(Python `backend/server.py`)를 씁니다.
+> - API: `app/api/competition/` → `../competition.mjs`(로컬 `competition.py`와 같은 규칙), 저장소는 D1 `competition_cache`
+> - 빌드: 루트에서 `SITES_BUILD_HELPER=<Sites 플러그인 build-site.mjs> node scripts/build_hosted.mjs` → 루트 `dist/`
+> - `public/`, `.openai/`, `competition-config.json`은 빌드 때 루트에서 복사되는 생성물입니다(무시됨).
+>
+> 아래는 Sites 스타터의 원문 안내입니다.
+
 # vinext-starter
 
 A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.

@@ -1,8 +1,17 @@
 # 새 공고 데이터 교체 가이드
 
-지도 HTML·CSS·JavaScript를 수정하지 않고 공고를 교체하는 방법이다. 모든 명령은 작업공간 최상위 폴더에서 실행한다. 표준 정의는 [`DATA_STANDARD.md`](DATA_STANDARD.md), 현재 구현과 TODO는 [`design.md`](design.md)를 참고한다.
+지도 HTML·CSS·JavaScript를 수정하지 않고 공고를 교체하는 방법이다. 표준 정의는 [`DATA_STANDARD.md`](DATA_STANDARD.md), 설계 기록은 작업공간의 `docs/design.md`를 참고한다.
 
-실행 환경은 Python 3.10 이상과 `jsonschema` 4.x, Poppler의 `pdfinfo`가 필요하다. 이 작업 환경에는 설치되어 있다. 새 환경에서는 Python 패키지를 `python -m pip install "jsonschema>=4.10,<5"`로 설치하고, 운영체제의 Poppler 패키지를 설치한다. 미리보기를 새로 변환할 때에는 `pdftoppm`, Pillow, PPTX용 LibreOffice도 필요하다. 검증은 PDF 원본 페이지 수를 확인할 도구가 없으면 통과 처리하지 않는다.
+이 문서는 두 곳에서 쓰인다. 경로는 다음처럼 읽는다.
+
+| 위치 | 명령 실행 폴더 | 사이트 폴더(`<사이트>`) | `activate` 추가 인자 |
+|---|---|---|---|
+| 작업공간 | 프로젝트 최상위 | `public/` | 없음(기본값) |
+| 스킬 실행 폴더 | `lh-runs/<실행>/` | `site/dist/` | `--dist site/dist --state-dir config` |
+
+새 공고는 보통 이 문서의 수동 절차 대신 스킬(`build_notice.py`)로 새 실행 폴더에 빌드한다. 수동 교체는 작업공간 `public/`을 바꾸므로, 다른 공고를 쌓아 두려면 스킬을 쓴다.
+
+환경은 작업공간에서 `./setup_env.sh`로 준비한다. 아래 명령의 `python`은 작업공간의 `.venv/bin/python`이다(`source .venv/bin/activate` 후 `python`). Python 3.10 이상, `jsonschema` 4.x, Poppler의 `pdfinfo`가 필요하다. 미리보기를 새로 변환할 때에는 `pdftoppm`, Pillow, PPTX용 LibreOffice도 필요하다. 검증은 PDF 원본 페이지 수를 확인할 도구가 없으면 통과 처리하지 않는다.
 
 ## 1. 입력 방식 선택
 
@@ -52,19 +61,22 @@ python scripts/dataset.py activate \
   --asset-root data/datasets/my-new-notice
 ```
 
-성공하면 `config/active-dataset.json`에 활성 공고·해시·자산 경로가 기록되고 `config/validation-audit.json`에 검증 결과가 기록된다. 미디어는 `site/dist/datasets/<공고 ID>/<내용 해시>/assets/`에 먼저 복사된다. 마지막으로 `site/dist/data.js`를 교체한다. 복사나 검증이 실패하면 이전 데이터 포인터를 유지한다.
+실행 폴더에서는 위 명령에 `--dist site/dist --state-dir config`를 붙인다. 붙이지 않으면 실행 폴더 안에 `public/`이 새로 생긴다.
 
-로컬 서버를 실행하고 브라우저를 새로고침한다.
+성공하면 `config/active-dataset.json`에 활성 공고·해시·자산 경로가 기록되고 `config/validation-audit.json`에 검증 결과가 기록된다. 미디어는 `<사이트>/datasets/<공고 ID>/<내용 해시>/assets/`에 먼저 복사된다. 이어서 경쟁률 소스 설정 `<사이트>/competition-config.json`을 쓰고, 마지막으로 `<사이트>/data.js`를 교체한다. 복사나 검증이 실패하면 이전 데이터 포인터를 유지한다.
+
+작업공간 최상위에서 사이트를 실행한다. 이미 실행 중이면 그대로 두고 브라우저만 새로고침해도 데이터가 반영된다. 경쟁률 소스가 바뀌었으면 `--restart`로 재시작한다.
 
 ```bash
-python backend/server.py --directory site/dist --state-dir tmp/competition --port 8765
+./start_site.sh --list          # 사이트 번호·경쟁률 소스 URL 확인
+./start_site.sh <번호> --restart
 ```
 
-주소는 `http://127.0.0.1:8765/`다. 정적 서버 재시작이나 화면 코드 수정은 필요하지 않다. 이미 열려 있는 탭은 새로고침해야 한다. 호스팅된 사이트에는 활성화된 `site/dist/`를 기존 Sites 프로젝트로 다시 게시해야 반영된다. 로컬 파일 교체가 서버 배포를 자동 실행하지는 않는다.
+출력된 `http://localhost:…/` 주소를 연다. 화면 코드 수정은 필요하지 않다. 호스팅된 작업공간 사이트는 `scripts/build_hosted.mjs`로 `dist/`를 다시 만들어 게시해야 반영된다. 로컬 파일 교체가 배포를 자동 실행하지는 않는다.
 
 ## 3. 새 XLSX를 설정으로 가져오기
 
-[`config/lh-current.json`](../config/lh-current.json)을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
+작업공간의 `config/lh-current.json`을 새 이름으로 복사한다. 이 설정에는 현재 정정공고의 파일·시트·열 매핑이 완성되어 있다.
 
 새 설정에서 다음 부분을 바꾼다.
 
@@ -122,7 +134,7 @@ python scripts/import_xlsx.py \
   --output data/datasets/my-new-notice/dataset.json
 ```
 
-이 단계도 현재 지도는 변경하지 않는다. 출력된 표준 데이터에 2절의 검증·활성화를 적용한다. 일반적인 공고 교체에서 `site/dist/app.js`, `site/dist/index.html`, `site/dist/style.css`는 수정하지 않는다.
+이 단계도 현재 지도는 변경하지 않는다. 출력된 표준 데이터에 2절의 검증·활성화를 적용한다. 일반적인 공고 교체에서 `<사이트>/app.js`, `index.html`, `style.css`는 수정하지 않는다.
 
 ## 4. 이전 수집 형식에서 변환
 
@@ -164,6 +176,7 @@ PDF를 새 파일로 바꾸었다면 원본 `sha256`·`size`, 모든 페이지�
 - [ ] 주택군 공통 자료와 특정 세대 자료의 관계가 구분됨
 - [ ] `validate`와 `activate --dry-run` 통과
 - [ ] 활성화 후 제목·세대수·주소수·필터·홍보물 미리보기 확인
+- [ ] `./start_site.sh --list`의 경쟁률 소스 URL이 새 공고이고, 화면의 경쟁률 패널이 `정상 조회`(접수 전이면 `조회 불가`)
 - [ ] 지역·방수 등을 복수 선택했을 때 검색된 건물만 지도에 표시됨
 - [ ] 호스팅 사이트를 사용하는 경우 새 버전 게시 완료
 
